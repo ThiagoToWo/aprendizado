@@ -1,0 +1,76 @@
+<script>
+var mapa = [['#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'],
+			['#', '  ', '  ', '  ', '#', '  ', '  ', '  ', '  ', '  ', '  ', '#'],
+			[' i ', '  ', '#', '  ', '#', '  ', '#', '#', '#', '#', '  ', '#'],
+			['#', '#', '#', '  ', '#', '  ', '  ', '  ', '  ', '#', '  ', '#'],
+			['#', '  ', '  ', '  ', '  ', '#', '#', '#', '  ', '#', '  ', '  '],
+			['#', '#', '#', '#', '  ', '#', '  ', '#', '  ', '#', '  ', '#'],
+			['#', '  ', '  ', '#', '  ', '#', '  ', '#', '  ', '#', '  ', '#'],
+			['#', '#', '  ', '#', '  ', '#', '  ', '#', '  ', '#', '  ', '#'],
+			['#', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '  ', '#', '  ', '#'],
+			['#', '#', '#', '#', '#', '#', '  ', '#', '#', '#', '  ', '#'],
+			['#', '  ', '  ', '  ', '  ', '  ', '  ', '#', '  ', '  ', '  ', '#'],
+			['#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#']];
+var linha = 2;
+var coluna = 0;
+var direcao;
+var mostra = '';
+
+do {
+	mostra = '';
+	
+	for (var i = 0; i < mapa.length; i++) {
+		for (var j = 0; j < mapa[i].length; j++) {
+			mostra += mapa[i][j] + " ";
+		}
+		
+		mostra += '\n';
+	}
+	
+	direcao = Number(prompt(mostra + 
+		"Escolha a direção (esquerda = 4, cima = 8, " +
+		"direita = 6, baixo = 2, fechar = 0): "));
+		
+	switch (direcao) {
+		case 4: // esquerda
+			if ((coluna - 1) >= 0 && mapa[linha][coluna - 1] == '  ') {
+				mapa[linha][coluna] = '  ';
+				coluna -= 1;
+				mapa[linha][coluna] = ' i ';
+			}
+			
+			break;
+		case 8: // cima
+			if ((linha - 1) >= 0 && mapa[linha - 1][coluna] == '  ') {
+				mapa[linha][coluna] = '  ';
+				linha -= 1;
+				mapa[linha][coluna] = ' i ';
+			}
+			
+			break;
+		case 6: // direita
+			if ((coluna + 1) < mapa[linha].length && mapa[linha][coluna + 1] == '  ') {
+				mapa[linha][coluna] = '  ';
+				coluna += 1;
+				mapa[linha][coluna] = ' i ';
+			}
+			
+			break;
+		case 2: // baixo
+			if ((linha + 1) < mapa.length && mapa[linha + 1][coluna] == '  ') {
+				mapa[linha][coluna] = '  ';
+				linha += 1;
+				mapa[linha][coluna] = ' i ';
+			}
+			
+			break;
+		default:
+			if (direcao == 0) {
+				alert("Fechando o jogo.");
+				break;
+			}
+			
+			alert("Valor inválido.");
+	}
+} while(direcao != 0);
+</script>

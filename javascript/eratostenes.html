@@ -1,0 +1,25 @@
+<script>
+var max = Number(prompt("Insira o limite de teste"));
+var amp = Number(prompt("Insira a amplitude de ditribuição"));
+var primos = [];
+primos[0] = false;
+primos[1] = false;
+
+for (var i = 2; i <= max; i++) {
+	primos[i] = true;
+}
+
+for (var i = 2; i * i <= max; i++) {
+	for (var j = 2 * i; j <= max; j += i) {
+		primos[j] = false;
+	}
+}
+
+for (var i = 2; i <= max; i++) {
+	if (primos[i]) {
+		document.write(i + " ");
+	} else if (i % amp == 0) {
+		document.write("<br>");
+	} 
+}
+</script>

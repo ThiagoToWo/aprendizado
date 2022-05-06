@@ -1,0 +1,41 @@
+<script>
+var A = B = C = D = E = 0;
+var nota;
+
+do {
+	nota = Number(prompt("Insira a nota de 0 a 100 (sair = -1):"));
+	
+	switch (Math.floor(nota / 10)) {
+		case 10:
+			A++; 
+			break;
+		case 9:
+		case 8:
+		case 7:
+			B++; 
+			break;
+		case 6:
+		case 5:
+		case 4:
+			C++; 
+			break;
+		case 3:
+		case 2:
+		case 1:
+			D++; 
+			break;
+		case 0:
+			E++; 
+			break;
+		default:
+			alert("Valor fora dos limites.");
+	}
+} while (nota != -1);
+
+document.write("Perfeito (100):" + A + "<br>");
+document.write("Bom (70 a 99): " + B + "<br>");
+document.write("Médio (40 a 69): " + C + "<br>");
+document.write("Ruim (10 a 39): " + D + "<br>");
+document.write("Péssimo (0 a 9): " + E + "<br>");
+document.write("Total: " + (A + B + C + D + E));
+</script>

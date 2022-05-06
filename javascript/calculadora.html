@@ -1,0 +1,25 @@
+<script>
+var a = Number(prompt("Insira o valor de a"));
+var b = Number(prompt("Insira o valor de b"));
+
+document.write("A soma é " + (a + b) + "<br>");
+document.write("A subtração é " + (a - b) + "<br>");
+document.write("A multiplicação é " + (a * b) + "<br>");
+document.write("A divisão é " + (a / b) + "<br>");
+
+if (a > b) {
+	document.write(a + " > " + b + "<br>");
+} else if (a == b) {
+	document.write(a + " = " + b + "<br>");
+} else {
+	document.write(a + " < " + b + "<br>");
+}
+
+if (a > 0 && a < 10) {
+	document.write("0 < " + a + " < 10");
+} else if (a < 0 || a > 10) {
+	document.write(a + " < 0 ou " + a + " > 10");
+} else {
+	document.write(a + "= 0 ou " + a + " = 10");
+}
+</script>

@@ -1,0 +1,58 @@
+<script>
+var mapa = [[0, 15, 30, 5, 12], 
+			[15, 0, 10, 17, 28],
+			[30, 10, 0, 3, 11], 
+			[5, 17, 3, 0, 80],
+			[12, 28, 11, 80, 0]];
+var dist = 0;
+var rota = prompt("Insira uma rota entre as cidades A, B, C, D e E (exemplo AECBDADEC) ");
+var origem;
+var destino;
+
+for (var i = 0; i < rota.length - 1; i++) {
+	switch (rota[i]) {
+		case 'A':
+			origem = 0;			
+			break;
+		case 'B':
+			origem = 1;
+			break;		
+		case 'C':
+			origem = 2;
+			break;
+		case 'D':
+			origem = 3;
+			break;
+		case 'E':
+			origem = 4;
+			break;
+		default:
+			alert("Valor inválido na posição " + i + " da rota.");
+			continue;
+	}
+	
+	switch (rota[i + 1]) {
+		case 'A':
+			destino = 0;
+			break;
+		case 'B':
+			destino = 1;
+			break;		
+		case 'C':
+			destino = 2;
+			break;
+		case 'D':
+			destino = 3;
+			break;
+		case 'E':
+			destino = 4;
+			break;
+		default:
+			continue;			
+	}
+	
+	dist += mapa[origem][destino];
+}
+
+alert("A distância total percorrida é de " + dist);
+</script>

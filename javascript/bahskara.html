@@ -1,0 +1,25 @@
+<script>
+var a = Number(prompt("Insira o valor de a"));
+var b = Number(prompt("Insira o valor de b"));
+var c = Number(prompt("Insira o valor de c"));
+var d;
+var x1;
+var x2;
+
+if (a == 0) {
+	alert("Não é uma função quadrática");
+} else {
+	d = b * b - 4 * a * c;
+	
+	if (d == 0) {
+		x1 = -b / (2 * a);
+		alert("x1 = x2 = " + x1);
+	} else if (d > 0) {
+		x1 = (-b + Math.sqrt(d)) / (2 * a);
+		x2 = (-b - Math.sqrt(d)) / (2 * a);
+		alert("x1 = " + x1 + " e  x2 = " + x2);
+	} else {
+		alert("Não existe raízes reais.");
+	}
+}
+</script>

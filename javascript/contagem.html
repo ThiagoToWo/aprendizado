@@ -1,0 +1,33 @@
+<script>
+var achou_letra;
+var num_letras = 0;
+var num_palavras = 0;
+var tamanho = 0;
+var simb = [' ', ',', '.', ';', ':', '!', '?', '(', ')'];
+var texto = prompt("Insira um texto:");
+
+var i = 0;
+while (texto[i] != null) {	
+	if (texto[i] == ' ') {
+		num_palavras++;
+	}
+	
+	for (var j = 0; j < simb.length; j++) {
+		if (texto[i] == simb[j]) {
+			achou_letra = false;
+			break;
+		}
+		
+		achou_letra = true;
+	}
+	
+	if (achou_letra) {
+		num_letras++;
+	}
+	
+	i++;
+}
+
+alert("Esse texto tem " + (num_palavras + 1) + " palavras, " + 
+		i + " caracteres, sendo " + num_letras + " deles letras.");
+</script>

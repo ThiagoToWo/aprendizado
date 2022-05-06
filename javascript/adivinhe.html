@@ -1,0 +1,22 @@
+<script>
+var rnd = Math.floor(1 + Math.random() * 100);
+var palpite;
+var tentativas = 1;
+
+do {
+	palpite = Number(prompt("De seu palpite (-1 para sair)"));
+	
+	if (palpite > rnd) {
+		alert("Alto demais.");
+	} else if (palpite < rnd) {
+		alert("Baixo demais.");
+	} else {
+		alert("Voce acertou! com " + tentativas + " tentativas");
+		break;
+	}
+	
+	tentativas++;
+} while (palpite != -1);
+
+
+</script>

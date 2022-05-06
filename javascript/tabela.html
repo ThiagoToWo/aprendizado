@@ -1,0 +1,55 @@
+<script>
+var mostra = "";
+var num_linha = Number(prompt("Insira o número de linhas da tabela: "));
+var num_coluna = Number(prompt("Insira o número de colunas da tabela: "));
+
+var tabela = new Array(num_linha);
+
+for (var i = 0; i < num_linha; i++) {
+	tabela[i] = new Array(num_coluna);
+	for (var j = 0; j < num_coluna; j++) {
+		tabela[i][j] = Number(prompt("tabela[" + i + "][" + j + "] = "));
+		mostra += tabela[i][j] + " ";
+	}
+	
+	mostra += "\n";
+}
+
+do {	
+	var total = 0;
+	alert(mostra);
+	var valores = Number(prompt("Deseja operar sobre linha (1) ou sobre coluna (2)?"));
+	
+	if (valores == 1) {
+		var linha = Number(prompt("Insira o número da linha de 0 a " +
+									(num_linha - 1) + ": "));
+		
+		if (linha >= 0 && linha < num_linha) {
+			for (var i = 0; i < num_coluna; i++) {
+				total += tabela[linha][i];
+			}
+			
+			alert("O total da linha é " + total);
+		} else {
+			alert("Valor fora dos limites");
+		}		
+	} else if (valores == 2) {
+		var coluna = Number(prompt("Insira o número da coluna de 0 a " +
+									(num_coluna - 1) + ": "));
+		
+		if (coluna >= 0 && coluna < num_coluna) {
+			for (var i = 0; i < num_linha; i++) {
+				total += tabela[i][coluna];
+			}
+			
+			alert("O total da coluna é " + total);
+		} else {
+			alert("Valor fora dos limites");
+		}
+	} else {
+		alert("Opção inválida.");
+	}
+	
+	var opcao = prompt("Deseja sair? (s/n)");
+} while(opcao != 's' && opcao != 'S');
+</script>
