@@ -9,11 +9,11 @@ fimprograma
 =============================================================================================
 
 2. OPERADORES (+, -, *, /, mod ou %, >, <, ==, !=, &&, ||, +=, ++, 
-			   funções matemáticas)
+				funções matemáticas)
 3. ENTRADA E SAÍDA BÁSICA 
 4. TIPOS DE DADOS PRÉ-DEFINIDOS (inteiro, real)
 5. INSTUÇÕES DE CONTROLE (if, if...else, for, while, do...while, switch,
-						  break, contadores e sentinelas);
+						break, contadores e sentinelas);
 
 A) CALCULADORA
 
@@ -200,7 +200,7 @@ fimprograma
 ==============================================================================================
 
 6. VETORES E MATRIZES (inicialização, manipulação, condições em for, 
-						condições em switch)
+						condições em switch, operadores <= e >=)
 7. STRINGS (tipo char e strings, tipo booleano, escopo de variáveis)
 
 A) MÁXIMO
@@ -318,7 +318,7 @@ programa crivo
 		primos[i] = verdadeiro;
 	fimpara
 
-	para i = 2 com i * i < max passo 1 faça	// para com condições
+	para i = 2 com i * i <= max passo 1 faça	// para com condições
 		para j de 2 * i até max passo i faça
 			primos[j] = falso;
 	fimpara
