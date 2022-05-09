@@ -1,0 +1,23 @@
+<script src="ordenacao.js"></script>
+<script>
+var n = 25;
+var vetor = new Array(25);
+
+for (var i = 0; i < n; i++) {
+	vetor[i] = Math.floor((Math.random() * 100));
+}
+
+document.write("Antes de ordenar: ");
+
+for (var i = 0; i < vetor.length; i++) {
+	document.write(vetor[i] + " ");
+}
+
+ordenar(vetor, n);
+
+document.write("<br>Depois de ordenar: ");
+
+for (var i = 0; i < vetor.length; i++) {
+	document.write(vetor[i] + " ");
+}
+</script>
