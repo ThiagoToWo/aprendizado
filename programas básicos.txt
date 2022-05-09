@@ -662,7 +662,6 @@ C) ESTATÍSTICA COMPLETA
 
 /--Arquivo estatística--/
 importa ordenar do arquivo ordenação;
-importa buscar do arquivo busca;
 
 função média(real vetor, inteiro n) 
 	real soma = 0;
@@ -686,12 +685,12 @@ função mediana(real vetor, inteiro n);
 fimfunção
 
 função frequência(real vetor, inteiro n)
-	real f = [];
+	real f = vetor[n];
 	
 	inteiro i;
 	inteiro j;
-	para i de 0 até (n - 1) passo 1 faça
-		para j de 0 até (n - 1) passo 1 faça
+	para i de 0 até (n - 2) passo 1 faça
+		para j de i + 1 até (n - 1) passo 1 faça
 			se f[i] == nulo, então
 				f[i] = 1;
 			fimse
@@ -706,6 +705,7 @@ função frequência(real vetor, inteiro n)
 			fimse
 		fimpara
 	fimpara	
+	
 	retorna f;
 fimfunção
 
@@ -718,6 +718,8 @@ função máximo(real vetor, inteiro n)
 			max = vetor[i];
 		fimse
 	fimpara
+	
+	retorn max;
 fimfunção
 
 função mínimo(real vetor, inteiro n)
@@ -729,6 +731,8 @@ função mínimo(real vetor, inteiro n)
 			min = vetor[i];
 		fimse
 	fimpara
+	
+	retorna min;
 fimfunção
 
 função moda(real vetor, inteiro n)
@@ -762,35 +766,38 @@ fimfunção
 importa arquivo estatística; // importa todas as funções
 
 programa estatística
-	inteiro num_dados;
+	inteiro amostra;
 	
-	imprima("Insira a quantidade de dados: ");
-	leia(num_dados);
+	imprima("Insira o tamanho da amostra: ");
+	leia(amostra);
 	
-	real dados = vetor[num_dados];
+	real dados = vetor[amostra];
 	
 	inteiro i;
-	para i de 0 a (num_dados - 1) passo 1 faça
+	para i de 0 a (amostra - 1) passo 1 faça
+		imprima("Insira o " + (i + 1) + "o dado: ");
 		leia(dados[i]);
 	fimpara
 	
-	imprima("média = " + média(dados, num_dados) + "\n");
-	imprima("mediana = " + mediana(dados, num_dados) + "\n"); // o vetor foi ordenado
-	imprima("moda = " + moda(dados, num_dados) + "\n");
-	imprima("máximo = " + máximo(dados, num_dados) + "\n");
-	imprima("mínimo = " + mínimo(dados, num_dados) + "\n");
-	imprima("desvio padrão = " + raiz(variância(dados, num_dados)) + "\n");
+	imprima("Dados = ");
 	
-	imprima("Insira um valor para saber se ele está nos dados: ");
-	real valor;
-	leia(valor);
-	inteiro posição = buscar(valor);
+	inteiro i;
+	para i de 0 a (amostra - 1) passo 1 faça
+		imprima(dados[i] + " ");
+	fimpara
 	
-	se posição != -1, então
-		imprima("O valor " + valor + " está na posição " + posição);
-	senão
-		imprima("O valor não se encontra nos dados.");
-	fimse
+	imprima("\n");
+	
+	imprima("média = " + média(dados, amostra) + "\n");
+	imprima("mediana = " + mediana(dados, amostra) + "\n"); // o vetor foi ordenado
+	imprima("moda = " + moda(dados, amostra) + "\n");
+	imprima("desvio padrão = " + raiz(variância(dados, amostra)) + "\n");
+	imprima("Dados ordenados = ");
+	
+	inteiro i;
+	para i de 0 a (amostra - 1) passo 1 faça
+		imprima(dados[i] + " ");
+	fimpara
 fimprograma
 
 C) LISTA
