@@ -545,8 +545,8 @@ A) ORDENAÇÃO BOLHA
 /--Arquivo ordenação--/
 função ordenar(real vetor, inteiro n)
 	inteiro i;
-	inteiro j;
 	para i de 1 até (n - 1) faça
+		inteiro j;
 		para j de 0 até (n - i - 1) faça
 			se vetor[j] > vetor[j + 1], então
 				real temp = vetor[j];
@@ -687,9 +687,9 @@ fimfunção
 função frequência(real vetor, inteiro n)
 	real f = vetor[n];
 	
-	inteiro i;
-	inteiro j;
+	inteiro i;	
 	para i de 0 até (n - 2) passo 1 faça
+		inteiro j;
 		para j de i + 1 até (n - 1) passo 1 faça
 			se f[i] == nulo, então
 				f[i] = 1;
@@ -838,7 +838,7 @@ módulo lista
 				corrente = corrente.próximo;
 			fimenquanto
 
-			corrente = novo;
+			corrente.proximo = novo;
 		fimse
 
 		topo++;
@@ -854,6 +854,7 @@ módulo lista
 			senão
 				nó antecessor = l_obter(posição - 1);
 				nó sucessor = antecessor.próximo;
+				
 				antecessor.próximo = novo;
 				novo.próximo = sucessor;							
 			fimse
@@ -866,10 +867,16 @@ módulo lista
 	fimfunção	
 
 	função l_remover(inteiro posição)
-		nó antecessor = l_obter(posição - 1);
-		nó corrente = antecessor.próximo;
-		nó sucessor = corrente.próximo
-		antecessor.próximo = sucessor;	
+		se posição == 0, então
+			cabeça = cabeça.proximo;
+		senão
+			nó antecessor = l_obter(posição - 1);
+			nó corrente = antecessor.próximo;
+			nó sucessor = corrente.próximo
+			
+			antecessor.próximo = sucessor;
+		fimse
+		
 		topo--;
 	fimfunção
 
@@ -911,7 +918,7 @@ módulo lista
 		fimse
 		
 		inteiro i = 0;
-		para i de 0 até (i < topo) passo 1 faça
+		para i de 0 até (topo - 1) passo 1 faça
 			se valor < corrente.dado, então
 				abandona;
 			fimse
@@ -927,29 +934,53 @@ fimmódulo
 importa lista do arquivo lista;
 
 programa teste_lista
-	imprima(l_tamanho);
+	imprima(l_tamanho() + "\n");
+	
+	imprima("Empilhar A, B, C e D\n");
 	l_empilhar("A");
 	l_empilhar("B");
 	l_empilhar("C");
 	l_empilhar("D");
 	l_imprimir(); // A B C D
-	imprima(l_tamanho); // 4
+	imprima(l_tamanho() + "\n"); // 4
 
-	l_remover("C");
+	imprima("Remover da posição 2\n");
+	l_remover(2);
 	l_imprimir(); // A B D
-	imprima(l_tamanho); // 3
+	imprima(l_tamanho() + "\n"); // 3
 
+	imprima("Inserir F na posição 1\n");
 	l_inserir("F", 1);
 	l_imprimir(); // A F B D
-	imprima(l_tamanho); // 4
+	imprima(l_tamanho() + "\n"); // 4
 	
-	l_remover("D");
-	l_imprimir(); // A F B 
-	imprima(l_tamanho); // 4
+	imprima("Inserir H na posição 5\n");
+	l_inserir("H", 5);
+	l_imprimir(); // G A F B D H
+	imprima(l_tamanho() + "\n"); // 6
+	
+	imprima("Remover da posição 5\n");
+	l_remover(5);
+	l_imprimir(); // G A F B D 
+	imprima(l_tamanho() + "\n"); // 5
 
-	l_remover("A");
-	l_imprimir(); // F B
-	imprima(l_tamanho);
+	imprima("Remover da posição 0\n");
+	l_remover(0);
+	l_imprimir(); // A F B D
+	imprima(l_tamanho() + "\n"); // 4
+	
+	imprima("Remover da posição 0 duas vezes seguidas\n");
+	l_remover(0);
+	l_remover(0);
+	l_imprimir(); // B D
+	imprima(l_tamanho() + "\n"); // 2
+	
+	imprima("Inserir em ordem A, C e E\n");
+	l_inserirEmOrdem("A");
+	l_inserirEmOrdem("C");
+	l_inserirEmOrdem("E");
+	l_imprimir(); // A B C D E
+	imprima(l_tamanho() + "\n"); // 5
 fimprograma
 
 D) PILHA

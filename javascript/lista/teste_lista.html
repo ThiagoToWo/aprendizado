@@ -1,0 +1,52 @@
+<script src="lista.js"></script>
+<script>
+var l = lista;
+document.write(l.tamanho() + "<br>");
+
+document.write("Empilhar A, B, C e D<br>");
+l.empilhar("A");
+l.empilhar("B");
+l.empilhar("C");
+l.empilhar("D");
+l.imprimir(); // A B C D
+document.write(l.tamanho() + "<br>"); // 4
+
+document.write("Remover da posição 2<br>");
+l.remover(2);
+l.imprimir(); // A B D
+document.write(l.tamanho() + "<br>"); // 3
+
+document.write("Inserir F na posição 1<br>");
+l.inserir("F", 1);
+l.imprimir(); // A F B D
+document.write(l.tamanho() + "<br>"); // 4
+
+document.write("Inserir G na posição 0 e H na posição 5<br>");
+l.inserir("G", 0);
+l.inserir("H", 5);
+l.imprimir(); // G A F B D H
+document.write(l.tamanho() + "<br>"); // 6
+
+document.write("Remover da posição 0<br>");
+l.remover(0);
+l.imprimir(); // A F B D H
+document.write(l.tamanho() + "<br>"); // 5
+
+document.write("Remover da posição 4<br>");
+l.remover(4);
+l.imprimir(); // A F B D 
+document.write(l.tamanho() + "<br>"); // 4
+
+document.write("Remover da posição 0 duas vezes seguidas<br>");
+l.remover(0);
+l.remover(0);
+l.imprimir(); // B D 
+document.write(l.tamanho() + "<br>"); // 2
+
+document.write("Inserir em ordem A, C e E<br>");
+l.inserirEmOrdem("A");
+l.inserirEmOrdem("C");
+l.inserirEmOrdem("E");
+l.imprimir(); // A B C D E
+document.write(l.tamanho() + "<br>"); // 5
+</script>
