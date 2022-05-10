@@ -792,12 +792,25 @@ programa estatística
 	imprima("mediana = " + mediana(dados, amostra) + "\n"); // o vetor foi ordenado
 	imprima("moda = " + moda(dados, amostra) + "\n");
 	imprima("desvio padrão = " + raiz(variância(dados, amostra)) + "\n");
-	imprima("Dados ordenados = ");
-	
+	imprima("\nHistograma: \n");
+
+	inteiro freq = frequencia(dados, amostra);
+
 	inteiro i;
-	para i de 0 a (amostra - 1) passo 1 faça
-		imprima(dados[i] + " ");
+	para i de 0 até (amostra - 1) passo 1 faça
+		se dados[i] != dados[i + 1], então
+			imprima(dados[i] + ": ");
+			
+			inteiro j;
+			para j de 0 até (freq[i] - 1) passo 1 faça
+				imprima("*");
+			fimpara
+			
+			imprima(" " + freq[i] + "\n");
+		fimse	
 	fimpara
+	
+	imprima("total = " + amostra);
 fimprograma
 
 C) LISTA
