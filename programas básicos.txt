@@ -538,7 +538,7 @@ fimprograma
 					  pesquisa e classificação)
 9. IMPORTAÇÃO E LINKAGEM DE CÓDIGOS (módulos ou classes, linkagem de módulos,
 									bibliotecas pessoais externas)
-10. REGISTROS (estruturas de dados, recursão, callbacks)
+10. REGISTROS (estruturas de dados, recursão, callbacks, operação *=)
 
 A) ORDENAÇÃO BOLHA
 
@@ -934,7 +934,7 @@ fimmódulo
 importa lista do arquivo lista;
 
 programa teste_lista
-	imprima(l_tamanho() + "\n");
+	imprima(l_tamanho() + "\n"); // 0
 	
 	imprima("Empilhar A, B, C e D\n");
 	l_empilhar("A");
@@ -954,18 +954,19 @@ programa teste_lista
 	l_imprimir(); // A F B D
 	imprima(l_tamanho() + "\n"); // 4
 	
-	imprima("Inserir H na posição 5\n");
+	imprima("Inserir G na posição 0 e H na posição 5\n");
+	l_inserir("G", 0);
 	l_inserir("H", 5);
 	l_imprimir(); // G A F B D H
 	imprima(l_tamanho() + "\n"); // 6
 	
-	imprima("Remover da posição 5\n");
-	l_remover(5);
-	l_imprimir(); // G A F B D 
-	imprima(l_tamanho() + "\n"); // 5
-
 	imprima("Remover da posição 0\n");
 	l_remover(0);
+	l_imprimir(); // A F B D H
+	imprima(l_tamanho() + "\n"); // 5
+
+	imprima("Remover da posição 4\n");
+	l_remover(4);
 	l_imprimir(); // A F B D
 	imprima(l_tamanho() + "\n"); // 4
 	
@@ -1015,8 +1016,9 @@ módulo pilha
 		se topo == -1, então
 			iprima("Pilha vazia\n");
 		senão
-			retorna pilha[topo];
+			var elemento = pilha[topo]; 
 			topo--;
+			retorna elemento;
 		fimse
 	fimfunção
 
@@ -1036,36 +1038,44 @@ fimmódulo
 importa pilha do arquivo pilha;
 
 programa teste_pilha
-	imprima(p_tamanho);
+	imprima(p_tamanho() + "\n"); // 0
+	
+	imprima("Empilhar A, B e C\n");
 	p_empilhar("A");
 	p_empilhar("B");
 	p_empilhar("C");
 	p_imprimir(); // A B C
-	imprima(p_tamanho); // 3
+	imprima(p_tamanho() + "\n"); // 3
 
+	imprima("Desempilhar\n");
 	p_desempilhar();
-	p_imprimir(); // A B
-	imprima(p_tamanho); // 2
-	
+	p_imprimir(); // A B 
+	imprima(p_tamanho() + "\n"); // 2
+
+	imprima("Empilhar D\n");
 	p_empilhar("D");
 	p_imprimir(); // A B D
-	imprima(p_tamanho); // 3
-
-	p_desempilhar();
-	p_imprimir(); // A B
-	imprima(p_tamanho); // 2
+	imprima(p_tamanho() + "\n"); // 3
 	
+	imprima("Desempilhar\n");
 	p_desempilhar();
-	p_imprimir(); // A 
-	imprima(p_tamanho); // 1
-
-	p_desempilhar();
-	p_imprimir(); // 
-	imprima(p_tamanho); // 0
+	p_imprimir(); // A B 
+	imprima(p_tamanho() + "\n"); // 2
 	
-	p_desempilhar(); // Pilha vazia
-	p_imprimir(); // 
-	imprima(p_tamanho); // 0
+	imprima("Desempilhar\n");
+	p_desempilhar();
+	p_imprimir(); // A  
+	imprima(p_tamanho() + "\n"); // 1
+	
+	imprima("Desempilhar\n");
+	p_desempilhar();
+	p_imprimir(); //  
+	imprima(p_tamanho() + "\n"); // 0
+	
+	imprima("Desempilhar\n");
+	p_desempilhar(); // Pilha vazia\n
+	p_imprimir(); // 	
+	imprima(p_tamanho() + "\n"); // 0
 fimprograma
 
 E) FILA

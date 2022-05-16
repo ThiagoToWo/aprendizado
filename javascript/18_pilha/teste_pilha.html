@@ -1,0 +1,43 @@
+<script src="pilha.js"></script>
+<script>
+var p = pilha;
+
+document.write(p.tamanho() + "<br>"); // 0
+	
+document.write("Empilhar A, B e C<br>");
+p.empilhar("A");
+p.empilhar("B");
+p.empilhar("C");
+p.imprimir(); // A B C
+document.write(p.tamanho() + "<br>"); // 3
+
+document.write("Desempilhar<br>");
+p.desempilhar();
+p.imprimir(); // A B 
+document.write(p.tamanho() + "<br>"); // 2
+
+document.write("Empilhar D<br>");
+p.empilhar("D");
+p.imprimir(); // A B D
+document.write(p.tamanho() + "<br>"); // 3
+
+document.write("Desempilhar<br>");
+p.desempilhar();
+p.imprimir(); // A B 
+document.write(p.tamanho() + "<br>"); // 2
+
+document.write("Desempilhar<br>");
+p.desempilhar();
+p.imprimir(); // A  
+document.write(p.tamanho() + "<br>"); // 1
+
+document.write("Desempilhar<br>");
+p.desempilhar();
+p.imprimir(); //  
+document.write(p.tamanho() + "<br>"); // 0
+
+document.write("Desempilhar<br>");
+p.desempilhar(); // Pilha vazia<br>
+p.imprimir(); // 	
+document.write(p.tamanho() + "<br>"); // 0
+</script>
