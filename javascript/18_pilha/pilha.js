@@ -1,16 +1,16 @@
 const pilha = (function() {
-	var tam = 100;
-	var pilha = new Array(tam);
+	var max = 100;
+	var pilha = new Array(max);
 	var topo = -1;
 	
 	function empilhar(valor) {
 		topo++
 		
-		if (topo == tam) {
-			tam *= 2;
-			var temp = new Array(tam);
+		if (topo == max) {
+			max *= 2;
+			var temp = new Array(max);
 			
-			for (var i = 0; i < tam; i++) {
+			for (var i = 0; i < max; i++) {
 				temp[i] = pilha[i];
 			}
 			
