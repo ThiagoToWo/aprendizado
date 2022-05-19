@@ -719,7 +719,7 @@ função máximo(real vetor, inteiro n)
 		fimse
 	fimpara
 	
-	retorn max;
+	retorna max;
 fimfunção
 
 função mínimo(real vetor, inteiro n)
@@ -988,19 +988,19 @@ D) PILHA
 
 /--arquivo pilha--/
 módulo pilha
-	inteiro tamanho = 100;
-	caracteres pilha = vetor[tamanho];
+	inteiro max = 100;
+	caracteres pilha = vetor[max];
 	inteiro topo = -1;
 
 	função p_empilhar(caracteres valor)
 		topo = topo + 1;
 	
-		se topo == tamanho então,
-			tamanho = tamanho * 2;
-			caracteres temp = vetor[tamanho];
+		se topo == max então,
+			max = max * 2;
+			caracteres temp = vetor[max];
 			
 			inteiro i;
-			para i de 0 até (tamanho - 1) passo 1 faça
+			para i de 0 até (max - 1) passo 1 faça
 				temp[i] = pilha[i];
 			fimpara
 
@@ -1016,7 +1016,7 @@ módulo pilha
 		se topo == -1, então
 			iprima("Pilha vazia\n");
 		senão
-			var elemento = pilha[topo]; 
+			caracteres elemento = pilha[topo]; 
 			topo--;
 			retorna elemento;
 		fimse
@@ -1082,18 +1082,18 @@ E) FILA
 
 /--arquivo fila--/
 módulo fila
-	inteiro tamanho = 100;
-	caracteres fila = vetor[tamanho];
+	inteiro max = 100;
+	caracteres fila = vetor[max];
 	inteiro fim = 0;
 	inteiro início = 0;
 
 	função f_inserir(caracteres valor)
-		se fim == tamanho então,
-			tamanho = tamanho * 2;
-			caracteres temp = vetor[tamanho];
+		se fim == max então,
+			max = max * 2;
+			caracteres temp = vetor[max];
 			
 			inteiro i;
-			para i de início até (tamanho - 1) passo 1 faça
+			para i de início até (max - 1) passo 1 faça
 				temp[i] = fila[i];
 			fimpara
 
@@ -1111,8 +1111,9 @@ módulo fila
 		se fim == início, então
 			iprima("Fila vazia\n");
 		senão
-			retorna fila[início];
+			caracteres elemento = fila[início];
 			início++;
+			retorna elemento;			
 		fimse
 	fimfunção
 
@@ -1132,25 +1133,44 @@ fimmódulo
 importa fila do arquivo fila;
 
 programa teste_fila
-	imprima(f_tamanho); // 0
+	imprima(f_tamanho() + "\n"); // 0
+	
+	imprima("inserir A, B e C\n");
 	f_inserir("A");
 	f_inserir("B");
 	f_inserir("C");
+	f_imprimir(); // A B C
+	imprima(f_tamanho() + "\n"); // 3
+
+	imprima("Remover\n");
+	f_remover();
+	f_imprimir(); // B C
+	imprima(f_tamanho() + "\n"); // 2
+
+	imprima("inserir D\n");
 	f_inserir("D");
-	f_imprimir(); // A B C D
-	imprima(f_tamanho); // 4
-
-	f_remover();
 	f_imprimir(); // B C D
-	imprima(f_tamanho); // 3
+	imprima(f_tamanho() + "\n"); // 3
 
+	imprima("Remover\n");
 	f_remover();
-	f_imprimir(); // C D 
-	imprima(f_tamanho); // 2
+	f_imprimir(); // C D
+	imprima(f_tamanho() + "\n"); // 2
 
+	imprima("Remover\n");
 	f_remover();
-	f_imprimir(); // D
-	imprima(f_tamanho); // 1
+	f_imprimir(); // D 
+	imprima(f_tamanho() + "\n"); // 1
+
+	imprima("Remover\n");
+	f_remover();
+	f_imprimir(); //  
+	imprima(f_tamanho() + "\n"); // 0
+
+	imprima("Remover\n");
+	f_remover(); // Fila vazia\n
+	f_imprimir(); // 	
+	imprima(f_tamanho() + "\n"); // 0
 fimprograma
 
 F) ÁRVORE
@@ -1166,7 +1186,7 @@ módulo árvore
 	nó raiz;
 	
 	função a_inserir(inteiro valor)
-		inserirNó(raiz, valor);
+		raiz = inserirNó(raiz, valor);
 	fimfunção
 	
 	função a_remover(inteiro valor)
@@ -1177,15 +1197,15 @@ módulo árvore
 		retorna pesquisarNó(raiz, valor);
 	fimfunção;
 	
-	função a_préOrdem()
+	função a_préOrdem(função callback)
 		pre(raiz, callback);
 	fimfunção
 	
-	função a_emOrdem()
+	função a_emOrdem(função callback)
 		em(raiz, callback);
 	fimfunção
 	
-	função a_pósOrdem()
+	função a_pósOrdem(função callback)		
 		pos(raiz, callback);
 	fimfunção
 	
@@ -1200,14 +1220,15 @@ módulo árvore
 	// funções utilitárias recursivas
 	função inserirNó(nó subraiz, inteiro valor)
 		se subraiz == nulo, então
-			aloca subraiz = {valor, nulo, nulo};
+			aloca novo = {valor, nulo, nulo};
+			retorna novo;		
+		senão se valor < subraiz.dado, então
+			subraiz.esquerdo = inserirNó(subraiz.esquerdo, valor);
 		senão se valor > subraiz.dado, então
-			inserirNó(subraiz.direito, valor);
-		senão se valor < subraiz.esquerdo, então
-			inserirNó(subraiz.esquerdo, valor);
-		senão
-			retorna;
+			subraiz.direito = inserirNó(subraiz.direito, valor);
 		fimse
+		
+		retorna subraiz;
 	fimfunção
 	
 	função removerNó(nó subraiz, inteiro valor)
@@ -1236,16 +1257,16 @@ módulo árvore
 		se subraiz == nulo, então
 			retorna falso;
 		senão se valor > subraiz.dado, então
-			pesquisarNó(subraiz.direito, valor);
-		senão se valor < subraiz.esquerdo, então
-			pesquisarNó(subraiz.esquerdo, valor);
+			retorna pesquisarNó(subraiz.direito, valor);
+		senão se valor < subraiz.dado, então
+			retorna pesquisarNó(subraiz.esquerdo, valor);
 		senão
 			retorna verdadeiro;
 		fimse			
 	fimfunção
 	
 	função pre(nó subraiz, função callback)
-		se subraiz == então,  
+		se subraiz == nulo, então  
 			retorna;
 		fimse;
 		
@@ -1255,7 +1276,7 @@ módulo árvore
 	fimfunção
 	
 	função em(nó subraiz, função callback)
-		se subraiz == então,
+		se subraiz == nulo, então
 			retorna;
 		fimse;
 		
@@ -1265,7 +1286,7 @@ módulo árvore
 	fimfunção
 	
 	função pos(nó subraiz, função callback)
-		se subraiz == então,
+		se subraiz == nulo, então
 			retorna;
 		fimse;
 		
@@ -1278,7 +1299,7 @@ módulo árvore
 		se subraiz.esquerdo == nulo, então
 			retorna subraiz;
 		senão
-			minNó(subraiz.esquerdo);
+			retorna minNó(subraiz.esquerdo);
 		fimse
 	fimfunção
 	
@@ -1286,7 +1307,7 @@ módulo árvore
 		se subraiz.direito == nulo, então
 			retorna subraiz;
 		senão
-			maxNó(subraiz.direito);
+			retorna maxNó(subraiz.direito);
 		fimse
 	fimfunção
 fimmódulo
@@ -1295,31 +1316,65 @@ fimmódulo
 importa árvore do arquivo árvore;
 
 programa teste_árvore
-	a_inserir(5);
-	a_inserir(4);
-	a_inserir(7);
+	função imprimir(inteiro valor)
+		imprima(valor + " ");
+	fimfunção
+	
+	função metade(inteiro valor)
+		imprima(valor / 2 + " ");
+	fimfunção
+	
+	imprima("Inserir 10, 6, 14, 4, 8, 12, 2, 20, 18, 26\n");
+	a_inserir(10);
 	a_inserir(6);
-	a_inserir(2);
+	a_inserir(14);
+	a_inserir(4);
 	a_inserir(8);
-	a_inserir(1);
-	
-	a_emOrdem();
-	a_préOrdem();
-	a_pósOrdem();
-		
-	imprima("O valor 3 está na árvore? " + a_pesquisar(3));
-	imprima("O valor 4 está na árvore? " + a_pesquisar(4));
-	
-	a_remover(4);
+	a_inserir(12);
+	a_inserir(2);
+	a_inserir(20);
+	a_inserir(18);
+	a_inserir(26);
 
-	a_emOrdem();
-	a_préOrdem();
-	a_pósOrdem();
-	
-	imprima("O valor 4 está na árvore? " + a_pesquisar(4));
-	
-	imprima("O menor valor é " + a_min());
-	imprima("O maior valor é " + a_max());
+	imprima("Em ordem: "); 
+	a_emOrdem(imprimir); // 2 4 6 8 10 12 14 18 20 26
+	imprima("\n");
+	imprima("Em pré ordem: ");
+	a_preOrdem(imprimir); // 10 6 4 2 8 14 12 20 18 26
+	imprima("\n");
+	imprima("Em pós ordem: ");
+	a_posOrdem(imprimir); // 2 4 8 6 12 18 26 20 14 10
+	imprima("\n");
+
+	imprima("O valor 3 está na árvore? " + a_pesquisar(3) + "\n"); // falso
+	imprima("O valor 4 está na árvore? " + a_pesquisar(4) + "\n"); // verdadeiro
+
+	imprima("Remover 4 (somente um filho esquerdo)\n");
+	a_remover(4);
+	imprima("Remover 14 (com dois filhos)\n");
+	a_remover(14);
+	imprima("Remover 20 (somente um filho direito)\n");
+	a_remover(20);
+	imprima("Remover 12 (sem filhos)\n");
+	a_remover(12);
+
+	imprima("Em ordem: ");
+	a_emOrdem(imprimir); // 2 6 8 10 18 26
+	imprima("\n");
+	imprima("Em pré ordem: ");
+	a_preOrdem(imprimir); // 10 6 2 8 18 26
+	imprima("\n");
+	imprima("Em pós ordem: ");
+	a_posOrdem(imprimir); // 2 8 6 26 18 10
+	imprima("\n");
+
+	imprima("O valor 4 está na árvore? " + a_pesquisar(4) + "\n"); // falso
+
+	imprima("O menor valor é " + a_min().dado + "\n"); // 2
+	imprima("O maior valor é " + a_max().dado + "\n"); // 26
+
+	imprima("A metade dos valores em ordem: ");
+	a_emOrdem(metade); // 1 3 4 5 9 13
 fimprograma
 ==============================================================================================
 

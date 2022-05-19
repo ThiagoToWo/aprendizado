@@ -1,0 +1,43 @@
+<script src="fila.js"></script>
+<script>
+var f = fila;
+
+document.write(f.tamanho() + "<br>"); // 0
+	
+document.write("inserir A, B e C<br>");
+f.inserir("A");
+f.inserir("B");
+f.inserir("C");
+f.imprimir(); // A B C
+document.write(f.tamanho() + "<br>"); // 3
+
+document.write("Remover<br>");
+f.remover();
+f.imprimir(); // B C
+document.write(f.tamanho() + "<br>"); // 2
+
+document.write("inserir D<br>");
+f.inserir("D");
+f.imprimir(); // B C D
+document.write(f.tamanho() + "<br>"); // 3
+
+document.write("Remover<br>");
+f.remover();
+f.imprimir(); // C D
+document.write(f.tamanho() + "<br>"); // 2
+
+document.write("Remover<br>");
+f.remover();
+f.imprimir(); // D 
+document.write(f.tamanho() + "<br>"); // 1
+
+document.write("Remover<br>");
+f.remover();
+f.imprimir(); //  
+document.write(f.tamanho() + "<br>"); // 0
+
+document.write("Remover<br>");
+f.remover(); // Fila vazia<br>
+f.imprimir(); // 	
+document.write(f.tamanho() + "<br>"); // 0
+</script>
