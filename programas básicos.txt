@@ -1378,15 +1378,13 @@ programa teste_árvore
 fimprograma
 ==============================================================================================
 
-11. PROCESSAMENTO DE ARQUIVOS
+11. PROCESSAMENTO DE ARQUIVOS (persistência de dados, passagem de parâmetro
+							por referência)
 
 A) CRUD
 
 /--Arquivo crud--/
-importa inserirEmOrdem do arquivo lista_crud;
-importa imprimir do arquivo lista_crud;
-importa obter do arquivo lista_crud;
-importa remover do arquivo lista_crud;
+importa arquivo lista_crud;
 
 registro produto
 	caracteres nome;
@@ -1422,7 +1420,7 @@ programa CRUD
 				editar();
 				abandone;
 			caso 4:
-				remover();
+				deletar();
 				abandone;
 			caso 5:
 				carregar();
@@ -1453,7 +1451,7 @@ função adicionar()
 		
 		imprima("Deseja incluir outro produto?(s/n) ");
 		leia(opção);
-	enquanto opção != "s" ou opção != "S";
+	enquanto opção == "s" ou opção == "S";
 fimfunção
 
 função listar()
@@ -1480,31 +1478,38 @@ função editar()
 				imprima("Digite o novo nome: ");
 				leia(novo_nome);
 				obter(início, índice - 1).nome = novo_nome;
+				anabdone;
 			caso 2:
 				imprima("Digite o novo preço: ");
 				leia(novo_preço);
 				obter(início, índice - 1).preço = novo_preço;
+				abandone;
+			caso contrário:
+				imprima("valor inválido");
 		fimescolha
 		
 		imprima("Deseja editar outro produto?(s/n) ");
 		leia(opção);
-	enquanto opção != "s" ou opção != "S";
+	enquanto opção == "s" ou opção == "S";
 fimfunção
 
-função remover()
+função deletar()
 	faça
 		caractere opção;
 		inteiro índice;
 		
-		listar();
-		imprima("Insira o índice do produto a ser excluído: ");
+		imprima("Insira o índice do produto a ser excluído (sair = -1): ");
 		leia(índice);
+
+		se índice == -1, então
+			abandone;
+		fimse
 		
 		remover(início, índice - 1);
 		
 		imprima("Deseja excluir outro produto?(s/n) ");
 		leia(opção);
-	enquanto opção != "s" ou opção != "S";
+	enquanto opção == "s" ou opção == "S";
 fimfunção
 
 função carregar()
@@ -1526,14 +1531,14 @@ registro produto // defina no módulo o significado de produto
 	registro produto próximo;
 fimregistro
 
-função inserirEmOrdem(produto início, produto novo)
-	nó antecessor;
-	nó corrente = início;
-	
+função inserirEmOrdem(produto &início, produto novo)	
 	se início == nulo, então
 		início = novo;
 		retorna
 	fimse
+
+	nó antecessor;
+	nó corrente = início;
 	
 	equanto corrente != nulo
 		se novo.nome < corrente.nome, então
@@ -1559,11 +1564,15 @@ função obter(produto início, inteiro posição)
 	retorna elemento;
 fimfunção
 
-função remover(produto início, inteiro posição)
-	nó antecessor = obter(posição - 1);
-	nó corrente = antecessor.próximo;
-	nó sucessor = corrente.próximo
-	antecessor.próximo = sucessor;
+função remover(produto &início, inteiro posição)
+	se posição == 0, então
+		inicio = inicio.proximo;
+	senão
+		nó antecessor = obter(inicio, posição - 1);
+		nó corrente = antecessor.próximo;
+		nó sucessor = corrente.próximo
+		antecessor.próximo = sucessor;
+	fimse
 fimfunção	
 
 função imprimir(produto início)

@@ -1,0 +1,104 @@
+<script src="lista_crud.js"></script>
+<script>
+var inicio = {};
+
+crud();
+
+function crud() {
+    do {
+        var opcao = Number(prompt("Escolha uma opcao:\n"
+        + "\t1 - Adicionar" + "\t5 - Carregar\n"
+        + "\t2 - Listar" + "\t6 - Salvar\n"
+        + "\t3 - Editar" + "\t7 - Sair\n"
+        + "\t4 - Remover\n\n"
+        + "Sua escolha: "));
+
+        switch (opcao) {
+            case 1:
+                adicionar();
+                break;
+            case 2:
+                listar();
+                break;
+            case 3:
+                editar();
+                break;
+            case 4:
+                deletar();
+                break; 
+             case 5:
+                carregar();
+                break; 
+            case 6:
+                salvar();
+                break;        
+            default:
+                alert("Valor inválido");
+        }        
+    } while (opcao != 7);
+}
+ 
+function adicionar() {
+    do {
+        var nome_produto = prompt("Insira o nome do produto: ");
+        var preco_produto = Number(prompt("Insira o preço do produto: "));
+
+        var novo = {nome: nome_produto, preco: preco_produto, proximo: null};
+
+        inserirEmOrdem(inicio, novo);
+
+        var opcao = prompt("Deseja incluir outro produto?(s/n) ");
+    } while (opcao == "s" || opcao == "S");
+}
+
+function listar() {
+    imprimir(inicio);
+}
+
+function editar() {
+    do {
+        var indice = Number(prompt("Insira o índice do produto a ser editado: "));
+
+        var atributo = Number(prompt("\nInsira o indice do atributo a ser editado\n"
+            + "\t1 - nome\t2 - preço\n"
+            + "Sua escolha: "));       
+
+        switch (atributo) {
+            case 1:
+                var novo_nome = prompt("Digite o novo nome: ");
+                obter(inicio, indice - 1).nome = novo_nome;
+                break;
+            case 2:
+                var novo_preco = Number(prompt("Digite o novo preço: "));
+                obter(inicio, indice - 1).preco = novo_preco;
+                break;
+            default:
+                alert("Valor inválido");
+        }
+
+        var opcao = prompt("Deseja editar outro produto?(s/n) ");
+    } while (opcao == "s" || opcao == "S");
+}
+
+function deletar() {
+    do {
+        var indice = Number(prompt("Insira o índice do produto a ser excluído (sair = -1): "));
+
+        if (indice == -1) {
+            break;
+        }
+
+        remover(inicio, indice - 1);
+
+        var opcao = prompt("Deseja excluir outro produto?(s/n) ");
+    } while (opcao == "s" || opcao == "S");
+}
+
+function carregar() {
+    inicio = localStorage.getItem("produtos");
+}
+
+function salvar() {
+    localStorage.setItem("produtos", inicio);
+}
+</script>
