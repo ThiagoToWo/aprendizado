@@ -1,68 +1,94 @@
-//produto = {nome: "", preco: 0, proximo: {}}
+const lista = (function () {
+	var cabeca = {};
+	var topo = 0;
 
-function inserirEmOrdem(inicio, novo) {
-	if (inicio.nome == undefined) { // em JS só se atribui por referência as propriedades dos objetos
-        inicio.nome = novo.nome;
-        inicio.preco = novo.preco;
-        inicio.proximo = null;
-        return;
-    }
-    
-    var antecessor;
-	var corrente = inicio;
+	function obter(posicao) {
+		var elemento = cabeca;
 
-    while (corrente != null) {
-        if (novo.nome < corrente.nome) {
-            return;
-        }
+		for (var i = 0; i < posicao; i++) {
+			elemento = elemento.proximo;
+		}
 
-        antecessor = corrente;
-        corrente = corrente.proximo;
-    }
-	
-	antecessor.proximo = novo;
-	novo.proximo = corrente;
-}
+		return elemento;
+	}
 
-function obter(inicio, posicao) {
-    var elemento = inicio;
+	function inserir(nome, preco, posicao) {
+		if (posicao >= 0 && posicao <= topo) {
+			var novo = { nome, preco, proximo: null };
 
-    for (var i= 0; i < posicao; i++) {
-        elemento = elemento.proximo;
-    }
+			if (posicao == 0) {
+				novo.proximo = cabeca;
+				cabeca = novo;
+			} else {
+				var antecessor = obter(posicao - 1);
+				var sucessor = antecessor.proximo;
 
-    return elemento;
-}
-	
+				antecessor.proximo = novo;
+				novo.proximo = sucessor;
+			}
 
-function remover(inicio, posicao) {
-    if (posicao == 0) { // em JS só se atribui por referência as propriedades dos objetos
-        var segundo = inicio.proximo;
-       
-        inicio.nome = segundo.nome;
-        inicio.preco = segundo.preco;
-        inicio.proximo = segundo.proximo;
-    } else {
-        var antecessor = obter(inicio, posicao - 1);
-        var corrente = antecessor.proximo;
-        var sucessor = corrente.proximo;
-    
-        antecessor.proximo = sucessor;
-    }    
-}
+			topo++;
 
-function imprimir(inicio) {
-    if (inicio != null) {
-        var indice = 1;
-        var corrente = inicio;
+			return true;
+		}
 
-        console.log(indice + "." + corrente.nome + ", R$ " + corrente.preco + "\n");
+		return false;
+	}
 
-        while (corrente.proximo != null) {
-            indice++;
-            corrente = corrente.proximo;
-            console.log(indice + "." + corrente.nome + ", R$ " + corrente.preco + "\n");
-        }
-    }
-}
-	
+	function remover(posicao) {
+		if (posicao == 0) {
+			cabeca = cabeca.proximo;
+		} else {
+			var antecessor = obter(posicao - 1);
+			var corrente = antecessor.proximo;
+			var sucessor = corrente.proximo;
+
+			antecessor.proximo = sucessor;
+		}
+
+		topo--;
+	}
+
+	function inserirEmOrdem(nome, preco) {
+		var corrente = cabeca;
+
+		if (topo == 0) {
+			inserir(nome, preco, 0);
+			return;
+		}
+
+		var i = 0;
+
+		for (; i < topo; i++) {
+			if (nome < corrente.nome) {
+				break;
+			}
+
+			corrente = corrente.proximo;
+		}
+
+		inserir(nome, preco, i);
+	}
+
+	function imprimir() {
+		if (topo >= 0) {
+			var i = 1;
+			var corrente = cabeca;
+
+			console.log("-------itens-------");
+
+			do {
+				console.log(i + ". " + corrente.nome + ": " + corrente.preco);
+				corrente = corrente.proximo;
+				i++;
+			} while (corrente != null);
+		}
+	}
+
+	return {
+		remover: remover,
+		obter: obter,
+		imprimir: imprimir,
+		inserirEmOrdem: inserirEmOrdem
+	}
+}()); 

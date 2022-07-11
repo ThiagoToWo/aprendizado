@@ -1392,8 +1392,6 @@ registro produto
 	registro produto próximo;
 fimregistro
 
-produto início;
-
 arquivo = arquivo composto de produto;
 
 programa CRUD	
@@ -1445,9 +1443,7 @@ função adicionar()
 		imprima("Insira o preço do produto: ");
 		leia(preço);
 		
-		aloca produto novo = {nome, preço, nulo};
-		
-		inserirEmOrdem(início, novo);
+		inserirEmOrdem(nome, preço);
 		
 		imprima("Deseja incluir outro produto?(s/n) ");
 		leia(opção);
@@ -1455,7 +1451,7 @@ função adicionar()
 fimfunção
 
 função listar()
-	imprimir(início);
+	imprimir();
 fimfunção
 
 função editar()
@@ -1477,12 +1473,12 @@ função editar()
 			caso 1:
 				imprima("Digite o novo nome: ");
 				leia(novo_nome);
-				obter(início, índice - 1).nome = novo_nome;
+				obter(índice - 1).nome = novo_nome;
 				anabdone;
 			caso 2:
 				imprima("Digite o novo preço: ");
 				leia(novo_preço);
-				obter(início, índice - 1).preço = novo_preço;
+				obter(índice - 1).preço = novo_preço;
 				abandone;
 			caso contrário:
 				imprima("valor inválido");
@@ -1505,7 +1501,7 @@ função deletar()
 			abandone;
 		fimse
 		
-		remover(início, índice - 1);
+		remover(índice - 1);
 		
 		imprima("Deseja excluir outro produto?(s/n) ");
 		leia(opção);
@@ -1525,67 +1521,97 @@ função salvar()
 fimfunção
 
 /--arquivo lista_crud--/
-registro produto // defina no módulo o significado de produto
-	caracteres nome;
-	real valor;
-	registro produto próximo;
-fimregistro
+módulo lista
+	registro nó
+		caracteres nome;
+		real preço;
+		nó próximo;
+	fimregistro;
 
-função inserirEmOrdem(produto &início, produto novo)	
-	se início == nulo, então
-		início = novo;
-		retorna
-	fimse
+	nó cabeça;
 
-	nó antecessor;
-	nó corrente = início;
-	
-	equanto corrente != nulo
-		se novo.nome < corrente.nome, então
-			abandona;
+	inteiro topo = 0;
+
+	função obter(inteiro posição)
+		nó elemento = cabeça;
+
+		inteiro i = 0;
+		para i de 0 até (posição - 1) passo 1 faça
+			elemento = elemento.próximo;
+		fimpara
+
+		retorna elemento;
+	fimfunção
+
+	função inserir(cacacteres nome, real preço, inteiro posição)
+		se (posição >= 0) e (posição <= topo), então
+			aloca nó novo = {nome, preço, nulo};
+
+			se posição == 0, então
+				novo.próximo = cabeça;
+				cabeça = novo;
+			senão
+				nó antecessor = obter(posição - 1);
+				nó sucessor = antecessor.próximo;
+				
+				antecessor.próximo = novo;
+				novo.próximo = sucessor;							
+			fimse
+			
+			topo++;	
+			retorna verdadeiro;
 		fimse
 		
-		antecessor = corrente;
-		corrente = corrente.próximo;
-	fimenquanto
-	
-	antecessor.próximo = novo;
-	novo.próximo = corrente;
-fimfunção
+		retorna falso;
+	fimfunção	
 
-função obter(produto início, inteiro posição)
-	nó elemento = início;
+	função remover(inteiro posição)
+		se posição == 0, então
+			cabeça = cabeça.proximo;
+		senão
+			nó antecessor = obter(posição - 1);
+			nó corrente = antecessor.próximo;
+			nó sucessor = corrente.próximo
+			
+			antecessor.próximo = sucessor;
+		fimse
+		
+		topo--;
+	fimfunção
 
-	inteiro i = 0;
-	para i de 0 até (posição - 1) passo 1 faça
-		elemento = elemento.próximo;
-	fimpara
-
-	retorna elemento;
-fimfunção
-
-função remover(produto &início, inteiro posição)
-	se posição == 0, então
-		inicio = inicio.proximo;
-	senão
-		nó antecessor = obter(inicio, posição - 1);
-		nó corrente = antecessor.próximo;
-		nó sucessor = corrente.próximo
-		antecessor.próximo = sucessor;
-	fimse
-fimfunção	
-
-função imprimir(produto início)
-	se início != nulo, então
-		inteiro índice = 1;
-		nó corrente = início;
-	
-		imprima(índice + ". " + corrente.nome + ", R$ " + corrente.preço + "\n");
-
-		enquanto corrente.próximo != nulo faça
+	função inserirEmOrdem(caracteres nome, real preço)
+		nó corrente = cabeça;
+		
+		se topo == 0, então
+			inserir(nome, preço, 0);
+			retorna
+		fimse
+		
+		inteiro i = 0;
+		para i de 0 até (topo - 1) passo 1 faça
+			se valor < corrente.nome, então
+				abandona;
+			fimse
+			
 			corrente = corrente.próximo;
-			imprima(índice + ". " + corrente.nome + ", R$ " + corrente.preço + "\n");			
-		fimenquanto
-	fimse
-fimfunção
+		fimpara
+		
+		inserir(nome, preço, i);
+	fimfunção	
+
+	função imprimir()
+		se topo >= 0, então
+			inteiro i = 1;
+			nó corrente = cabeça;
+
+			imprima("-------itens-------");
+
+			faça
+				imprima(i + ". " + corrente.nome + ": " + corrente.preco + "\n");
+				corrente = corrente.próximo;
+				i++;
+			enquanto corrente != nulo;
+		fimse
+	fimfunção	
+fimmódulo
 ==============================================================================================
