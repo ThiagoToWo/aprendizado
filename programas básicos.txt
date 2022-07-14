@@ -423,7 +423,9 @@ programa contagem
 	leia(texto);
 	
 	inteiro i = 0;
-	enquanto texto[i] != nulo faça		
+	enquanto texto[i] != nulo faça
+		achou_letra = verdadeiro;
+		
 		se texto[i] == ' ', então
 			num_palavras++;
 		fimse
@@ -434,8 +436,6 @@ programa contagem
 				achou_letra = falso;
 				abandona;
 			fimse;
-			
-			achou_letra = verdadeiro;
 		fimpara
 		
 		se achou_letra, então
@@ -502,14 +502,14 @@ programa substring
 	
 	para posição até (t - 1) passo 1 faça // para sem definição de variável
 		se texto[posição] == subtexto[0], então
+			achou = verdadeiro;
+
 			inteiro i;
 			para i de 0 até (s - 1) passo 1 faça
 				se texto[posição + i] != subtexto[i], então
 					achou = falso;
 					abandona;
-				fimse;
-				
-				achou = verdadeiro;
+				fimse;				
 			fimpara	
 
 			se achou, então

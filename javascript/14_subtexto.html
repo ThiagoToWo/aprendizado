@@ -47,13 +47,13 @@ var s = subtexto.length;
 
 for (; posicao < t; posicao++) {
 	if (texto[posicao] == subtexto[0]) {
+		achou = true;
+
 		for (var i = 1; i < s; i++) {
 			if (texto[posicao + i] != subtexto[i]) {
 				achou = false;
 				break;
-			} 
-			
-			achou = true;			
+			} 						
 		}
 		
 		if (achou) {

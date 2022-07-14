@@ -7,7 +7,9 @@ var simb = [' ', ',', '.', ';', ':', '!', '?', '(', ')'];
 var texto = prompt("Insira um texto:");
 
 var i = 0;
-while (texto[i] != null) {	
+while (texto[i] != null) {
+	achou_letra = true;
+	
 	if (texto[i] == ' ') {
 		num_palavras++;
 	}
@@ -17,8 +19,6 @@ while (texto[i] != null) {
 			achou_letra = false;
 			break;
 		}
-		
-		achou_letra = true;
 	}
 	
 	if (achou_letra) {
