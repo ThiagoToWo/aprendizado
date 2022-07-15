@@ -68,7 +68,7 @@ const lista = (function() {
 	}
 	
 	function imprimir() {
-		if (topo >= 0) {
+		if (topo > 0) {
 			var corrente = cabeca;
 			
 			document.write(corrente.dado + " ");

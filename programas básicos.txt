@@ -892,7 +892,7 @@ módulo lista
 	fimfunção
 
 	função l_imprimir()
-		se topo >= 0, então
+		se topo > 0, então
 			nó corrente = cabeça;
 		
 			imprima(corrente.dado + " ");
