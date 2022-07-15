@@ -22,7 +22,7 @@ function crud() {
                 editar();
                 break;
             case 4:
-                deletar();
+                remover();
                 break; 
              case 5:
                 carregar();
@@ -41,7 +41,9 @@ function adicionar() {
         var nome = prompt("Insira o nome do produto: ");
         var preco = Number(prompt("Insira o preço do produto: "));
 
-        lista.inserirEmOrdem(nome, preco);
+        var produto = {nome, preco, proximo: null};
+
+        lista.inserirEmOrdem(produto);
 
         var opcao = prompt("Deseja incluir outro produto?(s/n) ");
     } while (opcao == "s" || opcao == "S");
@@ -76,7 +78,7 @@ function editar() {
     } while (opcao == "s" || opcao == "S");
 }
 
-function deletar() {
+function remover() {
     do {
         var indice = Number(prompt("Insira o índice do produto a ser excluído (sair = -1): "));
 
@@ -91,10 +93,10 @@ function deletar() {
 }
 
 function carregar() {
-    inicio = localStorage.getItem("produtos");
+    lista.carregar();
 }
 
-function salvar() {
-    localStorage.setItem("produtos", inicio);
+function salvar() {    
+    lista.salvar();
 }
 </script>

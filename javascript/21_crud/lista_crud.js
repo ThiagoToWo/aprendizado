@@ -12,10 +12,8 @@ const lista = (function () {
 		return elemento;
 	}
 
-	function inserir(nome, preco, posicao) {
+	function inserir(/*{nome, preco, proximo: null}*/novo, posicao) {
 		if (posicao >= 0 && posicao <= topo) {
-			var novo = { nome, preco, proximo: null };
-
 			if (posicao == 0) {
 				novo.proximo = cabeca;
 				cabeca = novo;
@@ -49,29 +47,29 @@ const lista = (function () {
 		topo--;
 	}
 
-	function inserirEmOrdem(nome, preco) {
+	function inserirEmOrdem(novo) {
 		var corrente = cabeca;
 
 		if (topo == 0) {
-			inserir(nome, preco, 0);
+			inserir(novo, 0);
 			return;
 		}
 
 		var i = 0;
 
 		for (; i < topo; i++) {
-			if (nome < corrente.nome) {
+			if (novo.nome < corrente.nome) {
 				break;
 			}
 
 			corrente = corrente.proximo;
 		}
 
-		inserir(nome, preco, i);
+		inserir(novo, i);
 	}
 
 	function imprimir() {
-		if (topo >= 0) {
+		if (topo > 0) {
 			var i = 1;
 			var corrente = cabeca;
 
@@ -81,14 +79,27 @@ const lista = (function () {
 				console.log(i + ". " + corrente.nome + ": " + corrente.preco);
 				corrente = corrente.proximo;
 				i++;
-			} while (corrente != null);
+			} while (corrente.proximo != null);
 		}
+	}
+
+	function salvar() {
+		var dados = {tamanho: topo, produtos: cabeca}
+		localStorage.setItem("dadosDoCrudAprendizado", JSON.stringify(dados));
+	}
+
+	function carregar() {
+		var dados = JSON.parse(localStorage.getItem("dadosDoCrudAprendizado"));	
+		topo = dados.tamanho;	
+		cabeca = dados.produtos;
 	}
 
 	return {
 		remover: remover,
 		obter: obter,
 		imprimir: imprimir,
-		inserirEmOrdem: inserirEmOrdem
+		inserirEmOrdem: inserirEmOrdem,
+		salvar: salvar,
+		carregar: carregar
 	}
 }()); 
