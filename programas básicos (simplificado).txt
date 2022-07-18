@@ -1,0 +1,1407 @@
+====<PROGRAMAS BÁSICOS>====
+
+
+1. CONCEITOS BÁSICOS
+
+A) PROGRAMA MÍNIMO
+
+programa olá_mundo
+    // este programa imprime uma saudação
+    imprima("olá, mundo!")
+
+=============================================================================================
+
+2. OPERADORES (+, -, *, /, mod ou %, >, <, ==, !=, &&, ||, +=, ++, funções matemáticas)
+3. ENTRADA E SAÍDA BÁSICA 
+4. TIPOS DE DADOS PRÉ-DEFINIDOS (inteiro, real)
+5. INSTRUÇÕES DE CONTROLE (if, if...else, for, while, do...while, switch, break, contadores e
+   sentinelas)
+
+A) CALCULADORA
+
+programa calculadora
+    a
+    b
+    imprima("Insira o valor de a ")
+    leia(a)
+    imprima("Insira o valor de b ")
+    leia(b)
+    
+    imprima("soma = " + (a + b) + "\n")
+    imprima("diferença = " + (a - b) + "\n")
+    imprima("produto = " + (a * b) + "\n")
+    imprima("quociente = " + (a / b) + "\n")
+
+    se a > b 
+        imprima(a + " > " + b + "\n")
+    senão se a == b
+        imprima(a + " = " + b + "\n")
+    senão 
+        imprima(a + " < " + b + "\n")    
+
+    se a > 0 e a < 10
+        imprima("0 < " + a + " < 10")
+    senão se a < 0 ou a > 10
+        imprima(a + " < 0 ou " + a + " > 10")
+    senão
+        imprima(a + " = 0 ou " + a + " = 10")
+
+B) ANO BISSEXTO
+
+programa bissexto
+    ano
+
+    imprima("Insira o ano: ")
+    leia(ano)
+
+    se ano mod 4 == 0 e (ano mod 100 != 0 ou ano mod 400 == 0)
+        imprima("O ano " + ano + " é bissexto.")
+    senão
+        imprima("O ano " + ano + " não é bissexto.")
+
+C) BAHSKARA
+
+programa bahskara
+    a
+    b
+    c
+    d
+    x1
+    x2
+
+    imprima("a = ")
+    leia(a)
+    imprima("b = ")
+    leia(b)
+    imprima("c = ")
+    leia(c)
+
+    se a == 0
+        imprima("não é uma função quadrática")
+    senão
+        d = b * b - 4 * a * c
+
+        se d == 0
+            x1 = -b / (2 * a)
+            imprima("x1 = x2 = " + x1)
+        senão se d > 0
+            x1 = (-b + raiz(d)) / (2 * a)
+            x1 = (-b - raiz(d)) / (2 * a)
+            imprima("x1 = " + x1 + "\n")
+            imprima("x2 = " + x2 + "\n")
+        senão 
+            imprima("não possui raízes reais\n")
+
+D) MÉDIA
+
+programa média1
+    // calcula a média de 10 números reais
+    total = 0
+    valor
+    
+    para n de 0 até 9 
+        leia(valor)
+        total = total + valor    
+    
+    imprima("a média é " + total / 10)
+
+
+programa média2
+    // calcula a média de uma quantidade arbitrária números
+    n = 0
+    total = 0
+    valor
+
+    enquanto valor != -1
+        leia(valor)
+        total = total + valor
+        n = n + 1
+    
+    imprima("a média é " + total / n)
+
+E) ADIVINHE O NÚMERO
+
+programa adivinhe
+    random = random(1 a 100)
+    palpite
+    tentativas = 1
+    
+    faça
+        imprima("Dê seu palpite (sair = -1)")
+        leia(palpite)
+    
+        se palpite > random
+            imprima("Tente um maior")            
+        senão se palpite < random
+            imprima("Tente um menor")
+        senão
+            imprima("Acertou.\nForam " + tentativas + " tentativas")
+            abandone
+        
+        tentativas = tentativas + 1
+    enquanto palpite != -1
+
+F) CLASSIFICAÇÃO
+
+programa classificação
+    A = B = C = D = E = 0
+    nota
+    
+    faça
+        imprima("Insira a nota de 0 a 100 (sair = -1): ")
+        leia(nota)
+    
+        escolha (inteiro(nota / 10))
+            caso 10:
+                A = A + 1
+                abandone
+            caso 9:                
+            caso 8:
+            caso 7:
+                B = B + 1
+                abandone
+            caso 6:
+            caso 5:
+            caso 4:
+                C = C + 1
+                abandone
+            caso 3:
+            caso 2:
+            caso 1:
+                D = D + 1
+                abandone
+            caso 0:
+                E = E + 1
+                abandone
+            caso contrário:
+                imprima("Valor fora dos limites.")                       
+    enquanto nota != -1
+    
+    imprima("Perfeito (100): " + A + "\n")
+    imprima("Bom (70 a 99): " + B + "\n")
+    imprima("Médio (40 a 69): " + C + "\n")
+    imprima("Ruim (10 a 39): " + D + "\n")
+    imprima("Péssimo (0 a 9): " + F + "\n")
+    imprima("Total: " + (A + B + C + D + E))
+
+==============================================================================================
+
+6. VETORES E MATRIZES (inicialização, manipulação, condições em for, condições em switch, operadores
+   <= e >=)
+7. STRINGS (tipo char e strings, tipo booleano, escopo de variáveis)
+
+A) MÁXIMO
+
+programa máximo
+    numeros = {5, -1, 3, 7, 4, 3, 18, -5}
+    max = numeros[0]
+
+    para i de 0 até (numeros.tamanho - 1) 
+        se numeros[i] > max
+            max = numeros[i]
+
+    imprima(max)
+
+B) LABIRINTO
+
+programa labirinto
+    mapa = {{'#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},
+            {'#', '.', '.', '.', '#', '.', '.', '.', '.', '.', '.', '#'},
+            {'@', '.', '#', '.', '#', '.', '#', '#', '#', '#', '.', '#'},
+            {'#', '#', '#', '.', '#', '.', '.', '.', '.', '#', '.', '#'},
+            {'#', '.', '.', '.', '.', '#', '#', '#', '.', '#', '.', '.'},
+            {'#', '#', '#', '#', '.', '#', '.', '#', '.', '#', '.', '#'},
+            {'#', '.', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#'},
+            {'#', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#'},
+            {'#', '.', '.', '.', '.', '.', '.', '.', '.', '#', '.', '#'},
+            {'#', '#', '#', '#', '#', '#', '.', '#', '#', '#', '.', '#'},
+            {'#', '.', '.', '.', '.', '.', '.', '#', '.', '.', '.', '#'},
+            {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'}}
+    linha = 2
+    coluna = 0
+    direção
+    
+    faça
+        para i de 0 até (mapa.tamanho - 1)
+            para j de 0 até (mapa[i].tamanho - 1) 
+                imprima(mapa[i][j] + " ")
+            
+            imprima("\n")        
+        
+        imprima("Escolha a direção (esquerda = 4, cima = 8, " + 
+                "direita = 6, baixo = 2, fechar = 0): ")
+        leia(direção)
+        
+        escolha (direção)
+            caso 4: // esquerda
+                se (coluna - 1) >= 0 e mapa[linha][coluna - 1] == '.'
+                    mapa[linha][coluna] = '.'
+                    coluna = coluna - 1
+                    mapa[linha][coluna] = '@'                
+                
+                abandona
+            caso 8: // cima
+                se (linha - 1) >= 0 e mapa[linha - 1][coluna] == '.'
+                    mapa[linha][coluna] = '.'
+                    linha = linha - 1
+                    mapa[linha][coluna] = '@'                
+                
+                abandona
+            caso 6: // direita
+                se (coluna + 1) < mapa[linha].tamanho e mapa[linha][coluna + 1] == '.'
+                    mapa[linha][coluna] = '.'
+                    coluna = coluna + 1
+                    mapa[linha][coluna] = '@'                
+                
+                abandona
+            caso 2: // baixo
+                se (linha + 1) < mapa.tamanho e mapa[linha + 1][coluna] == '.'
+                    mapa[linha][coluna] = '.'
+                    linha = linha + 1
+                    mapa[linha][coluna] = '@'                
+                
+                abandona
+            caso contrário:
+                se direção == 0
+                    imprima("Fechando o jogo.")                
+                
+                imprima("Valor inválido.")       
+    enquanto direção != 0    
+
+
+C) CRIVO DE ERATÓSTENES
+
+programa crivo
+    max
+    amplitude
+
+    imprima("Insira o limite de teste ")
+    leia(max)
+    imprima("Insira a amplitude de distribuição ")
+    leia(amplitude)
+    
+    lógico primos = vetor[max + 1]
+
+    primos[0] = falso
+    primos[1] = falso
+
+    para i de 2 até max 
+        primos[i] = verdadeiro    
+
+    para i = 2 com i * i <= max     // para com condições
+        para j de 2 * i até max passo i
+            primos[j] = falso    
+
+    para i de 2 até max 
+        se primos[i]
+            imprima(i + " ")
+        senão se i mod amplitude == 0
+                imprima("\n")
+
+D) MANIPULAR TABELAS
+
+programa tabela
+    num_linha
+    num_coluna
+    mostra = ""
+    
+    imprima("Insira a quantidade de linhas da tabela: ")
+    leia(num_linha)
+    imprima("Insira a quantidade de colunas da tabela: ")
+    leia(num_coluna)
+    
+    tabela = vetor[num_linha][num_coluna]
+    
+     para i de 0 até (num_linha - 1) 
+        para j de 0 até (num_coluna - 1) 
+            imprima("tabela[" + i + "][" + j + "] = ")
+            leia(tabela[i][j])
+            mostra = mostra + tabela[i][[j] + " "        
+        
+        mostra = mostra + "\n"    
+   
+        valores
+        
+        imprima(mostra)
+        imprima("Deseja operar sobre linha (1) ou coluna (2)? ")
+        leia(valores)
+        
+        se valores == 1
+            linha
+            total = 0
+            
+            imprima("Escolha a linha de 0 a " + (num_linha -1) + ": ")
+            leia(linha)
+            
+            se linha >= 0 e linha < num_linha
+                para i de 0 até (num_coluna - 1) 
+                    total = total + tabela[linha][i]                
+                
+                imprima("O total da linha " + i + " é " + total)
+            senão
+                imprima("Valor fora dos limites")
+            
+        senão se valores == 2
+            coluna
+            total = 0
+            
+            imprima("Escolha a coluna de 0 a " + (num_coluna -1) + ": ")
+            leia(coluna)
+            
+            se coluna >= 0 e coluna < num_coluna
+                para i de 0 até (num_linha - 1) 
+                    total = total + tabela[i][coluna]                
+                
+                imprima("O total da coluna " + i + " é " + total)
+            senão
+                imprima("Valor fora dos limites")
+            
+        senão
+            imprima("Opção inválida")        
+        
+        imprima("Deseja sair? (s/n)")
+        opção
+        leia(opção)
+    equanto opção != 's' e opção != 'S'
+
+
+E) CONTAGEM EM TEXTOS
+
+programa contagem
+    texto
+    num_palavras = 0
+    num_letras = 0
+    tamanho = 0
+    achou_letra
+    símbolos = {' ', ',', '.', '', ':', '!', '?', '(', ')'}
+    
+    imprima("Insira um texto: ")
+    leia(texto)
+    
+    i = 0
+    enquanto texto[i] != nulo
+        achou_letra = verdadeiro
+        
+        se texto[i] == ' '
+            num_palavras++        
+        
+        para j de 0 até (símbolos.tamanho - 1) 
+            se texto[i] == símbolos[j]
+                achou_letra = falso
+                abandona        
+        
+        se achou_letra
+            num_letras++        
+        
+        i++    
+    
+    imprima("Esse texto tem " + (num_palavras + 1) + " palavras, " + 
+            i + " caracteres, sendo " + num_letras + " deles letras.")
+
+F) ACHAR SUBSTRING
+
+programa substring
+    texto = "Mas devo explicar-lhe como nasceu toda essa idéia " +
+            "equivocada de denunciar um prazer e louvar a dor, " +
+            "e lhe darei um relato completo do sistema, expondo " +
+            "os ensinamentos reais do grande explorador da verdade, " +
+            "o mestre-construtor. da felicidade humana. Ninguém " +
+            "rejeita, não gosta, ou evita o prazer em si, porque é " +
+            "prazer, mas porque aqueles que não sabem como buscar " +
+            "prazer encontram racionalmente conseqüências que são " +
+            "extremamente dolorosas. Tampouco há alguém que ame, " +
+            "busque ou deseje obter dor de si mesmo, porque é dor, " +
+            "mas ocasionalmente ocorrem circunstâncias em que a labuta " +
+            "e a dor podem lhe proporcionar um grande prazer. Para " +
+            "dar um exemplo trivial, qual de nós empreende algum " +
+            "exercício físico laborioso, exceto para obter alguma " +
+            "vantagem disso? Mas quem tem o direito de criticar um " +
+            "homem que escolhe desfrutar de um prazer que não tem " +
+            "conseqüências irritantes, ou alguém que evita uma dor " +
+            "que não produz prazer resultante? " +
+            "Por outro lado, denunciamos com justa indignação e " +
+            "antipatia homens que são tão enganados e desmoralizados " +
+            "pelos encantos do prazer do momento, tão cegados pelo " +
+            "desejo, que não podem prever a dor e os problemas que " +
+            "estão fadados a acontecer e a culpa igual pertence " +
+            "àqueles que falham em seu dever através da fraqueza da " +
+            "vontade, o que é o mesmo que dizer através do encolhimento " +
+            "da labuta e da dor. Esses casos são perfeitamente " + 
+            "simples e fáceis de distinguir. Em uma hora livre, " +
+            "quando nosso poder de escolha é desimpedido e quando " +
+            "nada impede que sejamos capazes de fazer o que mais " +
+            "gostamos, todo prazer é para ser bem-vindo e toda dor " +
+            "evitada. Mas, em certas circunstâncias, e devido às " +
+            "reivindicações de dever ou às obrigações dos negócios, " +
+            "freqüentemente ocorrerá que os prazeres devem ser " +
+            "repudiados e os aborrecimentos aceitos. O homem " + 
+            "sábio, portanto, sempre se atém a esse princípio de " + 
+            "seleção: rejeita os prazeres para assegurar outros " +
+            "prazeres maiores ou tolera dores para evitar dores piores."
+    subtexto    
+    posição = 0 // global
+    achou // global
+    
+    imprima(texto + "\n")
+    imprima("Insira o subtexto a ser localizado: ")
+    leia(subtexto)
+    
+    t = texto.tamanho
+    s = subtexto.tamanho
+    
+    para posição até (t - 1)  // para sem definição de variável
+        se texto[posição] == subtexto[0]
+            achou = verdadeiro
+
+            para i de 0 até (s - 1) 
+                se texto[posição + i] != subtexto[i]
+                    achou = falso
+                    abandona               
+
+            se achou
+                abandona    
+    
+    se posição == t
+        imprima("Subtexto não encontrado")
+    senão
+        imprima("\nA primeira ocorrência do subtexto \"" + subtexto + 
+                "\" se inicia na posição " + posição + "\n")
+
+        para i de 0 até (s - 1) 
+            texto[posição + i] += 'A' - 'a' // capitaliza        
+        
+        imprima(texto)    
+
+==============================================================================================
+
+8. MÓDULOS E FUNÇÕES (funções definidas internamente e externamente, pesquisa e classificação)
+9. IMPORTAÇÃO E LINKAGEM DE CÓDIGOS (módulos ou classes, linkagem de módulos, bibliotecas pessoais
+   externas)
+10. REGISTROS (estruturas de dados, recursão, callbacks, operação *=)
+
+A) ORDENAÇÃO BOLHA
+
+/--Arquivo ordenação--/
+função ordenar(vetor, n)
+    para i de 1 até (n - 1)
+        para j de 0 até (n - i - 1)
+            se vetor[j] > vetor[j + 1]
+                temp = vetor[j]
+                vetor[j] = vetor[j + 1]
+                vetor[j + 1] = temp 
+
+/--Arquivo teste_ordenação--/
+importa ordenar do arquivo ordenação
+
+programa teste_ordenação
+    n = 20
+    numeros = vetor[n]
+
+    para i de 0 até (n - 1) 
+        numeros[i] = ramdom(0 a 100)
+    
+    
+    imprima("Antes de ordenar: ")
+
+    para i de 0 até (n - 1) 
+        imprima(numeros[i] + " ")    
+    
+    ordenar(numeros, n)
+    
+    imprima("\nDepois de ordenar: ")
+    
+    para i de 0 até (n - 1) 
+        imprima(numeros[i] + " ")
+
+B) BUSCA BINÁRIA
+
+/--Arquivo busca--/
+função buscar(x, vetor, n) // o vetor deve estar ordenado
+    min = 0
+    max = n - 1
+    
+    enquanto min <= max
+        med = chão[(max + min) / 2]
+        
+        se x == vetor[med]
+            retorna med        
+        
+        se x > vetor[med]
+            min = med + 1
+        senão
+            max = med - 1   
+    
+    retorna -1
+
+/--Arquivo teste_busca--/
+importa ordenar do arquivo ordenação
+importa buscar do arquivo busca
+
+programa teste_busca
+    n = 20
+    numeros = vetor[n]
+
+    para i de 0 até (n - 1) 
+        numeros[i] = ramdom(0 a 50)    
+
+    imprima("Números: ")
+
+    para i de 0 até (n - 1) 
+        imprima(numeros[i] + " ")    
+    
+    ordenar(numeros, n)
+    
+    imprima("\nNúmeros ordenados: ")
+
+    para i de 0 até (n - 1) 
+        imprima(numeros[i] + " ")    
+    
+    m = 4
+    x
+    posição
+
+    para i de 0 até (m - 1) 
+        imprima("\n")
+        
+        x = Random(0 a 50)
+        posição = buscar(x, numeros, n)
+        
+        se posição != -1)
+            imprima("O valor " + x + " está na posição " + posição + ".")
+        senão
+            imprima("O valor " + x + " não pertence à lista.")
+
+C) ESTATÍSTICA COMPLETA
+
+/--Arquivo estatística--/
+importa ordenar do arquivo ordenação
+
+função média(vetor, n) 
+    soma = 0
+
+    para i de 0 até (n - 1) 
+        soma = soma + vetor[i]    
+    
+    retorna soma / n
+
+função mediana(vetor, n)
+    ordenar(vetor, n)
+    
+    se n mod 2 != 0
+        retorna vetor[(n + 1) / 2 - 1]
+    senão
+        retorna (vetor[n / 2 - 1] + vetor[n / 2]) / 2
+
+função frequência(vetor, n)
+    f = vetor[n]
+
+    para i de 0 até (n - 2) 
+        para j de i + 1 até (n - 1) 
+            se f[i] == nulo
+                f[i] = 1            
+            
+            se f[j] == nulo
+                f[j] = 1            
+            
+            se vetor[i] == vetor[j]
+                f[i]++
+                f[j]++       
+    
+    retorna f
+
+função máximo(vetor, n)
+    max = vetor[0]
+    
+    para i de 1 até (n - 1) 
+        se vetor[i] > max
+            max = vetor[i]   
+    
+    retorna max
+
+
+função mínimo(vetor, n)
+    min = vetor[0]    
+     
+    para i de 1 até (n - 1) 
+        se vetor[i] < min
+            min = vetor[i]
+   
+    retorna min
+
+função moda(vetor, n)
+    freq = frequencia(vetor) // vetor de frequências
+    max = máximo(freq) // o maior valor
+    moda
+
+    para i de 0 até (n - 1) 
+        se freq[i] == max
+            moda = vetor[i]        
+    
+    retorna moda
+
+função variância(vetor, n)
+    m = media(vetor, n)
+    d2 = 0
+
+    para i de 0 até (n - 1) 
+        d2 = d2 + (vetor[i] - m) * (vetor[i] - m)    
+    
+    retorna d2 / n
+
+/--Arquivo teste_estatística--/
+importa arquivo estatística // importa todas as funções
+
+programa estatística
+    amostra
+    
+    imprima("Insira o tamanho da amostra: ")
+    leia(amostra)
+    
+    dados = vetor[amostra]
+    
+    para i de 0 até (amostra - 1) 
+        imprima("Insira o " + (i + 1) + "o dado: ")
+        leia(dados[i])    
+    
+    imprima("Dados = ")
+    
+    para i de 0 até (amostra - 1) 
+        imprima(dados[i] + " ")    
+    
+    imprima("\n")
+    
+    imprima("média = " + média(dados, amostra) + "\n")
+    imprima("mediana = " + mediana(dados, amostra) + "\n") // o vetor foi ordenado
+    imprima("moda = " + moda(dados, amostra) + "\n")
+    imprima("desvio padrão = " + raiz(variância(dados, amostra)) + "\n")
+    imprima("\nHistograma: \n")
+
+    freq = frequencia(dados, amostra)
+     i
+    para i de 0 até (amostra - 1) 
+        se dados[i] != dados[i + 1]
+            imprima(dados[i] + ": ")
+
+            para j de 0 até (freq[i] - 1) 
+                imprima("*")            
+            
+            imprima(" " + freq[i] + "\n")   
+    
+    imprima("total = " + amostra)
+
+C) LISTA
+
+/--arquivo lista--/
+módulo lista
+    registro nó
+        dado
+        nó próximo    
+
+    nó cabeça
+
+    topo = 0
+
+    função l_empilhar(valor)
+        aloca nó novo = {valor, nulo}
+
+        se topo == 0
+            cabeça = novo
+        senão
+            nó corrente = cabeça
+
+            enquanto corrente.próximo != nulo
+                corrente = corrente.próximo            
+
+            corrente.proximo = novo        
+
+        topo++    
+
+    função l_inserir(valor, posição)
+        se (posição >= 0) e (posição <= topo)
+            aloca nó novo = {valor, nulo}
+
+            se posição == 0
+                novo.próximo = cabeça
+                cabeça = novo
+            senão
+                nó antecessor = l_obter(posição - 1)
+                nó sucessor = antecessor.próximo
+                
+                antecessor.próximo = novo
+                novo.próximo = sucessor            
+            
+            topo++    
+            retorna verdadeiro        
+        
+        retorna falso        
+
+    função l_remover(posição)
+        se posição == 0
+            cabeça = cabeça.proximo
+        senão
+            nó antecessor = l_obter(posição - 1)
+            nó corrente = antecessor.próximo
+            nó sucessor = corrente.próximo
+            
+            antecessor.próximo = sucessor        
+        
+        topo--    
+
+    função l_obter(posição)
+        nó elemento = cabeça
+
+        i = 0
+        para i de 0 até (posição - 1) 
+            elemento = elemento.próximo        
+
+        retorna elemento
+    
+
+    função l_imprimir()
+        se topo > 0
+            nó corrente = cabeça
+        
+            imprima(corrente.dado + " ")
+
+            enquanto corrente.próximo != nulo
+                corrente = corrente.próximo
+                imprima(corrente.dado + " ")
+
+    função l_tamanho()
+        retorna topo    
+    
+    //função opcional
+    função l_inserirEmOrdem(valor)
+        nó corrente = cabeça
+        
+        se topo == 0
+            l_inserir(valor, 0)
+            retorna        
+        
+        i = 0
+        para i de 0 até (topo - 1) 
+            se valor < corrente.dado
+                abandona            
+            
+            corrente = corrente.próximo        
+        
+        l_inserir(valor, i)
+
+/--arquivo teste_lista--/
+importa lista do arquivo lista
+
+programa teste_lista
+    imprima(l_tamanho() + "\n") // 0
+    
+    imprima("Empilhar A, B, C e D\n")
+    l_empilhar("A")
+    l_empilhar("B")
+    l_empilhar("C")
+    l_empilhar("D")
+    l_imprimir() // A B C D
+    imprima(l_tamanho() + "\n") // 4
+
+    imprima("Remover da posição 2\n")
+    l_remover(2)
+    l_imprimir() // A B D
+    imprima(l_tamanho() + "\n") // 3
+
+    imprima("Inserir F na posição 1\n")
+    l_inserir("F", 1)
+    l_imprimir() // A F B D
+    imprima(l_tamanho() + "\n") // 4
+    
+    imprima("Inserir G na posição 0 e H na posição 5\n")
+    l_inserir("G", 0)
+    l_inserir("H", 5)
+    l_imprimir() // G A F B D H
+    imprima(l_tamanho() + "\n") // 6
+    
+    imprima("Remover da posição 0\n")
+    l_remover(0)
+    l_imprimir() // A F B D H
+    imprima(l_tamanho() + "\n") // 5
+
+    imprima("Remover da posição 4\n")
+    l_remover(4)
+    l_imprimir() // A F B D
+    imprima(l_tamanho() + "\n") // 4
+    
+    imprima("Remover da posição 0 duas vezes seguidas\n")
+    l_remover(0)
+    l_remover(0)
+    l_imprimir() // B D
+    imprima(l_tamanho() + "\n") // 2
+    
+    imprima("Inserir em ordem A, C e E\n")
+    l_inserirEmOrdem("A")
+    l_inserirEmOrdem("C")
+    l_inserirEmOrdem("E")
+    l_imprimir() // A B C D E
+    imprima(l_tamanho() + "\n") // 5
+
+D) PILHA
+
+/--arquivo pilha--/
+módulo pilha
+    max = 100
+    pilha = vetor[max]
+    topo = -1
+
+    função p_empilhar(valor)
+        topo = topo + 1
+    
+        se topo == max então,
+            max = max * 2
+            temp = vetor[max]
+
+            para i de 0 até (max - 1) 
+                temp[i] = pilha[i]            
+
+            pilha = temp
+
+            pilha[topo] = valor
+        senão
+            pilha[topo] = valor   
+
+    função p_desempilhar()
+        se topo == -1
+            iprima("Pilha vazia\n")
+        senão
+            elemento = pilha[topo] 
+            topo--
+            retorna elemento   
+
+    função p_imprimir()
+        para i de 0 até topo
+            imprima(pilha[i] + " ")    
+
+    função p_tamanho()
+        retorna topo + 1
+
+/--arquivo teste_pilha--/
+importa pilha do arquivo pilha
+
+programa teste_pilha
+    imprima(p_tamanho() + "\n") // 0
+    
+    imprima("Empilhar A, B e C\n")
+    p_empilhar("A")
+    p_empilhar("B")
+    p_empilhar("C")
+    p_imprimir() // A B C
+    imprima(p_tamanho() + "\n") // 3
+
+    imprima("Desempilhar\n")
+    p_desempilhar()
+    p_imprimir() // A B 
+    imprima(p_tamanho() + "\n") // 2
+
+    imprima("Empilhar D\n")
+    p_empilhar("D")
+    p_imprimir() // A B D
+    imprima(p_tamanho() + "\n") // 3
+    
+    imprima("Desempilhar\n")
+    p_desempilhar()
+    p_imprimir() // A B 
+    imprima(p_tamanho() + "\n") // 2
+    
+    imprima("Desempilhar\n")
+    p_desempilhar()
+    p_imprimir() // A  
+    imprima(p_tamanho() + "\n") // 1
+    
+    imprima("Desempilhar\n")
+    p_desempilhar()
+    p_imprimir() //  
+    imprima(p_tamanho() + "\n") // 0
+    
+    imprima("Desempilhar\n")
+    p_desempilhar() // Pilha vazia\n
+    p_imprimir() //     
+    imprima(p_tamanho() + "\n") // 0
+
+E) FILA
+
+/--arquivo fila--/
+módulo fila
+    max = 100
+    fila = vetor[max]
+    fim = 0
+    início = 0
+
+    função f_inserir(valor)
+        se fim == max então,
+            max = max * 2
+            temp = vetor[max]
+
+            para i de início até (max - 1) 
+                temp[i] = fila[i]            
+
+            fila = temp
+
+            fila[fim] = valor
+        senão
+            fila[fim] = valor      
+        
+        fim++    
+
+    função f_remover()
+        se fim == início
+            iprima("Fila vazia\n")
+        senão
+            elemento = fila[início]
+            início++
+            retorna elemento   
+
+    função f_imprimir()
+        para i de início até (fim - 1)
+            imprima(fila[i] + " ")   
+
+    função f_tamanho()
+        retorna fim - início
+
+/--arquivo teste_fila--/
+importa fila do arquivo fila
+
+programa teste_fila
+    imprima(f_tamanho() + "\n") // 0
+    
+    imprima("inserir A, B e C\n")
+    f_inserir("A")
+    f_inserir("B")
+    f_inserir("C")
+    f_imprimir() // A B C
+    imprima(f_tamanho() + "\n") // 3
+
+    imprima("Remover\n")
+    f_remover()
+    f_imprimir() // B C
+    imprima(f_tamanho() + "\n") // 2
+
+    imprima("inserir D\n")
+    f_inserir("D")
+    f_imprimir() // B C D
+    imprima(f_tamanho() + "\n") // 3
+
+    imprima("Remover\n")
+    f_remover()
+    f_imprimir() // C D
+    imprima(f_tamanho() + "\n") // 2
+
+    imprima("Remover\n")
+    f_remover()
+    f_imprimir() // D 
+    imprima(f_tamanho() + "\n") // 1
+
+    imprima("Remover\n")
+    f_remover()
+    f_imprimir() //  
+    imprima(f_tamanho() + "\n") // 0
+
+    imprima("Remover\n")
+    f_remover() // Fila vazia\n
+    f_imprimir() //     
+    imprima(f_tamanho() + "\n") // 0
+
+F) ÁRVORE
+
+/--arquivo árvore--/
+módulo árvore
+    registro nó
+        dado
+        nó direito
+        nó esquerdo    
+    
+    nó raiz
+    
+    função a_inserir(valor)
+        raiz = inserirNó(raiz, valor)    
+    
+    função a_remover(valor)
+        raiz = removerNó(raiz, valor)    
+    
+    função a_pesquisar(valor)
+        retorna pesquisarNó(raiz, valor)    
+    
+    função a_préOrdem(função callback)
+        pre(raiz, callback)    
+    
+    função a_emOrdem(função callback)
+        em(raiz, callback)    
+    
+    função a_pósOrdem(função callback)        
+        pos(raiz, callback)    
+    
+    função a_min()
+        retorna minNó(raiz)    
+    
+    função a_max()
+        retorna maxNó(raiz)    
+    
+    // funções utilitárias recursivas
+    função inserirNó(nó subraiz, valor)
+        se subraiz == nulo
+            aloca nó novo = {valor, nulo, nulo}
+            retorna novo        
+        senão se valor < subraiz.dado
+            subraiz.esquerdo = inserirNó(subraiz.esquerdo, valor)
+        senão se valor > subraiz.dado
+            subraiz.direito = inserirNó(subraiz.direito, valor)        
+        
+        retorna subraiz    
+    
+    função removerNó(nó subraiz, valor)
+        se valor < subraiz.dado // valor menor
+            subraiz.esquerdo = removerNó(subraiz.esquerdo, valor)
+        senão se valor > subraiz.dado // valor maior
+            subraiz.direito = removerNó(subraiz.direito, valor)
+        senão // valor igual
+            se subraiz.direito == nulo e subraiz.esquerdo == nulo // folha
+                subraiz = nulo
+            senão se subraiz.direito == nulo // tem filho esquerdo
+                subraiz = subraiz.esquerdo
+            senão se subraiz.esquerdo == nulo // tem filho direito
+                subraiz = subraiz.direito
+            senão // tem os dois filhos
+                nó sucessor = minNó(subraiz.direito)
+                subraiz.dado = sucessor.dado
+                subraiz.direito = removerNó(subraiz.direito, sucessor.dado)       
+        
+        retorna subraiz    
+    
+    função pesquisarNó(nó subraiz, valor)
+        se subraiz == nulo
+            retorna falso
+        senão se valor > subraiz.dado
+            retorna pesquisarNó(subraiz.direito, valor)
+        senão se valor < subraiz.dado
+            retorna pesquisarNó(subraiz.esquerdo, valor)
+        senão
+            retorna verdadeiro    
+    
+    função pre(nó subraiz, função callback)
+        se subraiz == nulo  
+            retorna    
+        
+        callback(subraiz.dado) // pre
+        pre(subraiz.esquerdo, callback)
+        pre(subraiz.direito, callback)
+    
+    
+    função em(nó subraiz, função callback)
+        se subraiz == nulo
+            retorna        
+        
+        em(subraiz.esquerdo, callback)
+        callback(subraiz.dado) // in
+        em(subraiz.direito, callback)
+    
+    
+    função pos(nó subraiz, função callback)
+        se subraiz == nulo
+            retorna        
+        
+        pos(subraiz.esquerdo, callback)
+        pos(subraiz.direito, callback)
+        callback(subraiz.dado)    // post
+    
+    
+    função minNó(nó subraiz)
+        se subraiz.esquerdo == nulo
+            retorna subraiz
+        senão
+            retorna minNó(subraiz.esquerdo)   
+    
+    função maxNó(nó subraiz)
+        se subraiz.direito == nulo
+            retorna subraiz
+        senão
+            retorna maxNó(subraiz.direito)
+
+/--arquivo teste_árvore--/
+importa árvore do arquivo árvore
+
+programa teste_árvore
+    função imprimir(valor)
+        imprima(valor + " ")    
+    
+    função metade(valor)
+        imprima(valor / 2 + " ")    
+    
+    imprima("Inserir 10, 6, 14, 4, 8, 12, 2, 20, 18, 26\n")
+    a_inserir(10)
+    a_inserir(6)
+    a_inserir(14)
+    a_inserir(4)
+    a_inserir(8)
+    a_inserir(12)
+    a_inserir(2)
+    a_inserir(20)
+    a_inserir(18)
+    a_inserir(26)
+
+    imprima("Em ordem: ") 
+    a_emOrdem(imprimir) // 2 4 6 8 10 12 14 18 20 26
+    imprima("\n")
+    imprima("Em pré ordem: ")
+    a_preOrdem(imprimir) // 10 6 4 2 8 14 12 20 18 26
+    imprima("\n")
+    imprima("Em pós ordem: ")
+    a_posOrdem(imprimir) // 2 4 8 6 12 18 26 20 14 10
+    imprima("\n")
+
+    imprima("O valor 3 está na árvore? " + a_pesquisar(3) + "\n") // falso
+    imprima("O valor 4 está na árvore? " + a_pesquisar(4) + "\n") // verdadeiro
+
+    imprima("Remover 4 (somente um filho esquerdo)\n")
+    a_remover(4)
+    imprima("Remover 14 (com dois filhos)\n")
+    a_remover(14)
+    imprima("Remover 20 (somente um filho direito)\n")
+    a_remover(20)
+    imprima("Remover 12 (sem filhos)\n")
+    a_remover(12)
+
+    imprima("Em ordem: ")
+    a_emOrdem(imprimir) // 2 6 8 10 18 26
+    imprima("\n")
+    imprima("Em pré ordem: ")
+    a_preOrdem(imprimir) // 10 6 2 8 18 26
+    imprima("\n")
+    imprima("Em pós ordem: ")
+    a_posOrdem(imprimir) // 2 8 6 26 18 10
+    imprima("\n")
+
+    imprima("O valor 4 está na árvore? " + a_pesquisar(4) + "\n") // falso
+
+    imprima("O menor valor é " + a_min().dado + "\n") // 2
+    imprima("O maior valor é " + a_max().dado + "\n") // 26
+
+    imprima("A metade dos valores em ordem: ")
+    a_emOrdem(metade) // 1 3 4 5 9 13
+
+==============================================================================================
+
+11. PROCESSAMENTO DE ARQUIVOS (persistência de dados, manipulação de arquivos)
+
+A) CRUD
+
+/--Arquivo crud--/
+importa arquivo lista_crud
+
+registro produto
+    nome
+    valor
+    produto próximo
+
+programa CRUD 
+    faça  
+        opção
+        
+        imprima("Escolha uma opcao:\n"
+                + "\t1 - Adicionar" + "\t5 - Carregar\n"
+                + "\t2 - Listar" + "\t6 - Salvar\n"
+                + "\t3 - Editar" + "\t7 - Sair\n"
+                + "\t4 - Remover\n\n"             
+                + "Sua escolha: ")
+        
+        leia(opção)
+        
+        escolha (opção)
+            caso 1:
+                adicionar()
+                abandone
+            caso 2:
+                listar()
+                abandone
+            caso 3:
+                editar()
+                abandone
+            caso 4:
+                remover()
+                abandone
+            caso 5:
+                carregar()
+                abandone
+            caso 6:
+                salvar()
+                abandone                
+            caso contrário:
+                imprima("valor inválido")       
+    enquanto opção != 7
+    
+função adicionar()
+    faça
+        opção
+        nome
+        preço
+        
+        imprima("Insira o nome do produto: ")
+        leia(nome)
+        imprima("Insira o preço do produto: ")
+        leia(preço)
+        
+        aloca nó novo = {nome, preço, nulo}
+
+        l_inserirEmOrdem(novo)
+        
+        imprima("Deseja incluir outro produto?(s/n) ")
+        leia(opção)
+    enquanto opção == "s" ou opção == "S"
+
+função listar()
+    l_imprimir()
+
+função editar()
+    faça
+        opção
+        índice
+        atributo
+        novo_nome
+        novo_preço
+        
+        imprima("Insira o índice do produto a ser editado: ")
+        leia(índice)
+        imprima("\nInsira o indice do atributo a ser editado\n"
+                + "\t1 - nome\t2 - preço\n"
+                + "Sua escolha: ")
+        leia(atributo)
+        
+        escolha (atributo)
+            caso 1:
+                imprima("Digite o novo nome: ")
+                leia(novo_nome)
+                l_obter(índice - 1).nome = novo_nome
+                anabdone
+            caso 2:
+                imprima("Digite o novo preço: ")
+                leia(novo_preço)
+                l_obter(índice - 1).preço = novo_preço
+                abandone
+            caso contrário:
+                imprima("valor inválido")       
+        
+        imprima("Deseja editar outro produto?(s/n) ")
+        leia(opção)
+    enquanto opção == "s" ou opção == "S"
+
+função remover()
+    faça
+        opção
+        índice
+        
+        imprima("Insira o índice do produto a ser excluído (sair = -1): ")
+        leia(índice)
+
+        se índice == -1
+            abandone        
+        
+        l_remover(índice - 1)
+        
+        imprima("Deseja excluir outro produto?(s/n) ")
+        leia(opção)
+    enquanto opção == "s" ou opção == "S"
+
+função carregar()
+    l_carregar()
+
+função salvar()
+    l_salvar()
+
+/--arquivo lista_crud--/
+módulo lista
+    arquivo = arquivo composto de produto
+
+    registro nó
+        nome
+        preço
+        nó próximo    
+
+    nó cabeça
+
+    topo = 0
+
+    função l_obter(posição)
+        nó elemento = cabeça
+
+        para i de 0 até (posição - 1) 
+            elemento = elemento.próximo        
+
+        retorna elemento
+    
+
+    função l_inserir(nó novo, posição)
+        se (posição >= 0) e (posição <= topo)
+            se posição == 0
+                novo.próximo = cabeça
+                cabeça = novo
+            senão
+                nó antecessor = l_obter(posição - 1)
+                nó sucessor = antecessor.próximo
+                
+                antecessor.próximo = novo
+                novo.próximo = sucessor            
+            
+            topo++    
+            retorna verdadeiro        
+        
+        retorna falso
+        
+
+    função l_remover(posição)
+        se posição == 0
+            cabeça = cabeça.proximo
+        senão
+            nó antecessor = l_obter(posição - 1)
+            nó corrente = antecessor.próximo
+            nó sucessor = corrente.próximo
+            
+            antecessor.próximo = sucessor        
+        
+        topo--    
+
+    função l_inserirEmOrdem(nó novo)
+        nó corrente = cabeça
+        
+        se topo == 0
+            l_inserir(novo, 0)
+            retorna        
+        
+        i = 0
+        para i de 0 até (topo - 1) 
+            se novo.nome < corrente.nome
+                abandona            
+            
+            corrente = corrente.próximo        
+        
+        l_inserir(novo, i)
+        
+
+    função l_imprimir()
+        se topo > 0
+            i = 1
+            nó corrente = cabeça
+
+            imprima("-------itens-------")
+
+            faça           
+                imprima(i + ". " + corrente.nome + ": " + corrente.preco + "\n")
+                corrente = corrente.próximo
+                i++
+            enquanto corrente.proximo != nulo    
+
+    função l_salvar()
+        abra(arquivo) para gravação
+        guarde(arquivo, topo)
+        guarde(arquivo, cabeça)
+        feche(arquivo)    
+
+    função l_carregar()
+        abra(arquivo) para leitura
+        copie(arquivo, topo)
+        copie(arquivo, produto)
+        feche(arquivo)        
+
+==============================================================================================
