@@ -5,6 +5,10 @@
 
 A) PROGRAMA MÍNIMO
 
+################################
+* Imprime uma saudação na tela *
+################################
+
 programa olá_mundo
     // este programa imprime uma saudação
     imprima("olá, mundo!")
@@ -18,6 +22,12 @@ programa olá_mundo
    sentinelas)
 
 A) CALCULADORA
+
+############################################################################################
+* Lê dois números como entrada, calcula e imprime na tela a soma, a diferença, o produto,  *
+* o resultado da divisão; se um número é maior, igual ou menor que o outro e se o primeiro *
+* número está entre 0 e 10, está fora desses limites ou é um dos extremos.                 *
+############################################################################################
 
 programa calculadora
     a
@@ -48,6 +58,10 @@ programa calculadora
 
 B) ANO BISSEXTO
 
+###############################################################################
+* Lê um ano e verifica se ele é bissexto ou não, imprime o resultado na tela. *
+###############################################################################
+
 programa bissexto
     ano
 
@@ -60,6 +74,12 @@ programa bissexto
         imprima("O ano " + ano + " não é bissexto.")
 
 C) BAHSKARA
+
+############################################################################################
+* Lê os coeficientes a, b e c da função quadrática, verifica se ela realmente é quadrática *
+* (a != 0) e caso não seja imprime um aviso. Se for, calcula as raízes reais e imprime os  *
+* seus valores, ou avisa que não possui raízes reais.                                      *
+############################################################################################
 
 programa bahskara
     a
@@ -94,6 +114,10 @@ programa bahskara
 
 D) MÉDIA
 
+#################################################################################
+* Lê 10 valores a partir do teclado e calcula a média deles  e imprime na tela. *
+#################################################################################
+
 programa média1
     // calcula a média de 10 números reais
     total = 0
@@ -105,6 +129,10 @@ programa média1
     
     imprima("a média é " + total / 10)
 
+########################################################################################
+* Lê uma quantidade arbitrária de números a partir do teclado até a inserção de uma    *
+* sentinela ou valor de parada (-1). Calcula e imprime na tela a média desses números. *
+########################################################################################
 
 programa média2
     // calcula a média de uma quantidade arbitrária números
@@ -120,6 +148,13 @@ programa média2
     imprima("a média é " + total / n)
 
 E) ADIVINHE O NÚMERO
+
+############################################################################################
+* Lê palpites do jogador tentando acertar o número entre 1 e 100 sorteado previamente pelo *
+* computador. A cada palpite errado o computador dá dicas se o jogador precisa tentar um   *
+* valor maior ou menor. Caso acerte, uma mensagem de vitória e a quantidade de tentativas  *
+* feitas pelo jogador é impressa na tela.                                                  *
+############################################################################################
 
 programa adivinhe
     random = random(1 a 100)
@@ -142,6 +177,13 @@ programa adivinhe
     enquanto palpite != -1
 
 F) CLASSIFICAÇÃO
+
+########################################################################################
+* Lê notas de 0 a 100 pelo teclado até a inserção de uma sentinela (-1). Distribui as  *
+* notas entre "Perfeito" (100), "Bom" (70 a 99), "Médio" (40 a 69), "Ruim" (10 a 39) e *
+* "Péssimo" (0 a 9). Imprime a quantidade de notas em cada classificação e o total de  *
+* valores inseridos.                                                                   *
+########################################################################################
 
 programa classificação
     A = B = C = D = E = 0
@@ -192,6 +234,10 @@ programa classificação
 
 A) MÁXIMO
 
+################################################################################
+* Localiza e imprime na tela o maior valor de um vetor inicializado no código. *
+################################################################################
+
 programa máximo
     numeros = {5, -1, 3, 7, 4, 3, 18, -5}
     max = numeros[0]
@@ -203,6 +249,13 @@ programa máximo
     imprima(max)
 
 B) LABIRINTO
+
+###########################################################################################
+* Lê pelo teclado os comandos direcionais esquerda = 4, cima = 8, direita = 6 e baixo = 2 * 
+* para mover o personagem @ pelo labirinto em busca da saída. É possível sair do jogo a   *
+* qualquer momento digitando 0.                                                           *
+###########################################################################################
+
 
 programa labirinto
     mapa = {{'#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},
@@ -271,6 +324,12 @@ programa labirinto
 
 C) CRIVO DE ERATÓSTENES
 
+###########################################################################################
+* Lê a partir do teclado o limite de teste e a amplitude de distribuição. Imprime os      *
+* primos do primeiro até o menor ou igual ao limite de teste. A impressão na tela é feita *
+* distribuindo em cada linha a quantidade de primos dentro da amplitude de distribuição.  *                                                                         *
+###########################################################################################
+
 programa crivo
     max
     amplitude
@@ -300,6 +359,13 @@ programa crivo
 
 D) MANIPULAR TABELAS
 
+###########################################################################################
+* Lê a quantidade de linhas e colunas da tabela a ser criada e depois lê cada um dos      *
+* valores a serem inseridos na tabela. A tabela preenchida é impressa na tela e é         *
+* perguntado se quer operar sobre linha ou coluna e qual o número da linha ou coluna      *
+* escolhida. É impresso na tela então a soma dos elementos da linha ou coluna escolhida.  *
+###########################################################################################
+
 programa tabela
     num_linha
     num_coluna
@@ -319,7 +385,7 @@ programa tabela
             mostra = mostra + tabela[i][[j] + " "        
         
         mostra = mostra + "\n"    
-   
+    faça
         valores
         
         imprima(mostra)
@@ -330,7 +396,7 @@ programa tabela
             linha
             total = 0
             
-            imprima("Escolha a linha de 0 a " + (num_linha -1) + ": ")
+            imprima("Escolha a linha de 0 a " + (num_linha - 1) + ": ")
             leia(linha)
             
             se linha >= 0 e linha < num_linha
@@ -345,7 +411,7 @@ programa tabela
             coluna
             total = 0
             
-            imprima("Escolha a coluna de 0 a " + (num_coluna -1) + ": ")
+            imprima("Escolha a coluna de 0 a " + (num_coluna - 1) + ": ")
             leia(coluna)
             
             se coluna >= 0 e coluna < num_coluna
@@ -362,10 +428,15 @@ programa tabela
         imprima("Deseja sair? (s/n)")
         opção
         leia(opção)
-    equanto opção != 's' e opção != 'S'
+    enquanto opção != 's' e opção != 'S'
 
 
 E) CONTAGEM EM TEXTOS
+
+#########################################################################################
+* Lê um texto a partir do teclado, conta e imprime na tela a quantidade de palavras, de *
+* caracteres e, desses caracteres, quantos são letras.                                  *
+#########################################################################################
 
 programa contagem
     texto
@@ -400,6 +471,13 @@ programa contagem
 
 F) ACHAR SUBSTRING
 
+#########################################################################################
+* Lê uma palavra e procura ela dentro de um texto predefinido no código. Caso encontre, *
+* coloca a primeira ocorrência dessa palavra no texto em letras maiúsculas e imprime em *
+* que posição se encontra a sua primeira letra (obs.: a primeira letra DO TEXTO está na *
+* posição 0). Caso não encontre, imprime um aviso.                                      *
+#########################################################################################
+
 programa substring
     texto = "Mas devo explicar-lhe como nasceu toda essa idéia " +
             "equivocada de denunciar um prazer e louvar a dor, " +
@@ -433,7 +511,7 @@ programa substring
             "gostamos, todo prazer é para ser bem-vindo e toda dor " +
             "evitada. Mas, em certas circunstâncias, e devido às " +
             "reivindicações de dever ou às obrigações dos negócios, " +
-            "freqüentemente ocorrerá que os prazeres devem ser " +
+            "frequentemente ocorrerá que os prazeres devem ser " +
             "repudiados e os aborrecimentos aceitos. O homem " + 
             "sábio, portanto, sempre se atém a esse princípio de " + 
             "seleção: rejeita os prazeres para assegurar outros " +
@@ -477,9 +555,14 @@ programa substring
 8. MÓDULOS E FUNÇÕES (funções definidas internamente e externamente, pesquisa e classificação)
 9. IMPORTAÇÃO E LINKAGEM DE CÓDIGOS (módulos ou classes, linkagem de módulos, bibliotecas pessoais
    externas)
-10. REGISTROS (estruturas de dados, recursão, callbacks, operação *=)
+10. REGISTROS (estruturas de dados, recursão, callbacks)
 
 A) ORDENAÇÃO BOLHA
+
+###########################################################################################
+* Cria uma lista com 20 números aleatórios de 0 a 100 e imprime ela antes e depois de ser *
+* ordenada pela função ordenar() no arquivo "ordenação".                                  *
+###########################################################################################
 
 /--Arquivo ordenação--/
 função ordenar(vetor, n)
@@ -514,6 +597,12 @@ programa teste_ordenação
         imprima(numeros[i] + " ")
 
 B) BUSCA BINÁRIA
+
+#########################################################################################
+* Cria uma lista de 20 números aleatórios de 0 a 50, imprime eles antes e depois de ser *
+* ordenados. Após isso, sorteia quatro números de 0 a 50 e procura na lista ordenada,   *
+* imprimindo se achou ou não na tela.                                                   *
+#########################################################################################
 
 /--Arquivo busca--/
 função buscar(x, vetor, n) // o vetor deve estar ordenado
@@ -566,12 +655,18 @@ programa teste_busca
         x = Random(0 a 50)
         posição = buscar(x, numeros, n)
         
-        se posição != -1)
+        se posição != -1
             imprima("O valor " + x + " está na posição " + posição + ".")
         senão
             imprima("O valor " + x + " não pertence à lista.")
 
 C) ESTATÍSTICA COMPLETA
+
+##########################################################################################
+* Lê o tamanho da amostra e logo em seguida os valores de seus dados. Imprime o conjunto *
+* de dados, a média, a mediana, a moda, o desvio padrão e um histograma com a frequência *
+* de cada valor e a quantidade deles.                                                    *
+##########################################################################################
 
 /--Arquivo estatística--/
 importa ordenar do arquivo ordenação
@@ -690,6 +785,10 @@ programa estatística
     imprima("total = " + amostra)
 
 C) LISTA
+
+######################################################################
+* Cria uma lista e imprime os resultados dos testes de suas funções. *
+######################################################################
 
 /--arquivo lista--/
 módulo lista
@@ -842,6 +941,10 @@ programa teste_lista
 
 D) PILHA
 
+######################################################################
+* Cria uma pilha e imprime os resultados dos testes de suas funções. *
+######################################################################
+
 /--arquivo pilha--/
 módulo pilha
     max = 100
@@ -923,6 +1026,10 @@ programa teste_pilha
     imprima(p_tamanho() + "\n") // 0
 
 E) FILA
+
+######################################################################
+* Cria uma pilha e imprime os resultados dos testes de suas funções. *
+######################################################################
 
 /--arquivo fila--/
 módulo fila
@@ -1006,6 +1113,10 @@ programa teste_fila
     imprima(f_tamanho() + "\n") // 0
 
 F) ÁRVORE
+
+########################################################################################
+* Cria uma árvore binária de busca e imprime os resultados dos testes de suas funções. *
+########################################################################################
 
 /--arquivo árvore--/
 módulo árvore
@@ -1188,6 +1299,11 @@ programa teste_árvore
 
 A) CRUD
 
+#######################################################################################
+* Implementa um programa que administra produtos de uma loja. Adiciona, lista, edita, *
+* remove, salva e carrega elementos na lista de produtos.                             *
+#######################################################################################
+
 /--Arquivo crud--/
 importa arquivo lista_crud
 
@@ -1243,7 +1359,7 @@ função adicionar()
         imprima("Insira o preço do produto: ")
         leia(preço)
         
-        aloca nó novo = {nome, preço, nulo}
+        aloca produto novo = {nome, preço, nulo}
 
         l_inserirEmOrdem(novo)
         
@@ -1314,17 +1430,17 @@ função salvar()
 módulo lista
     arquivo = arquivo composto de produto
 
-    registro nó
+    registro produto
         nome
         preço
-        nó próximo    
+        produto próximo    
 
-    nó cabeça
+    produto cabeça
 
     topo = 0
 
     função l_obter(posição)
-        nó elemento = cabeça
+        produto elemento = cabeça
 
         para i de 0 até (posição - 1) 
             elemento = elemento.próximo        
@@ -1332,14 +1448,14 @@ módulo lista
         retorna elemento
     
 
-    função l_inserir(nó novo, posição)
+    função l_inserir(produto novo, posição)
         se (posição >= 0) e (posição <= topo)
             se posição == 0
                 novo.próximo = cabeça
                 cabeça = novo
             senão
-                nó antecessor = l_obter(posição - 1)
-                nó sucessor = antecessor.próximo
+                produto antecessor = l_obter(posição - 1)
+                produto sucessor = antecessor.próximo
                 
                 antecessor.próximo = novo
                 novo.próximo = sucessor            
@@ -1354,16 +1470,16 @@ módulo lista
         se posição == 0
             cabeça = cabeça.proximo
         senão
-            nó antecessor = l_obter(posição - 1)
-            nó corrente = antecessor.próximo
-            nó sucessor = corrente.próximo
+            produto antecessor = l_obter(posição - 1)
+            produto corrente = antecessor.próximo
+            produto sucessor = corrente.próximo
             
             antecessor.próximo = sucessor        
         
         topo--    
 
-    função l_inserirEmOrdem(nó novo)
-        nó corrente = cabeça
+    função l_inserirEmOrdem(produto novo)
+        produto corrente = cabeça
         
         se topo == 0
             l_inserir(novo, 0)
@@ -1382,7 +1498,7 @@ módulo lista
     função l_imprimir()
         se topo > 0
             i = 1
-            nó corrente = cabeça
+            produto corrente = cabeça
 
             imprima("-------itens-------")
 
