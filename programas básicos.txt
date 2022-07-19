@@ -15,7 +15,7 @@ fimprograma
 3. ENTRADA E SAÍDA BÁSICA 
 4. TIPOS DE DADOS PRÉ-DEFINIDOS (inteiro, real)
 5. INSTRUÇÕES DE CONTROLE (if, if...else, for, while, do...while, switch, break, contadores e
-   sentinelas);
+   sentinelas)
 
 A) CALCULADORA
 
