@@ -89,3 +89,13 @@ function variancia(vetor, n) {
 	
 	return d2 / n;
 }
+
+function aleatorio(semente) {
+	const iteracao = semente.valor % 37;
+
+	for (var i = 0; i <= iteracao; i++) {
+		semente.valor = (314159265 * semente.valor + 13579) % Number.MAX_SAFE_INTEGER; 
+	}
+
+    return semente.valor / Number.MAX_SAFE_INTEGER;
+}

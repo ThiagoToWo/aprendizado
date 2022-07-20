@@ -1,0 +1,14 @@
+<script src="tokenizadora.js"></script>
+<script>
+    var texto = prompt("Insira um texto (máx. 128 palavras): ");
+    var separadores = prompt("Insira o(s) caractere(s) separadores: ");
+
+    var tokens = tokenizar(texto, separadores);
+
+    var i = 0;
+    
+    while (tokens[i] != null) {
+        document.write(i + ". " + tokens[i] + "<br>");
+        i++;
+    }
+</script>

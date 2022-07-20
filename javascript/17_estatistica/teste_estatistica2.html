@@ -1,0 +1,41 @@
+<script src="../14_ordenacao/ordenacao.js"></script>
+<script src="estatistica.js"></script>
+<script>
+var semente = {valor: new Date().getMilliseconds()}; // em JavaScript só de modifica por referência propriedades de objetos
+var amostra = Number(prompt("Insira o tamanho da amostra: "));
+var dados = new Array(amostra);
+
+for (var i = 0; i < amostra; i++) {
+	dados[i] = Math.floor(1 + aleatorio(semente) * 100);
+}
+
+document.write("Dados = ");
+
+for (var i = 0; i < amostra; i++) {
+	document.write(dados[i] + " ");
+}
+
+document.write("<br>");
+
+document.write("média = " + media(dados, amostra) + "<br>");
+document.write("mediana = " + mediana(dados, amostra) + "<br>"); // dados foram organizados
+document.write("moda = " + moda(dados, amostra) + "<br>");
+document.write("desvio padrão = " + Math.sqrt(variancia(dados, amostra)) + "<br>");
+document.write("<br>Histograma: <br>");
+
+var freq = frequencia(dados, amostra);
+
+for (var i = 0; i < amostra; i++) {
+	if (dados[i] != dados[i + 1]) {
+		document.write(dados[i] + ": ");
+	
+		for (var j = 0; j < freq[i]; j++) {
+			document.write("*");
+		}
+		
+		document.write(" " + freq[i] + "<br>");
+	}	
+}
+
+document.write("total = " + amostra);
+</script>

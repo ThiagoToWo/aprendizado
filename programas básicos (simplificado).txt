@@ -552,12 +552,65 @@ programa substring
 
 ==============================================================================================
 
-8. MÓDULOS E FUNÇÕES (funções definidas internamente e externamente, pesquisa e classificação)
+8. MÓDULOS E FUNÇÕES (funções definidas internamente e externamente, pesquisa e classificação,
+   passagem por valor e por referência, constantes e valores do sistema)
 9. IMPORTAÇÃO E LINKAGEM DE CÓDIGOS (módulos ou classes, linkagem de módulos, bibliotecas pessoais
    externas)
 10. REGISTROS (estruturas de dados, recursão, callbacks)
 
-A) ORDENAÇÃO BOLHA
+A) TOKENIZAR TEXTOS
+
+##########################################################################################
+* Lê um texto curto e uma sequência de caracteres para serem usados como separadores das *
+* palavras (tokens) do texto. A função tokenizar() do arquivo "tokenizadora" divide o    *
+* texto em tokens e imprime cada um em uma linha com sua respectiva posição na lista.    *
+##########################################################################################
+
+/--Arquivo tokenizadora--/
+função tokenizar(texto, separadores)
+    tokens = vetor[128] // permite 128 palavras
+    palavra = ""
+    achou = falso
+    posição = 0
+        
+    para i de 0 até texto.tamanho - 1
+        para j de 0 até separadores.tamanho - 1
+            se texto[i] == separadores[j] 
+               achou = verdadeiro
+               abandona
+        
+        se !achou
+            palavra += texto[i]
+        senão
+            tokens[posição] = palavra
+            posição++
+            palavra = ""
+            achou = falso
+
+    tokens[posição] = palavra
+        
+    retorna tokens
+
+/--Arquivo teste_tokens--/
+programa tokens
+    texto
+    separadores
+
+    imprima("Insira um texto (máx. 128 palavras): ")
+    leia(texto)
+
+    imprima("Insira o(s) caractere(s) separadores: ")
+    leia(separadores)
+
+    tokens = tokenizar(texto, separadores)
+
+    i = 0
+
+    enquanto tokens[i] != nulo
+        imprima(i + ". " + tokens[i] + "\n")
+        i++
+
+B) ORDENAÇÃO BOLHA
 
 ###########################################################################################
 * Cria uma lista com 20 números aleatórios de 0 a 100 e imprime ela antes e depois de ser *
@@ -596,7 +649,7 @@ programa teste_ordenação
     para i de 0 até (n - 1) 
         imprima(numeros[i] + " ")
 
-B) BUSCA BINÁRIA
+C) BUSCA BINÁRIA
 
 #########################################################################################
 * Cria uma lista de 20 números aleatórios de 0 a 50, imprime eles antes e depois de ser *
@@ -660,13 +713,7 @@ programa teste_busca
         senão
             imprima("O valor " + x + " não pertence à lista.")
 
-C) ESTATÍSTICA COMPLETA
-
-##########################################################################################
-* Lê o tamanho da amostra e logo em seguida os valores de seus dados. Imprime o conjunto *
-* de dados, a média, a mediana, a moda, o desvio padrão e um histograma com a frequência *
-* de cada valor e a quantidade deles.                                                    *
-##########################################################################################
+D) ESTATÍSTICA COMPLETA
 
 /--Arquivo estatística--/
 importa ordenar do arquivo ordenação
@@ -743,10 +790,24 @@ função variância(vetor, n)
     
     retorna d2 / n
 
-/--Arquivo teste_estatística--/
+função aleatório(&semente) // passagem por referência
+    iteração = semente mod 37
+
+    para i de 0 até iteração
+        semente = (314159265 * seed + 13579) % MAX_INT; // até o maior inteiro do sitema
+       
+    retorna semente / MAX_INT;
+
+##########################################################################################
+* Lê o tamanho da amostra e logo em seguida os valores de seus dados. Imprime o conjunto *
+* de dados, a média, a mediana, a moda, o desvio padrão e um histograma com a frequência *
+* de cada valor e a quantidade deles.                                                    *
+##########################################################################################
+
+/--Arquivo teste_estatística1--/
 importa arquivo estatística // importa todas as funções
 
-programa estatística
+programa estatística1
     amostra
     
     imprima("Insira o tamanho da amostra: ")
@@ -784,7 +845,55 @@ programa estatística
     
     imprima("total = " + amostra)
 
-C) LISTA
+###########################################################################################
+* Lê o tamanho da amostra e logo em seguida gera a amostra a partir de números aleatórios *
+* de 1 até 100, usando a função aleatório() do arquivo estatística. Imprime o conjunto    *
+* de dados, a média, a mediana, a moda, o desvio padrão e um histograma com a frequência  *
+* de cada valor e a quantidade deles.                                                     *
+###########################################################################################
+
+/--Arquivo teste_estatística2--/
+importa arquivo estatística // importa todas as funções
+
+programa estatística2
+    amostra
+    semente = tempo(); // função do sistema
+    
+    imprima("Insira o tamanho da amostra: ")
+    leia(amostra)
+    
+    dados = vetor[amostra]
+    
+    para i de 0 até (amostra - 1) 
+        dados[i] = inteiro(1 + aleatório(semente) * 100) // números aleatórios de 1 até 100 
+    
+    imprima("Dados = ")
+    
+    para i de 0 até (amostra - 1) 
+        imprima(dados[i] + " ")    
+    
+    imprima("\n")
+    
+    imprima("média = " + média(dados, amostra) + "\n")
+    imprima("mediana = " + mediana(dados, amostra) + "\n") // o vetor foi ordenado
+    imprima("moda = " + moda(dados, amostra) + "\n")
+    imprima("desvio padrão = " + raiz(variância(dados, amostra)) + "\n")
+    imprima("\nHistograma: \n")
+
+    freq = frequencia(dados, amostra)
+     i
+    para i de 0 até (amostra - 1) 
+        se dados[i] != dados[i + 1]
+            imprima(dados[i] + ": ")
+
+            para j de 0 até (freq[i] - 1) 
+                imprima("*")            
+            
+            imprima(" " + freq[i] + "\n")   
+    
+    imprima("total = " + amostra)
+
+E) LISTA
 
 ######################################################################
 * Cria uma lista e imprime os resultados dos testes de suas funções. *
@@ -939,7 +1048,7 @@ programa teste_lista
     l_imprimir() // A B C D E
     imprima(l_tamanho() + "\n") // 5
 
-D) PILHA
+F) PILHA
 
 ######################################################################
 * Cria uma pilha e imprime os resultados dos testes de suas funções. *
@@ -1025,7 +1134,7 @@ programa teste_pilha
     p_imprimir() //     
     imprima(p_tamanho() + "\n") // 0
 
-E) FILA
+G) FILA
 
 ######################################################################
 * Cria uma pilha e imprime os resultados dos testes de suas funções. *
@@ -1112,7 +1221,7 @@ programa teste_fila
     f_imprimir() //     
     imprima(f_tamanho() + "\n") // 0
 
-F) ÁRVORE
+H) ÁRVORE
 
 ########################################################################################
 * Cria uma árvore binária de busca e imprime os resultados dos testes de suas funções. *
