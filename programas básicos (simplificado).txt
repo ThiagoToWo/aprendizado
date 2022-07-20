@@ -24,9 +24,10 @@ programa olá_mundo
 A) CALCULADORA
 
 ############################################################################################
-* Lê dois números como entrada, calcula e imprime na tela a soma, a diferença, o produto,  *
-* o resultado da divisão; se um número é maior, igual ou menor que o outro e se o primeiro *
-* número está entre 0 e 10, está fora desses limites ou é um dos extremos.                 *
+* Lê dois números como entrada, calcula e imprime na tela a soma, a diferença, o produto e *
+* o resultado da divisão. Imprime se um número é maior, igual ou menor que o outro.        *
+* Imprime também se o primeiro número está entre 0 e 10, está fora desses limites ou é um  *
+* desses valores.                                                                          *
 ############################################################################################
 
 programa calculadora
@@ -114,9 +115,9 @@ programa bahskara
 
 D) MÉDIA
 
-#################################################################################
-* Lê 10 valores a partir do teclado e calcula a média deles  e imprime na tela. *
-#################################################################################
+###############################################################################
+* Lê 10 valores a partir do teclado, calcula a média deles e imprime na tela. *
+###############################################################################
 
 programa média1
     // calcula a média de 10 números reais
@@ -327,7 +328,7 @@ C) CRIVO DE ERATÓSTENES
 ###########################################################################################
 * Lê a partir do teclado o limite de teste e a amplitude de distribuição. Imprime os      *
 * primos do primeiro até o menor ou igual ao limite de teste. A impressão na tela é feita *
-* distribuindo em cada linha a quantidade de primos dentro da amplitude de distribuição.  *                                                                         *
+* distribuindo em cada linha a quantidade de primos dentro da amplitude de distribuição.  *
 ###########################################################################################
 
 programa crivo
@@ -359,12 +360,12 @@ programa crivo
 
 D) MANIPULAR TABELAS
 
-###########################################################################################
-* Lê a quantidade de linhas e colunas da tabela a ser criada e depois lê cada um dos      *
-* valores a serem inseridos na tabela. A tabela preenchida é impressa na tela e é         *
-* perguntado se quer operar sobre linha ou coluna e qual o número da linha ou coluna      *
-* escolhida. É impresso na tela então a soma dos elementos da linha ou coluna escolhida.  *
-###########################################################################################
+############################################################################################
+* Lê a quantidade de linhas e colunas da tabela a ser criada e depois lê cada um dos       *
+* valores a serem inseridos na tabela. A tabela preenchida é impressa na tela e perguntado *
+* se é para operar sobre uma linha ou uma coluna e depois qual o número da linha ou coluna *
+* escolhida. Então é impresso na tela a soma dos elementos da linha ou coluna escolhida.   *
+############################################################################################
 
 programa tabela
     num_linha
@@ -472,9 +473,9 @@ programa contagem
 F) ACHAR SUBSTRING
 
 #########################################################################################
-* Lê uma palavra e procura ela dentro de um texto predefinido no código. Caso encontre, *
-* coloca a primeira ocorrência dessa palavra no texto em letras maiúsculas e imprime em *
-* que posição se encontra a sua primeira letra (obs.: a primeira letra DO TEXTO está na *
+* Lê um subtexto e procura ele dentro de um texto predefinido no código. Caso encontre, *
+* coloca a primeira ocorrência desse subtexto em letras maiúsculas e imprime em que     *
+* posição se encontra a sua primeira letra (obs.: a primeira letra DO TEXTO está na     *   
 * posição 0). Caso não encontre, imprime um aviso.                                      *
 #########################################################################################
 
@@ -560,13 +561,13 @@ programa substring
 
 A) TOKENIZAR TEXTOS
 
-##########################################################################################
-* Lê um texto curto e uma sequência de caracteres para serem usados como separadores das *
-* palavras (tokens) do texto. A função tokenizar() do arquivo "tokenizadora" divide o    *
-* texto em tokens e imprime cada um em uma linha com sua respectiva posição na lista.    *
-##########################################################################################
+############################################################################################
+* Lê um texto curto e uma sequência de caracteres para serem usados como separadores das   *
+* suas palavras (tokens). A função tokenizar() do arquivo "tokenizador" divide o texto em  *
+* um vetor de tokens e imprime cada um em uma linha com sua respectiva posição na lista.   *
+############################################################################################
 
-/--Arquivo tokenizadora--/
+/--Arquivo tokenizador--/
 função tokenizar(texto, separadores)
     tokens = vetor[128] // permite 128 palavras
     palavra = ""
@@ -801,7 +802,7 @@ função aleatório(&semente) // passagem por referência
 ##########################################################################################
 * Lê o tamanho da amostra e logo em seguida os valores de seus dados. Imprime o conjunto *
 * de dados, a média, a mediana, a moda, o desvio padrão e um histograma com a frequência *
-* de cada valor e a quantidade deles.                                                    *
+* de cada valor e o tamanho da amostra.                                                  *
 ##########################################################################################
 
 /--Arquivo teste_estatística1--/
@@ -847,9 +848,9 @@ programa estatística1
 
 ###########################################################################################
 * Lê o tamanho da amostra e logo em seguida gera a amostra a partir de números aleatórios *
-* de 1 até 100, usando a função aleatório() do arquivo estatística. Imprime o conjunto    *
+* de 1 até 100, usando a função aleatório() do arquivo "estatística". Imprime o conjunto  *
 * de dados, a média, a mediana, a moda, o desvio padrão e um histograma com a frequência  *
-* de cada valor e a quantidade deles.                                                     *
+* de cada valor e o tamanho da amostra.                                                   *
 ###########################################################################################
 
 /--Arquivo teste_estatística2--/
