@@ -15,7 +15,8 @@ programa olá_mundo
 
 =============================================================================================
 
-2. OPERADORES (+, -, *, /, mod ou %, >, <, ==, !=, &&, ||, +=, ++, funções matemáticas)
+2. OPERADORES (+, -, *, /, % ou mod, >, <, ==, !=, && ou and, || ou or, +=, ++, funções 
+   matemáticas)
 3. ENTRADA E SAÍDA BÁSICA 
 4. TIPOS DE DADOS PRÉ-DEFINIDOS (inteiro, real)
 5. INSTRUÇÕES DE CONTROLE (if, if...else, for, while, do...while, switch, break, contadores e
@@ -240,7 +241,7 @@ A) MÁXIMO
 ################################################################################
 
 programa máximo
-    numeros = {5, -1, 3, 7, 4, 3, 18, -5}
+    numeros = [5, -1, 3, 7, 4, 3, 18, -5]
     max = numeros[0]
 
     para i de 0 até (numeros.tamanho - 1) 
@@ -259,18 +260,18 @@ B) LABIRINTO
 
 
 programa labirinto
-    mapa = {{'#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'},
-            {'#', '.', '.', '.', '#', '.', '.', '.', '.', '.', '.', '#'},
-            {'@', '.', '#', '.', '#', '.', '#', '#', '#', '#', '.', '#'},
-            {'#', '#', '#', '.', '#', '.', '.', '.', '.', '#', '.', '#'},
-            {'#', '.', '.', '.', '.', '#', '#', '#', '.', '#', '.', '.'},
-            {'#', '#', '#', '#', '.', '#', '.', '#', '.', '#', '.', '#'},
-            {'#', '.', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#'},
-            {'#', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#'},
-            {'#', '.', '.', '.', '.', '.', '.', '.', '.', '#', '.', '#'},
-            {'#', '#', '#', '#', '#', '#', '.', '#', '#', '#', '.', '#'},
-            {'#', '.', '.', '.', '.', '.', '.', '#', '.', '.', '.', '#'},
-            {'#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'}}
+    mapa = [['#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'],
+            ['#', '.', '.', '.', '#', '.', '.', '.', '.', '.', '.', '#'],
+            ['@', '.', '#', '.', '#', '.', '#', '#', '#', '#', '.', '#'],
+            ['#', '#', '#', '.', '#', '.', '.', '.', '.', '#', '.', '#'],
+            ['#', '.', '.', '.', '.', '#', '#', '#', '.', '#', '.', '.'],
+            ['#', '#', '#', '#', '.', '#', '.', '#', '.', '#', '.', '#'],
+            ['#', '.', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#'],
+            ['#', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#'],
+            ['#', '.', '.', '.', '.', '.', '.', '.', '.', '#', '.', '#'],
+            ['#', '#', '#', '#', '#', '#', '.', '#', '#', '#', '.', '#'],
+            ['#', '.', '.', '.', '.', '.', '.', '#', '.', '.', '.', '#'],
+            ['#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#']]
     linha = 2
     coluna = 0
     direção
@@ -340,7 +341,7 @@ programa crivo
     imprima("Insira a amplitude de distribuição ")
     leia(amplitude)
     
-    lógico primos = vetor[max + 1]
+    primos = vetor[0 ... max]
 
     primos[0] = falso
     primos[1] = falso
@@ -377,7 +378,7 @@ programa tabela
     imprima("Insira a quantidade de colunas da tabela: ")
     leia(num_coluna)
     
-    tabela = vetor[num_linha][num_coluna]
+    tabela = vetor[0 ... num_linha - 1][0 ... num_coluna - 1]
     
      para i de 0 até (num_linha - 1) 
         para j de 0 até (num_coluna - 1) 
@@ -445,7 +446,7 @@ programa contagem
     num_letras = 0
     tamanho = 0
     achou_letra
-    símbolos = {' ', ',', '.', '', ':', '!', '?', '(', ')'}
+    símbolos = [' ', ',', '.', '', ':', '!', '?', '(', ')']
     
     imprima("Insira um texto: ")
     leia(texto)
@@ -554,7 +555,7 @@ programa substring
 ==============================================================================================
 
 8. MÓDULOS E FUNÇÕES (funções definidas internamente e externamente, pesquisa e classificação,
-   passagem por valor e por referência, constantes e valores do sistema)
+   passagem por valor e por referência, constantes e valores do sistema, operador ! ou not)
 9. IMPORTAÇÃO E LINKAGEM DE CÓDIGOS (módulos ou classes, linkagem de módulos, bibliotecas pessoais
    externas)
 10. REGISTROS (estruturas de dados, recursão, callbacks)
@@ -569,7 +570,7 @@ A) TOKENIZAR TEXTOS
 
 /--Arquivo tokenizador--/
 função tokenizar(texto, separadores)
-    tokens = vetor[128] // permite 128 palavras
+    tokens = vetor[0 ... 127] // permite 128 palavras
     palavra = ""
     achou = falso
     posição = 0
@@ -580,7 +581,7 @@ função tokenizar(texto, separadores)
                achou = verdadeiro
                abandona
         
-        se !achou
+        se não achou
             palavra += texto[i]
         senão
             tokens[posição] = palavra
@@ -632,7 +633,7 @@ importa ordenar do arquivo ordenação
 
 programa teste_ordenação
     n = 20
-    numeros = vetor[n]
+    numeros = vetor[0 ... n - 1]
 
     para i de 0 até (n - 1) 
         numeros[i] = ramdom(0 a 100)
@@ -682,7 +683,7 @@ importa buscar do arquivo busca
 
 programa teste_busca
     n = 20
-    numeros = vetor[n]
+    numeros = vetor[0 ... n - 1]
 
     para i de 0 até (n - 1) 
         numeros[i] = ramdom(0 a 50)    
@@ -736,7 +737,7 @@ função mediana(vetor, n)
         retorna (vetor[n / 2 - 1] + vetor[n / 2]) / 2
 
 função frequência(vetor, n)
-    f = vetor[n]
+    f = vetor[0 ... n - 1]
 
     para i de 0 até (n - 2) 
         para j de i + 1 até (n - 1) 
@@ -814,7 +815,7 @@ programa estatística1
     imprima("Insira o tamanho da amostra: ")
     leia(amostra)
     
-    dados = vetor[amostra]
+    dados = vetor[0 ... amostra - 1]
     
     para i de 0 até (amostra - 1) 
         imprima("Insira o " + (i + 1) + "o dado: ")
@@ -863,7 +864,7 @@ programa estatística2
     imprima("Insira o tamanho da amostra: ")
     leia(amostra)
     
-    dados = vetor[amostra]
+    dados = vetor[0 ... amostra - 1]
     
     para i de 0 até (amostra - 1) 
         dados[i] = inteiro(1 + aleatório(semente) * 100) // números aleatórios de 1 até 100 
@@ -911,7 +912,7 @@ módulo lista
     topo = 0
 
     função l_empilhar(valor)
-        aloca nó novo = {valor, nulo}
+        nó novo = {valor, nulo}
 
         se topo == 0
             cabeça = novo
@@ -927,7 +928,7 @@ módulo lista
 
     função l_inserir(valor, posição)
         se (posição >= 0) e (posição <= topo)
-            aloca nó novo = {valor, nulo}
+            nó novo = {valor, nulo}
 
             se posição == 0
                 novo.próximo = cabeça
@@ -1058,7 +1059,7 @@ F) PILHA
 /--arquivo pilha--/
 módulo pilha
     max = 100
-    pilha = vetor[max]
+    pilha = vetor[0 ... max - 1]
     topo = -1
 
     função p_empilhar(valor)
@@ -1066,7 +1067,7 @@ módulo pilha
     
         se topo == max então,
             max = max * 2
-            temp = vetor[max]
+            temp = vetor[0 ... max - 1]
 
             para i de 0 até (max - 1) 
                 temp[i] = pilha[i]            
@@ -1144,14 +1145,14 @@ G) FILA
 /--arquivo fila--/
 módulo fila
     max = 100
-    fila = vetor[max]
+    fila = vetor[0 ... max - 1]
     fim = 0
     início = 0
 
     função f_inserir(valor)
         se fim == max então,
             max = max * 2
-            temp = vetor[max]
+            temp = vetor[0 ... max - 1]
 
             para i de início até (max - 1) 
                 temp[i] = fila[i]            
@@ -1264,7 +1265,7 @@ módulo árvore
     // funções utilitárias recursivas
     função inserirNó(nó subraiz, valor)
         se subraiz == nulo
-            aloca nó novo = {valor, nulo, nulo}
+            nó novo = {valor, nulo, nulo}
             retorna novo        
         senão se valor < subraiz.dado
             subraiz.esquerdo = inserirNó(subraiz.esquerdo, valor)
@@ -1469,7 +1470,7 @@ função adicionar()
         imprima("Insira o preço do produto: ")
         leia(preço)
         
-        aloca produto novo = {nome, preço, nulo}
+        produto novo = {nome, preço, nulo}
 
         l_inserirEmOrdem(novo)
         
@@ -1626,8 +1627,8 @@ módulo lista
 
     função l_carregar()
         abra(arquivo) para leitura
-        copie(arquivo, topo)
-        copie(arquivo, produto)
+        topo = copie(arquivo, topo)
+        cabeça = copie(arquivo, cabeça)
         feche(arquivo)        
 
 ==============================================================================================
