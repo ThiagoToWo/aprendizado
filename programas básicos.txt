@@ -448,7 +448,7 @@ programa contagem
     num_letras = 0
     tamanho = 0
     achou_letra
-    símbolos = [' ', ',', '.', '', ':', '!', '?', '(', ')']
+    símbolos = [' ', ',', '.', ';', ':', '!', '?', '(', ')']
     
     imprima("Insira um texto: ")
     leia(texto)
