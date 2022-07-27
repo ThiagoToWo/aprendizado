@@ -21,7 +21,7 @@ programa olá_mundo
 =< C. ENTRADA E SAÍDA BÁSICA                                                                   >= 
 =< D. TIPOS DE DADOS PRÉ-DEFINIDOS (inteiro, real)                                             >=
 =< E. INSTRUÇÕES DE CONTROLE (if, if...else, for, while, do...while, switch, break, contadores >=
-=<    e sentinelas)                                                                            >=
+=<    e sentinelas, loops infinitos)                                                                            >=
 =================================================================================================
 
 2) CALCULADORA
@@ -144,10 +144,12 @@ programa média2
     total = 0
     valor
 
+    leia(valor)
+
     enquanto valor != -1
-        leia(valor)
         total = total + valor
         n = n + 1
+        leia(valor)
     
     imprima("a média é " + total / n)
 
@@ -170,9 +172,9 @@ programa adivinhe
         leia(palpite)
     
         se palpite > random
-            imprima("Tente um maior")            
+            imprima("Tente um menor\n")            
         senão se palpite < random
-            imprima("Tente um menor")
+            imprima("Tente um maior\n")
         senão
             imprima("Acertou.\nForam " + tentativas + " tentativas")
             abandone
@@ -196,6 +198,9 @@ programa classificação
     faça
         imprima("Insira a nota de 0 a 100 (sair = -1): ")
         leia(nota)
+
+        se nota == -1
+            abandone
     
         escolha (inteiro(nota / 10))
             caso 10:
@@ -221,7 +226,7 @@ programa classificação
                 abandone
             caso contrário:
                 imprima("Valor fora dos limites.")                       
-    enquanto nota != -1
+    enquanto verdadeiro
     
     imprima("Perfeito (100): " + A + "\n")
     imprima("Bom (70 a 99): " + B + "\n")
