@@ -1,0 +1,3 @@
+compilar: gcc fonte.c -o nome_executavel 
+		(cria o arquivo executável nome_executavel) 
+Executar: .\nome_executavel
