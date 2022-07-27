@@ -4,10 +4,6 @@ var nota;
 
 do {
 	nota = Number(prompt("Insira a nota de 0 a 100 (sair = -1):"));
-
-	if (nota == -1) {
-		break;
-	}
 	
 	switch (Math.floor(nota / 10)) {
 		case 10:
@@ -34,7 +30,7 @@ do {
 		default:
 			alert("Valor fora dos limites.");
 	}
-} while (true);
+} while (nota != -1);
 
 document.write("Perfeito (100):" + A + "<br>");
 document.write("Bom (70 a 99): " + B + "<br>");

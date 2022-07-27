@@ -21,7 +21,7 @@ programa olá_mundo
 =< C. ENTRADA E SAÍDA BÁSICA                                                                   >= 
 =< D. TIPOS DE DADOS PRÉ-DEFINIDOS (inteiro, real)                                             >=
 =< E. INSTRUÇÕES DE CONTROLE (if, if...else, for, while, do...while, switch, break, contadores >=
-=<    e sentinelas, loops infinitos)                                                                            >=
+=<    e sentinelas)                                                                            >=
 =================================================================================================
 
 2) CALCULADORA
@@ -198,11 +198,8 @@ programa classificação
     faça
         imprima("Insira a nota de 0 a 100 (sair = -1): ")
         leia(nota)
-
-        se nota == -1
-            abandone
     
-        escolha (inteiro(nota / 10))
+        escolha (chão(nota / 10))
             caso 10:
                 A = A + 1
                 abandone
@@ -225,8 +222,8 @@ programa classificação
                 E = E + 1
                 abandone
             caso contrário:
-                imprima("Valor fora dos limites.")                       
-    enquanto verdadeiro
+                imprima("Valor fora dos limites.\n")                       
+    enquanto nota != -1
     
     imprima("Perfeito (100): " + A + "\n")
     imprima("Bom (70 a 99): " + B + "\n")
@@ -874,7 +871,7 @@ programa estatística2
     dados = vetor[0 ... amostra - 1]
     
     para i de 0 até (amostra - 1) 
-        dados[i] = inteiro(1 + aleatório(semente) * 100) // números aleatórios de 1 até 100 
+        dados[i] = chão(1 + aleatório(semente) * 100) // números aleatórios de 1 até 100 
     
     imprima("Dados = ")
     

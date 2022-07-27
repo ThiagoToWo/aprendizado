@@ -1,18 +1,16 @@
 #include <stdio.h>
+#include <math.h>
 
 void main() {
     int A, B, C, D, E;
     A = B = C = D = E = 0;
-    int nota;
+    double nota;
 
     do {
         printf("Insira a nota de 0 a 100 (sair = -1): ");
-        scanf("%d", &nota);
+        scanf("%lf", &nota);
 
-        if (nota < 0 && nota > -10) // pois dado -10 < nota < -1, nota/10 = 0, contando em E. 
-            break; 
-
-        switch (nota / 10) { // divisão de inteiros é inteiro
+        switch ((int) floor(nota / 10)) { 
             case 10: A++; break;
             case 9:
             case 8:
