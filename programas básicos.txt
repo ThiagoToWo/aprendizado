@@ -298,33 +298,34 @@ programa labirinto
                     coluna = coluna - 1
                     mapa[linha][coluna] = '@'                
                 
-                abandona
+                abandone
             caso 8: // cima
                 se (linha - 1) >= 0 e mapa[linha - 1][coluna] == '.'
                     mapa[linha][coluna] = '.'
                     linha = linha - 1
                     mapa[linha][coluna] = '@'                
                 
-                abandona
+                abandone
             caso 6: // direita
                 se (coluna + 1) < mapa[linha].tamanho e mapa[linha][coluna + 1] == '.'
                     mapa[linha][coluna] = '.'
                     coluna = coluna + 1
                     mapa[linha][coluna] = '@'                
                 
-                abandona
+                abandone
             caso 2: // baixo
                 se (linha + 1) < mapa.tamanho e mapa[linha + 1][coluna] == '.'
                     mapa[linha][coluna] = '.'
                     linha = linha + 1
                     mapa[linha][coluna] = '@'                
                 
-                abandona
+                abandone
             caso contrário:
                 se direção == 0
-                    imprima("Fechando o jogo.")                
+                    imprima("Fechando o jogo.")
+                    abandone                
                 
-                imprima("Valor inválido.")       
+                imprima("Valor inválido.\n")       
     enquanto direção != 0    
 
 
@@ -465,7 +466,7 @@ programa contagem
         para j de 0 até (símbolos.tamanho - 1) 
             se texto[i] == símbolos[j]
                 achou_letra = falso
-                abandona        
+                abandone        
         
         se achou_letra
             num_letras++        
@@ -540,10 +541,10 @@ programa substring
             para i de 0 até (s - 1) 
                 se texto[posição + i] != subtexto[i]
                     achou = falso
-                    abandona               
+                    abandone               
 
             se achou
-                abandona    
+                abandone    
     
     se posição == t
         imprima("Subtexto não encontrado")
@@ -583,7 +584,7 @@ função tokenizar(texto, separadores)
         para j de 0 até separadores.tamanho - 1
             se texto[i] == separadores[j] 
                achou = verdadeiro
-               abandona
+               abandone
         
         se não achou
             palavra += texto[i]
@@ -995,7 +996,7 @@ módulo lista
         i = 0
         para i de 0 até (topo - 1) 
             se valor < corrente.dado
-                abandona            
+                abandone            
             
             corrente = corrente.próximo        
         
@@ -1607,7 +1608,7 @@ módulo lista
         i = 0
         para i de 0 até (topo - 1) 
             se novo.nome < corrente.nome
-                abandona            
+                abandone            
             
             corrente = corrente.próximo        
         
