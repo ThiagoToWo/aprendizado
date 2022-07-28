@@ -361,8 +361,9 @@ programa crivo
     para i de 2 até max 
         se primos[i]
             imprima(i + " ")
-        senão se i mod amplitude == 0
-                imprima("\n")
+        
+        se i mod amplitude == 0
+            imprima("\n")
 
 11) MANIPULAR TABELAS
 
@@ -391,7 +392,10 @@ programa tabela
             leia(tabela[i][j])
             mostra = mostra + tabela[i][[j] + " "        
         
-        mostra = mostra + "\n"    
+        mostra = mostra + "\n"  
+
+    opção
+
     faça
         valores
         
@@ -433,7 +437,6 @@ programa tabela
             imprima("Opção inválida")        
         
         imprima("Deseja sair? (s/n)")
-        opção
         leia(opção)
     enquanto opção != 's' e opção != 'S'
 
