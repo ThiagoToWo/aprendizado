@@ -414,9 +414,9 @@ programa tabela
                 para i de 0 até (num_coluna - 1) 
                     total = total + tabela[linha][i]                
                 
-                imprima("O total da linha " + i + " é " + total)
+                imprima("O total da linha " + linha + " é " + total + "\n")
             senão
-                imprima("Valor fora dos limites")
+                imprima("Valor fora dos limites\n")
             
         senão se valores == 2
             coluna
@@ -429,12 +429,12 @@ programa tabela
                 para i de 0 até (num_linha - 1) 
                     total = total + tabela[i][coluna]                
                 
-                imprima("O total da coluna " + i + " é " + total)
+                imprima("O total da coluna " + coluna + " é " + total + "\n")
             senão
-                imprima("Valor fora dos limites")
+                imprima("Valor fora dos limites\n")
             
         senão
-            imprima("Opção inválida")        
+            imprima("Opção inválida\n")        
         
         imprima("Deseja sair? (s/n)")
         leia(opção)
