@@ -671,6 +671,7 @@ programa teste_ordenação
 função buscar(x, vetor, n) // o vetor deve estar ordenado
     min = 0
     max = n - 1
+    med
     
     enquanto min <= max
         med = chão[(max + min) / 2]
