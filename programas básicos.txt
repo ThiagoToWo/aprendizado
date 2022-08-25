@@ -460,6 +460,7 @@ programa contagem
     leia(texto)
     
     i = 0
+    
     enquanto texto[i] != nulo
         achou_letra = verdadeiro
         
@@ -561,8 +562,8 @@ programa substring
         imprima(texto)    
 
 =================================================================================================
-=< H. MÓDULOS E FUNÇÕES (funções definidas externamente, pesquisa e classificação, passagem    >=
-=<    por valor e por referência, constantes e valores do sistema, operador ! ou not)          >=
+=< H. MÓDULOS E FUNÇÕES (funções definidas interna e externamente, pesquisa e classificação,   >=
+=<    passagem por valor e por referência, constantes e valores do sistema, operador ! ou not) >=
 =< I. IMPORTAÇÃO E LINKAGEM DE CÓDIGOS (módulos ou classes, linkagem de módulos, bibliotecas   >=
 =<    pessoais externas)                                                                       >=
 =< J. REGISTROS (estruturas de dados, recursão, callbacks)                                     >=
@@ -576,7 +577,7 @@ programa substring
 * um vetor de tokens e imprime cada um em uma linha com sua respectiva posição na lista.   
 */
 
-/--Arquivo tokenizador--/
+/--Arquivo tokens--/
 função tokenizar(texto, separadores)
     tokens = vetor[0 ... 127] // permite 128 palavras
     palavra = ""
@@ -600,8 +601,7 @@ função tokenizar(texto, separadores)
     tokens[posição] = palavra
         
     retorna tokens
-
-/--Arquivo teste_tokens--/
+    
 programa tokens
     texto
     separadores
