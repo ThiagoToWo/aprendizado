@@ -3,8 +3,6 @@
 #include <time.h>
 #include "ordenacao.h"
 
-void ordenar(int[], int);
-
 void main() {
     srand(time(NULL));
     int n = 20;
