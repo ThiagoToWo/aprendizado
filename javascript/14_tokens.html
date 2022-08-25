@@ -1,0 +1,42 @@
+<script>
+    function tokenizar(texto, separadores) {
+        var tokens = new Array(128);
+        var palavra = "";
+        var achou = false;
+        var posicao = 0;
+
+        for (var i = 0; i < texto.length; i++) {
+            for (var j = 0; j < separadores.length; j++) {
+                if (texto[i] == separadores[j]) {
+                    achou = true;
+                    break;
+                }
+            }
+
+            if (!achou) {
+                palavra += texto[i];
+            } else {
+                tokens[posicao] = palavra;
+                posicao++;
+                palavra = "";
+                achou = false;
+            }
+        }
+
+        tokens[posicao] = palavra;
+
+        return tokens;
+    }
+    
+    var texto = prompt("Insira um texto (máx. 128 palavras): ");
+    var separadores = prompt("Insira o(s) caractere(s) separadores: ");
+
+    var tokens = tokenizar(texto, separadores);
+
+    var i = 0;
+
+    while (tokens[i] != null) {
+        document.write(i + ". " + tokens[i] + "<br>");
+        i++;
+    }
+</script>
