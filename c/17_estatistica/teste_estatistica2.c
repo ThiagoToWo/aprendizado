@@ -1,8 +1,8 @@
-#include <stdio.h>
+#include <stdio.h> // printf(), scanf()
 #include <time.h> // time()
 #include <math.h> // sqrt()
-#include "estatistica.h"
-// gcc estatistica.h teste_estatistica1.c -o teste_estatistica1
+#include "estatistica.h" // media(), mediana(), moda(), variancia(), frequencia(), aleatorio()
+// gcc estatistica.h teste_estatistica2.c -o teste_estatistica2
 
 void main() {
     int amostra;

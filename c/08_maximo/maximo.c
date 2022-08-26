@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h> // printf()
 
 void main() {
     int numeros[8] = {5, -1, 3, 7, 4, 3, 18, -5};

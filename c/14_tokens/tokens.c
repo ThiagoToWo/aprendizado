@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#include <stdio.h> // printf(), gets()
+#include <string.h> // strlen(), strcpy()
 
 void tokenizar(char texto[], char separadores[], char tokens[][20]) {    
     char palavra[20];

@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <math.h>
+#include <stdio.h> // printf(), scanf()
+#include <math.h> // floor()
 
 void main() {
     int A, B, C, D, E;

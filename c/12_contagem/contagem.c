@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#include <stdio.h> // printf(), gets()
+#include <string.h> // strlen()
 
 void main() {
     char texto[256]; // texto de 255 letras

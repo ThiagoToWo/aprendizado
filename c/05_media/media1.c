@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h> // printf(), scanf()
 
 void main() {
     float total = 0;

@@ -1,8 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include "busca.h"
-#include "../15_ordenacao/ordenacao.h" 
+#include <stdio.h> // printf()
+#include <stdlib.h> // srand(), rand()
+#include <time.h> // time()
+#include "busca.h" // buscar()
+#include "../15_ordenacao/ordenacao.h" // ordenar()
 // gcc busca.h ../15_ordenacao/ordenacao.h teste_busca.c -o teste_busca
 
 void main() {

@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <math.h>
+#include <stdio.h> // printf(), scanf()
+#include <math.h> // sqrt()
 
 void main() {
     double a, b, c, d, x1, x2;

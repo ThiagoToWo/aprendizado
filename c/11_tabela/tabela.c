@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#include <stdio.h> // printf(), scanf()
+#include <string.h> // sprintf(), strcat()
 
 void main() {
     int num_linha;

@@ -1,7 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include "ordenacao.h"
+#include <stdio.h> // printf()
+#include <stdlib.h> // srand(), rand()
+#include <time.h> // time()
+#include "ordenacao.h" // ordenar()
 
 void main() {
     srand(time(NULL));

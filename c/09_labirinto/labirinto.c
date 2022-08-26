@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h> // printf(), scanf()
 #define LINHA_TAMANHO  12
 #define COLUNA_TAMANHO  12
 

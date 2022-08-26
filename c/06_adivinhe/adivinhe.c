@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include <stdio.h> // printf(), scanf()
+#include <stdlib.h> // srand(), rand()
+#include <time.h> // time()
 
 void  main() {
     srand(time(NULL));
