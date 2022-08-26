@@ -782,13 +782,14 @@ função mínimo(vetor, n)
     retorna min
 
 função moda(vetor, n)
-    freq = frequencia(vetor) // vetor de frequências
-    max = máximo(freq) // o maior valor
+    freq = frequencia(vetor, n) // vetor de frequências
+    max = máximo(freq, n) // o maior valor
     moda
 
     para i de 0 até (n - 1) 
         se freq[i] == max
-            moda = vetor[i]        
+            moda = vetor[i] 
+            abandone;       
     
     retorna moda
 
@@ -841,10 +842,10 @@ programa estatística1
     imprima("mediana = " + mediana(dados, amostra) + "\n") // o vetor foi ordenado
     imprima("moda = " + moda(dados, amostra) + "\n")
     imprima("desvio padrão = " + raiz(variância(dados, amostra)) + "\n")
-    imprima("\nHistograma: \n")
+    imprima("\nHistograma:\n")
 
     freq = frequencia(dados, amostra)
-     i
+    
     para i de 0 até (amostra - 1) 
         se dados[i] != dados[i + 1]
             imprima(dados[i] + ": ")
@@ -876,7 +877,7 @@ programa estatística2
     dados = vetor[0 ... amostra - 1]
     
     para i de 0 até (amostra - 1) 
-        dados[i] = chão(1 + aleatório(semente) * 100) // números aleatórios de 1 até 100 
+        dados[i] = chão(1 + aleatório(&semente) * 100) // números aleatórios de 1 até 100 
     
     imprima("Dados = ")
     
@@ -892,7 +893,7 @@ programa estatística2
     imprima("\nHistograma: \n")
 
     freq = frequencia(dados, amostra)
-     i
+    
     para i de 0 até (amostra - 1) 
         se dados[i] != dados[i + 1]
             imprima(dados[i] + ": ")

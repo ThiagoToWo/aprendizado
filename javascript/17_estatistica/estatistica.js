@@ -73,6 +73,7 @@ function moda(vetor, n) {
 	for (var i = 0; i < n; i++) {
 		if (freq[i] == max) {
 			moda = vetor[i];
+			break;
 		}
 	}
 	
