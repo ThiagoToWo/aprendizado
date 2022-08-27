@@ -20,6 +20,16 @@ const lista = (function() {
 		topo++;
 	}
 	
+	function obter(posicao) {
+		var elemento = cabeca;
+		
+		for (var i = 0; i < posicao; i++) {
+			elemento = elemento.proximo;
+		}
+		
+		return elemento;
+	}
+	
 	function inserir(valor, posicao) {
 		if (posicao >=0 && posicao <= topo) {
 			var novo = {dado: valor, proximo: null};
@@ -55,16 +65,6 @@ const lista = (function() {
 		}
 		
 		topo--;
-	}
-	
-	function obter(posicao) {
-		var elemento = cabeca;
-		
-		for (var i = 0; i < posicao; i++) {
-			elemento = elemento.proximo;
-		}
-		
-		return elemento;
 	}
 	
 	function imprimir() {

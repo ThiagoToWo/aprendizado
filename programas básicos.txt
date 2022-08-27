@@ -936,6 +936,14 @@ módulo lista
 
         topo++    
 
+    função l_obter(posição)
+        nó elemento = cabeça
+
+        para i de 0 até (posição - 1) 
+            elemento = elemento.próximo        
+
+        retorna elemento
+
     função l_inserir(valor, posição)
         se (posição >= 0) e (posição <= topo)
             nó novo = {valor, nulo}
@@ -967,16 +975,6 @@ módulo lista
         
         topo--    
 
-    função l_obter(posição)
-        nó elemento = cabeça
-
-        i = 0
-        para i de 0 até (posição - 1) 
-            elemento = elemento.próximo        
-
-        retorna elemento
-    
-
     função l_imprimir()
         se topo > 0
             nó corrente = cabeça
@@ -999,7 +997,7 @@ módulo lista
             retorna        
         
         i = 0
-        para i de 0 até (topo - 1) 
+        para i até (topo - 1) 
             se valor < corrente.dado
                 abandone            
             
@@ -1059,6 +1057,7 @@ programa teste_lista
     l_inserirEmOrdem("E")
     l_imprimir() // A B C D E
     imprima(l_tamanho() + "\n") // 5
+    
     imprima("O valor do elemento na posição 0 é " + l_obter(0).dado + "\n") // A
     imprima("O valor do elemento na posição 2 é " + l_obter(2).dado + "\n") // C
     imprima("O valor do elemento na posição 4 é " + l_obter(4).dado + "\n") // E
