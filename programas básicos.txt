@@ -1308,10 +1308,10 @@ módulo árvore
     função pesquisarNó(nó subraiz, valor)
         se subraiz == nulo
             retorna falso
-        senão se valor > subraiz.dado
-            retorna pesquisarNó(subraiz.direito, valor)
         senão se valor < subraiz.dado
             retorna pesquisarNó(subraiz.esquerdo, valor)
+        senão se valor > subraiz.dado
+            retorna pesquisarNó(subraiz.direito, valor)
         senão
             retorna verdadeiro    
     

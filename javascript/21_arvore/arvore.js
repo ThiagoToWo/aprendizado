@@ -71,10 +71,10 @@ const arvore = function() {
 	function pesquisarNo(subraiz, valor) {
 		if (subraiz == null) {
 			return false;			
+		} else if (valor < subraiz.dado) {
+			return pesquisarNo(subraiz.esquerdo, valor);			
 		} else if (valor > subraiz.dado) {
 			return pesquisarNo(subraiz.direito, valor);
-		} else if (valor < subraiz.dado) {
-			return pesquisarNo(subraiz.esquerdo, valor);
 		} else {
 			return true;
 		}
