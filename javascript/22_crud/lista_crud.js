@@ -1,63 +1,65 @@
-const lista = (function () {
-	var cabeca = {};
-	var topo = 0;
+function Lista() { 
+	this.cabeca = {};
+	this.topo = 0;
+}
 
-	function obter(posicao) {
-		var elemento = cabeca;
+Lista.prototype =  {
+	obter: function(posicao) {
+		var elemento = this.cabeca;
 
 		for (var i = 0; i < posicao; i++) {
 			elemento = elemento.proximo;
 		}
 
 		return elemento;
-	}
+	},
 
-	function inserir(/*{nome, preco, proximo: null}*/novo, posicao) {
-		if (posicao >= 0 && posicao <= topo) {
+	inserir: function(/*{nome, preco, proximo: null}*/novo, posicao) {
+		if (posicao >= 0 && posicao <= this.topo) {
 			if (posicao == 0) {
-				novo.proximo = cabeca;
-				cabeca = novo;
+				novo.proximo = this.cabeca;
+				this.cabeca = novo;
 			} else {
-				var antecessor = obter(posicao - 1);
+				var antecessor = this.obter(posicao - 1);
 				var sucessor = antecessor.proximo;
 
 				antecessor.proximo = novo;
 				novo.proximo = sucessor;
 			}
 
-			topo++;
+			this.topo++;
 
 			return true;
 		}
 
 		return false;
-	}
+	},
 
-	function remover(posicao) {
+	remover: function(posicao) {
 		if (posicao == 0) {
-			cabeca = cabeca.proximo;
+			this.cabeca = this.cabeca.proximo;
 		} else {
-			var antecessor = obter(posicao - 1);
+			var antecessor = this.obter(posicao - 1);
 			var corrente = antecessor.proximo;
 			var sucessor = corrente.proximo;
 
 			antecessor.proximo = sucessor;
 		}
 
-		topo--;
-	}
+		this.topo--;
+	},
 
-	function inserirEmOrdem(novo) {
-		var corrente = cabeca;
+	inserirEmOrdem: function(novo) {
+		var corrente = this.cabeca;
 
-		if (topo == 0) {
-			inserir(novo, 0);
+		if (this.topo == 0) {
+			this.inserir(novo, 0);
 			return;
 		}
 
 		var i = 0;
 
-		for (; i < topo; i++) {
+		for (; i < this.topo; i++) {
 			if (novo.nome < corrente.nome) {
 				break;
 			}
@@ -65,13 +67,13 @@ const lista = (function () {
 			corrente = corrente.proximo;
 		}
 
-		inserir(novo, i);
-	}
+		this.inserir(novo, i);
+	},
 
-	function imprimir() {
-		if (topo > 0) {
+	imprimir: function() {
+		if (this.topo > 0) {
 			var i = 1;
-			var corrente = cabeca;
+			var corrente = this.cabeca;
 
 			console.log("-------itens-------");
 
@@ -79,27 +81,18 @@ const lista = (function () {
 				console.log(i + ". " + corrente.nome + ": " + corrente.preco);
 				corrente = corrente.proximo;
 				i++;
-			} while (corrente.proximo != null);
+			} while (corrente != null);
 		}
-	}
+	},
 
-	function salvar() {
-		var dados = {tamanho: topo, produtos: cabeca}
+	salvar: function() {
+		var dados = {tamanho: this.topo, produtos: this.cabeca}
 		localStorage.setItem("dadosDoCrudAprendizado", JSON.stringify(dados));
-	}
+	},
 
-	function carregar() {
+	carregar: function() {
 		var dados = JSON.parse(localStorage.getItem("dadosDoCrudAprendizado"));	
-		topo = dados.tamanho;	
-		cabeca = dados.produtos;
+		this.topo = dados.tamanho;	
+		this.cabeca = dados.produtos;
 	}
-
-	return {
-		remover: remover,
-		obter: obter,
-		imprimir: imprimir,
-		inserirEmOrdem: inserirEmOrdem,
-		salvar: salvar,
-		carregar: carregar
-	}
-}()); 
+}
