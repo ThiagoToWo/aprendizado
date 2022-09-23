@@ -1,13 +1,16 @@
 <script src="lista_crud.js"></script>
 <script>
+var lista;
 crud();
 
 function crud() {
+    lista = new Lista();
+
     do {
         var opcao = Number(prompt("Escolha uma opcao:\n"
-        + "\t1 - Adicionar" + "\t5 - Carregar\n"
-        + "\t2 - Listar" + "\t6 - Salvar\n"
-        + "\t3 - Editar" + "\t7 - Sair\n"
+        + "\t1 - Adicionar\t5 - Carregar\n"
+        + "\t2 - Listar\t6 - Salvar\n"
+        + "\t3 - Editar\t7 - Sair\n"
         + "\t4 - Remover\n\n"
         + "Sua escolha: "));
 
@@ -29,6 +32,8 @@ function crud() {
                 break; 
             case 6:
                 salvar();
+                break;
+            case 7:
                 break;        
             default:
                 alert("Valor inválido");
@@ -54,11 +59,21 @@ function listar() {
 }
 
 function editar() {
-    do {
-        var indice = Number(prompt("Insira o índice do produto a ser editado: "));
+    var opcao = "s";
 
-        var atributo = Number(prompt("\nInsira o indice do atributo a ser editado\n"
-            + "\t1 - nome\t2 - preço\n"
+    do {
+        var indice = Number(prompt("Insira o índice do produto a ser editado (voltar = -1): "));
+        
+        if (indice == -1) {
+            break;
+        }
+
+        if (indice < -1 || indice > lista.topo) {
+            continue;
+        }
+
+        var atributo = Number(prompt("\nInsira o numero do atributo a ser editado\n"
+            + "\t1 - nome\t2 - preço\n\t3 - menu inicial\n\n"
             + "Sua escolha: "));       
 
         switch (atributo) {
@@ -70,25 +85,33 @@ function editar() {
                 var novo_preco = Number(prompt("Digite o novo preço: "));
                 lista.obter(indice - 1).preco = novo_preco;
                 break;
+            case 3:
+                return;
             default:
                 alert("Valor inválido");
         }
-
-        var opcao = prompt("Deseja editar outro produto?(s/n) ");
+        
+        opcao = prompt("Deseja editar outro produto?(s/n) ");
     } while (opcao == "s" || opcao == "S");
 }
 
 function remover() {
+    var opcao = "s";
+
     do {
-        var indice = Number(prompt("Insira o índice do produto a ser excluído (sair = -1): "));
+        var indice = Number(prompt("Insira o índice do produto a ser excluído (voltar = -1): "));
 
         if (indice == -1) {
             break;
         }
 
+        if (indice < -1 || indice > lista.topo) {
+            continue;
+        }
+
         lista.remover(indice - 1);
 
-        var opcao = prompt("Deseja excluir outro produto?(s/n) ");
+        opcao = prompt("Deseja excluir outro produto?(s/n) ");
     } while (opcao == "s" || opcao == "S");
 }
 
