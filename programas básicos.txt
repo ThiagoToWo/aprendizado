@@ -1417,7 +1417,8 @@ programa teste_árvore
     a_emOrdem(metade) // 1 3 4 5 9 13
 
 =================================================================================================
-=< K. PROCESSAMENTO DE ARQUIVOS (persistência de dados, manipulação de arquivos)               >= 
+=< K. PROCESSAMENTO DE ARQUIVOS (persistência de dados, manipulação de arquivos, comando       >=
+=< continue)                                                                                   >= 
 =================================================================================================
 
 22) CRUD
@@ -1442,9 +1443,9 @@ programa CRUD
 
     faça        
         imprima("Escolha uma opcao:\n"
-                + "\t1 - Adicionar" + "\t5 - Carregar\n"
-                + "\t2 - Listar" + "\t6 - Salvar\n"
-                + "\t3 - Editar" + "\t7 - Sair\n"
+                + "\t1 - Adicionar\t5 - Carregar\n"
+                + "\t2 - Listar\t6 - Salvar\n"
+                + "\t3 - Editar\t7 - Sair\n"
                 + "\t4 - Remover\n\n"             
                 + "Sua escolha: ")
         
@@ -1468,7 +1469,9 @@ programa CRUD
                 abandone
             caso 6:
                 salvar()
-                abandone                
+                abandone  
+            caso 7:
+                abandone              
             caso contrário:
                 imprima("valor inválido")       
     enquanto opção != 7
@@ -1497,7 +1500,7 @@ função listar()
     l_imprimir()
 
 função editar()
-    opção
+    opção = "s"
 
     faça
         índice
@@ -1505,10 +1508,16 @@ função editar()
         novo_nome
         novo_preço
         
-        imprima("Insira o índice do produto a ser editado: ")
+        imprima("Insira o índice do produto a ser editado (voltar = -1): ")
         leia(índice)
+
+        se indice == -1
+            abandone
+        if (indice < -1 || indice > topo) 
+            continue
+
         imprima("\nInsira o indice do atributo a ser editado\n"
-                + "\t1 - nome\t2 - preço\n"
+                + "\t1 - nome\t2 - preço\n\t3 - menu inicial\n\n"
                 + "Sua escolha: ")
         leia(atributo)
         
@@ -1517,11 +1526,13 @@ função editar()
                 imprima("Digite o novo nome: ")
                 leia(novo_nome)
                 l_obter(índice - 1).nome = novo_nome
-                anabdone
+                abandone
             caso 2:
                 imprima("Digite o novo preço: ")
                 leia(novo_preço)
                 l_obter(índice - 1).preço = novo_preço
+                abandone
+            caso 3:
                 abandone
             caso contrário:
                 imprima("valor inválido")       
@@ -1531,16 +1542,18 @@ função editar()
     enquanto opção == "s" ou opção == "S"
 
 função remover()
-    opção
+    opção = "s"
 
     faça
         índice
         
-        imprima("Insira o índice do produto a ser excluído (sair = -1): ")
+        imprima("Insira o índice do produto a ser excluído (voltar = -1): ")
         leia(índice)
 
-        se índice == -1
-            abandone        
+        se indice == -1
+            abandone
+        if (indice < -1 || indice > topo) 
+            continue       
         
         l_remover(índice - 1)
         
@@ -1564,7 +1577,6 @@ módulo lista
         produto próximo    
 
     produto cabeça
-
     topo = 0
 
     função l_obter(posição)
@@ -1614,7 +1626,7 @@ módulo lista
             retorna        
         
         i = 0
-        para i de 0 até (topo - 1) 
+        para i até (topo - 1) 
             se novo.nome < corrente.nome
                 abandone            
             
@@ -1628,13 +1640,13 @@ módulo lista
             i = 1
             produto corrente = cabeça
 
-            imprima("-------itens-------")
+            imprima("-------itens-------\n")
 
             faça           
                 imprima(i + ". " + corrente.nome + ": " + corrente.preco + "\n")
                 corrente = corrente.próximo
                 i++
-            enquanto corrente.proximo != nulo    
+            enquanto corrente != nulo    
 
     função l_salvar()
         abra(arquivo) para gravação
