@@ -1513,7 +1513,7 @@ função editar()
 
         se indice == -1
             abandone
-        if (indice < -1 || indice > topo) 
+        se (indice < -1 || indice > topo) 
             continue
 
         imprima("Insira o número do atributo a ser editado\n"
@@ -1533,7 +1533,7 @@ função editar()
                 l_obter(índice - 1).preço = novo_preço
                 abandone
             caso 3:
-                abandone
+                return
             caso contrário:
                 imprima("valor inválido")       
         
@@ -1552,7 +1552,7 @@ função remover()
 
         se indice == -1
             abandone
-        if (indice < -1 || indice > topo) 
+        se (indice < -1 || indice > topo) 
             continue       
         
         l_remover(índice - 1)
