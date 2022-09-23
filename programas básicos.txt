@@ -1516,7 +1516,7 @@ função editar()
         if (indice < -1 || indice > topo) 
             continue
 
-        imprima("\nInsira o indice do atributo a ser editado\n"
+        imprima("Insira o número do atributo a ser editado\n"
                 + "\t1 - nome\t2 - preço\n\t3 - menu inicial\n\n"
                 + "Sua escolha: ")
         leia(atributo)
