@@ -21,8 +21,7 @@ void main() {
             "\t4 - Remover\n\n"             
             "Sua escolha: ");
 
-        scanf("%d", &opcao);
-        setbuf(stdin, NULL);
+        scanf("%d%*c", &opcao);        
 
         switch (opcao) {
             case 1: adicionar(); break;
@@ -47,8 +46,7 @@ void adicionar() {
         printf("Insira o nome do produto: ");
         gets(nome);
         printf("Insira o preco do produto: ");
-        scanf("%f", &preco);
-        setbuf(stdin, NULL);
+        scanf("%f%*c", &preco);        
 
         struct produto* novo = malloc(sizeof(struct produto));
         strcpy(novo->nome, nome);
@@ -58,8 +56,7 @@ void adicionar() {
         l_inserirEmOrdem(novo);
 
         printf("Deseja incluir outro produto?(s/n) ");
-        scanf("%c", &opcao);
-        setbuf(stdin, NULL);
+        scanf("%c%*c", &opcao);        
     } while (opcao == 's' || opcao == 'S');
 }
 
@@ -77,17 +74,15 @@ void editar() {
         float novo_preco;
 
         printf("Insira o indice do produto a ser editado (voltar = -1): ");
-        scanf("%d", &indice);
-        setbuf(stdin, NULL);
+        scanf("%d%*c", &indice);        
 
         if (indice == -1) break;
         if (indice < -1 || indice > topo) continue;
 
-        printf("\nInsira o indice do atributo a ser editado\n"
+        printf("Insira o numero do atributo a ser editado\n"
             "\t1 - nome\t2 - preco\n\t3 - menu inicial\n\n"
             "Sua escolha: ");
-        scanf("%d", &atributo);
-        setbuf(stdin, NULL);
+        scanf("%d%*c", &atributo);        
 
         switch (atributo) {
             case 1:
@@ -97,8 +92,7 @@ void editar() {
                 break;
             case 2:
                 printf("Digite o novo preco: ");
-                scanf("%f", &novo_preco);
-                setbuf(stdin, NULL);
+                scanf("%f%*c", &novo_preco);                
                 l_obter(indice - 1)->preco = novo_preco;
                 break;
             case 3: return;
@@ -106,8 +100,7 @@ void editar() {
         }
 
         printf("Deseja editar outro produto?(s/n) ");
-        scanf("%c", &opcao);
-        setbuf(stdin, NULL);
+        scanf("%c%*c", &opcao);        
     } while (opcao == 's' || opcao == 'S');
 }
 
@@ -118,8 +111,7 @@ void remover() {
         int indice;
 
         printf("Insira o indice dom produto a ser exclido (voltar = -1): ");
-        scanf("%d", &indice);
-        setbuf(stdin, NULL);
+        scanf("%d%*c", &indice);        
 
         if (indice == -1) break;
         if (indice < -1 || indice > topo) continue;
@@ -127,8 +119,7 @@ void remover() {
         l_remover(indice - 1);
 
         printf("Deseja excluir outro produto?(s/n) ");
-        scanf("%c", &opcao);
-        setbuf(stdin, NULL);
+        scanf("%c%*c", &opcao);        
     } while (opcao == 's' || opcao == 'S');
 }
 

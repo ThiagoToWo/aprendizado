@@ -52,8 +52,9 @@ void l_remover(int posicao) {
         struct produto* sucessor = corrente->proximo;
 
         antecessor->proximo = sucessor;
+        free(corrente);
     }
-
+    
     topo--;
 }
 
@@ -122,6 +123,14 @@ void l_carregar() {
         printf("Erro na abertura do arquivo\n");
     } else {
         struct produto* corrente;
+
+        while(cabeca) { // limpa a memória usada atualmente par a lista
+            corrente = cabeca->proximo;
+            free(corrente);
+            cabeca = corrente;
+        }
+
+        // reinicia
         cabeca = NULL;
         topo = 0;
         

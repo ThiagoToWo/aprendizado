@@ -34,14 +34,15 @@ void main() {
 
         printf("%s", mostra);
         printf("Deseja operar sobre linha (1) ou coluna (2)? ");
-        scanf("%d", &valores);
+        // usando caractere de supressão de atribuição %*c para limpar o buffer de scanf
+        scanf("%d%*c", &valores);
         
         if (valores == 1) {
             int linha;
             int total = 0;
 
             printf("Escolha a linha de 0 ate %d: ", num_linha - 1);
-            scanf("%d", &linha);
+            scanf("%d%*c", &linha);
 
             if (linha >= 0 && linha < num_linha) {
                 for (int i = 0; i < num_coluna; i++) {
@@ -57,7 +58,7 @@ void main() {
             int total = 0;
 
             printf("Escolha a coluna de 0 ate %d: ", num_coluna - 1);
-            scanf("%d", &coluna);
+            scanf("%d%*c", &coluna);
 
             if (coluna >= 0 && coluna < num_coluna) {
                 for (int i = 0; i < num_linha; i++) {
@@ -73,6 +74,6 @@ void main() {
         }
         
         printf("Deseja sair? (s/n) ");        
-        scanf(" %c", &opcao); // coloca espaço antes em " %c" para limpar o buffer das outras chamadas de scanf
+        scanf("%c%*c", &opcao); 
     } while (opcao != 's' && opcao != 'S');    
 }
