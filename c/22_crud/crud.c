@@ -31,7 +31,7 @@ void main() {
             case 5: carregar(); break;
             case 6: salvar(); break;
             case 7: break;
-            default: printf("Valor inválido");
+            default: printf("Valor invalido\n");
         }
     } while (opcao != 7);
 }
@@ -73,11 +73,11 @@ void editar() {
         char novo_nome[20];
         float novo_preco;
 
-        printf("Insira o indice do produto a ser editado (voltar = -1): ");
+        printf("Insira o indice do produto a ser editado (voltar = 0): ");
         scanf("%d%*c", &indice);        
 
-        if (indice == -1) break;
-        if (indice < -1 || indice > topo) continue;
+        if (indice == 0) break;
+        if (indice < 0 || indice > topo) continue;
 
         printf("Insira o numero do atributo a ser editado\n"
             "\t1 - nome\t2 - preco\n\t3 - menu inicial\n\n"
@@ -96,7 +96,7 @@ void editar() {
                 l_obter(indice - 1)->preco = novo_preco;
                 break;
             case 3: return;
-            default: printf("Valor inválido");
+            default: printf("Valor invalido\n");
         }
 
         printf("Deseja editar outro produto?(s/n) ");
@@ -110,11 +110,11 @@ void remover() {
     do {
         int indice;
 
-        printf("Insira o indice dom produto a ser exclido (voltar = -1): ");
+        printf("Insira o indice dom produto a ser exclido (voltar = 0): ");
         scanf("%d%*c", &indice);        
 
-        if (indice == -1) break;
-        if (indice < -1 || indice > topo) continue;
+        if (indice == 0) break;
+        if (indice < 0 || indice > topo) continue;
 
         l_remover(indice - 1);
 

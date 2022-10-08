@@ -1473,7 +1473,7 @@ programa CRUD
             caso 7:
                 abandone              
             caso contrário:
-                imprima("valor inválido")       
+                imprima("valor inválido\n")       
     enquanto opção != 7
     
 função adicionar()
@@ -1508,12 +1508,12 @@ função editar()
         novo_nome
         novo_preço
         
-        imprima("Insira o índice do produto a ser editado (voltar = -1): ")
+        imprima("Insira o índice do produto a ser editado (voltar = 0): ")
         leia(índice)
 
-        se indice == -1
+        se indice == 0
             abandone
-        se (indice < -1 || indice > topo) 
+        se (indice < 0 || indice > topo) 
             continue
 
         imprima("Insira o número do atributo a ser editado\n"
@@ -1535,7 +1535,7 @@ função editar()
             caso 3:
                 return
             caso contrário:
-                imprima("valor inválido")       
+                imprima("valor inválido\n")       
         
         imprima("Deseja editar outro produto?(s/n) ")
         leia(opção)
@@ -1547,12 +1547,12 @@ função remover()
     faça
         índice
         
-        imprima("Insira o índice do produto a ser excluído (voltar = -1): ")
+        imprima("Insira o índice do produto a ser excluído (voltar = 0): ")
         leia(índice)
 
-        se indice == -1
+        se indice == 0
             abandone
-        se (indice < -1 || indice > topo) 
+        se (indice < 0 || indice > topo) 
             continue       
         
         l_remover(índice - 1)

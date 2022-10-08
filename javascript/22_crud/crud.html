@@ -62,13 +62,13 @@ function editar() {
     var opcao = "s";
 
     do {
-        var indice = Number(prompt("Insira o índice do produto a ser editado (voltar = -1): "));
+        var indice = Number(prompt("Insira o índice do produto a ser editado (voltar = 0): "));
         
-        if (indice == -1) {
+        if (indice == 0) {
             break;
         }
 
-        if (indice < -1 || indice > lista.topo) {
+        if (indice < 0 || indice > lista.topo) {
             continue;
         }
 
@@ -99,13 +99,13 @@ function remover() {
     var opcao = "s";
 
     do {
-        var indice = Number(prompt("Insira o índice do produto a ser excluído (voltar = -1): "));
+        var indice = Number(prompt("Insira o índice do produto a ser excluído (voltar = 0): "));
 
-        if (indice == -1) {
+        if (indice == 0) {
             break;
         }
 
-        if (indice < -1 || indice > lista.topo) {
+        if (indice < 0 || indice > lista.topo) {
             continue;
         }
 
