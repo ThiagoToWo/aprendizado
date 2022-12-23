@@ -168,7 +168,7 @@ programa adivinhe
     tentativas = 1
     
     faça
-        imprima("Dê seu palpite (sair = -1)")
+        imprima("Dê seu palpite (sair = -1): ")
         leia(palpite)
     
         se palpite > random
@@ -262,7 +262,6 @@ programa máximo
 * qualquer momento digitando 0.                                                           
 */
 
-
 programa labirinto
     mapa = [['#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'],
             ['#', '.', '.', '.', '#', '.', '.', '.', '.', '.', '.', '#'],
@@ -327,7 +326,6 @@ programa labirinto
                 
                 imprima("Valor inválido.\n")       
     enquanto direção != 0    
-
 
 10) CRIVO DE ERATÓSTENES
 
@@ -439,7 +437,6 @@ programa tabela
         imprima("Deseja sair? (s/n)")
         leia(opção)
     enquanto opção != 's' e opção != 'S'
-
 
 12) CONTAGEM EM TEXTOS
 
