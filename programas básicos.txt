@@ -339,9 +339,9 @@ programa crivo
     max
     amplitude
 
-    imprima("Insira o limite de teste ")
+    imprima("Insira o limite de teste: ")
     leia(max)
-    imprima("Insira a amplitude de distribuição ")
+    imprima("Insira a amplitude de distribuição: ")
     leia(amplitude)
     
     primos = vetor[0..max]
