@@ -2,7 +2,7 @@
 
 
 =================================================================================================
-=< A. CONCEITOS BÁSICOS                                                                        >=
+=< A. CONCEITOS BÁSICOS  (impressão, variável, entrada e saída, função simples)                >=
 =================================================================================================
 
 1) PROGRAMA MÍNIMO
@@ -14,6 +14,38 @@
 programa olá_mundo
     // este programa imprime uma saudação
     imprima("olá, mundo!")
+
+/*
+* Imprime uma saudação usando uma variável para o nome
+*/
+
+programa olá_mundo2
+	nome = "Thiago"
+	imprima("Olá, " + nome)
+
+/*
+* Imprime uma saudação usando obtendo o nome por uma entrada
+*/
+
+programa olá_mundo3
+	nome
+	imprima("Digite seu nome: ")
+	leia(nome)
+	imprima("Olá, " + nome)
+
+/*
+* Imprime uma saudação usando uma função
+*/
+
+função cumprimentar(pessoa)
+	imprima("Olá, " + pessoa)
+
+programa olá_mundo4
+	nome
+	imprima("Digite seu nome: ")
+	leia(nome)
+	cumprimentar(nome)
+	
 
 =================================================================================================
 =< B. OPERADORES (+, -, *, /, % ou mod, >, <, ==, !=, && ou and, || ou or, +=, ++, funções     >= 
