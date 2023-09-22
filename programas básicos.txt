@@ -142,7 +142,7 @@ programa bahskara
             imprima("x1 = x2 = " + x1)
         senão se d > 0
             x1 = (-b + raiz(d)) / (2 * a)
-            x1 = (-b - raiz(d)) / (2 * a)
+            x2 = (-b - raiz(d)) / (2 * a)
             imprima("x1 = " + x1 + "\n")
             imprima("x2 = " + x2 + "\n")
         senão 
