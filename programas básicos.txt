@@ -420,7 +420,7 @@ programa tabela
         para j de 0 até (num_coluna - 1) 
             imprima("tabela[" + i + "][" + j + "] = ")
             leia(tabela[i][j])
-            mostra = mostra + tabela[i][[j] + " "        
+            mostra = mostra + tabela[i][j] + " "        
         
         mostra = mostra + "\n"  
 
@@ -466,7 +466,7 @@ programa tabela
         senão
             imprima("Opção inválida\n")        
         
-        imprima("Deseja sair? (s/n)")
+        imprima("Deseja sair?(s/n) ")
         leia(opção)
     enquanto opção != 's' e opção != 'S'
 
