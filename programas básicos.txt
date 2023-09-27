@@ -571,7 +571,7 @@ programa substring
         se texto[posição] == subtexto[0]
             achou = verdadeiro
 
-            para i de 0 até (s - 1) 
+            para i de 1 até (s - 1) 
                 se texto[posição + i] != subtexto[i]
                     achou = falso
                     abandone               

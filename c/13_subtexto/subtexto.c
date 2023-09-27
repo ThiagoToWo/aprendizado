@@ -54,7 +54,7 @@ void main() {
         if (texto[posicao] == subtexto[0]) {
             achou = 1;
 
-            for (int i = 0; i < s; i++) {
+            for (int i = 1; i < s; i++) {
                 if (texto[posicao + i] != subtexto[i]) {
                     achou = 0;
                     break;
