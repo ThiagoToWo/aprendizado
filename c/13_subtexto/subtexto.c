@@ -41,7 +41,6 @@ void main() {
             "prazeres maiores ou tolera dores para evitar dores piores.";
     char subtexto[100]; // ate 99 caracteres
     int posicao = 0;
-    int achou;
 
     printf("%s\n", texto);
     printf("Insira o subtexto a ser localizado: ");
@@ -52,7 +51,7 @@ void main() {
 
     for (; posicao < t; posicao++) {
         if (texto[posicao] == subtexto[0]) {
-            achou = 1;
+            int achou = 1; // escopo interno ao if acima
 
             for (int i = 1; i < s; i++) {
                 if (texto[posicao + i] != subtexto[i]) {

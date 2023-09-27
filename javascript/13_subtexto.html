@@ -37,7 +37,6 @@ var texto = "Mas devo explicar-lhe como nasceu toda essa idéia " +
 		    "seleção: rejeita os prazeres para assegurar outros " +
 		    "prazeres maiores ou tolera dores para evitar dores piores.";
 var posicao = 0; // global
-var achou = false; // global
 
 alert(texto);
 var subtexto = prompt("Insira o subtexto a ser pesquisado:");
@@ -47,7 +46,7 @@ var s = subtexto.length;
 
 for (; posicao < t; posicao++) {
 	if (texto[posicao] == subtexto[0]) {
-		achou = true;
+		var achou = true; // escopo interno ao if acima
 
 		for (var i = 1; i < s; i++) {
 			if (texto[posicao + i] != subtexto[i]) {

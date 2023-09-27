@@ -37,7 +37,6 @@ texto = """Mas devo explicar-lhe como nasceu toda essa idéia
         prazeres maiores ou tolera dores para evitar dores piores."""
 
 posicao = 0 # variável global
-achou = False
 
 print(texto)
 subtexto = input("Insira o subtexto a ser localizado: ")
@@ -47,7 +46,7 @@ s = len(subtexto)
 
 while posicao < t: # tem que ser while, por a variável em for é local
     if texto[posicao] == subtexto[0]:
-        achou = True
+        achou = True # escopo interno ao if acima
 
         for i in range(1, s):
             if texto[posicao + i] != subtexto[i]:

@@ -558,7 +558,6 @@ programa substring
             "prazeres maiores ou tolera dores para evitar dores piores."
     subtexto    
     posição = 0 // global
-    achou // global
     
     imprima(texto + "\n")
     imprima("Insira o subtexto a ser localizado: ")
@@ -569,7 +568,7 @@ programa substring
     
     para posição até (t - 1)  // para sem definição de variável
         se texto[posição] == subtexto[0]
-            achou = verdadeiro
+            achou = verdadeiro // escopo interno ao if acima
 
             para i de 1 até (s - 1) 
                 se texto[posição + i] != subtexto[i]
