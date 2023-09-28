@@ -44,7 +44,9 @@ subtexto = input("Insira o subtexto a ser localizado: ")
 t = len(texto)
 s = len(subtexto)
 
-while posicao < t: # tem que ser while, por a variável em for é local
+# Tem que ser while, pois a variável em for é local.
+# Não existe for sem definição de variável (usando uma global)
+while posicao < t:
     if texto[posicao] == subtexto[0]:
         achou = True # escopo interno ao if acima
 
