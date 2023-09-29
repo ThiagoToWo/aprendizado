@@ -1,4 +1,4 @@
-import math # math.floor()
+from math import floor
 
 A = B = C = D = E = 0
 
@@ -6,7 +6,7 @@ nota = int(input("Insira a nota de 0 a 100 (sair = -1): "))
 
 while nota != -1:
     # não existe switch em Python
-    n = math.floor(nota / 10)
+    n = floor(nota / 10)
     
     if n == 10:
         A += 1
