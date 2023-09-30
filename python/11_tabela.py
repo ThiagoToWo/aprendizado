@@ -2,13 +2,12 @@ num_linha = int(input("Insira a quantidade de linhas da tabela: "))
 num_coluna = int(input("Insira a quantidade de colunas da tabela: "))
 mostra = ""
 
-tabela = []
+tabela = [0]*num_linha
 
 for i in range(num_linha):
-    tabela.append([])
+    tabela[i] = [0]*num_coluna
     for j in range(num_coluna):
-        valor = int(input("tabela[" + str(i) + "][" + str(j) + "] = "))
-        tabela[i].append(valor)
+        tabela[i][j] = int(input("tabela[" + str(i) + "][" + str(j) + "] = "))
         mostra += str(tabela[i][j]) + " "
     mostra += "\n"  
 
