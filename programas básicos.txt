@@ -834,7 +834,7 @@ função aleatório(&semente) // passagem por referência
     iteração = semente mod 37
 
     para i de 0 até iteração
-        semente = (314159265 * seed + 13579) % MAX_INT; // até o maior inteiro do sitema
+        semente = (314159265 * semente + 13579) % MAX_INT; // até o maior inteiro do sitema
        
     retorna semente / MAX_INT;
 
