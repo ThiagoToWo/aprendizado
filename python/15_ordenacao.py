@@ -1,5 +1,5 @@
 from random import randrange
-from modulos.ordenacao import ordenar
+from _modulos.ordenacao import ordenar
 
 n = 20
 numeros = [0]*n

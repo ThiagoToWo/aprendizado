@@ -1,6 +1,6 @@
 from random import randrange
-from modulos.ordenacao import ordenar
-from modulos.busca import buscar
+from _modulos.ordenacao import ordenar
+from _modulos.busca import buscar
 
 n = 20
 numeros = [0]*n
