@@ -10,7 +10,7 @@ const pilha = (function() {
 			max *= 2;
 			var temp = new Array(max);
 			
-			for (var i = 0; i < max; i++) {
+			for (var i = 0; i < max / 2; i++) {
 				temp[i] = pilha[i];
 			}
 			
