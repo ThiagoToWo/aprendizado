@@ -9,12 +9,12 @@ const fila = function() {
 			max *= 2;
 			var temp = new Array(max);
 			
-			for (var i = 0; i < max; i++) {
-				temp[i] = fila[i];
+			for (var i = inicio; i < max / 2; i++) {
+				temp[i - inicio] = fila[i];
 			}
 			
 			fila = temp;
-			
+			inicio = 0
 			fila[fim] = valor;
 		} else {
 			fila[fim] = valor;

@@ -1,6 +1,6 @@
 class Pilha:
     def __init__(self):
-        self.max = 100
+        self.max = 1
         self.pilha = [None]*self.max
         self.topo = -1
 

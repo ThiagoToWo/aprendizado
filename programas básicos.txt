@@ -1194,20 +1194,20 @@ módulo fila
             max = max * 2
             temp = vetor[0..max - 1]
 
-            para i de início até (max - 1) 
-                temp[i] = fila[i]            
+            para i de início até (max / 2 - 1) 
+                temp[i - início] = fila[i]            
 
             fila = temp
-
+            inicio = 0
             fila[fim] = valor
         senão
             fila[fim] = valor      
         
-        fim++    
+        fim++ 
 
     função f_remover()
         se fim == início
-            iprima("Fila vazia\n")
+            imprima("Fila vazia\n")
         senão
             elemento = fila[início]
             início++
