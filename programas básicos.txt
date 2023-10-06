@@ -1528,7 +1528,7 @@ função listar()
     l_imprimir()
 
 função editar()
-    opção = "s"
+    opção
 
     faça
         índice
@@ -1570,7 +1570,7 @@ função editar()
     enquanto opção == "s" ou opção == "S"
 
 função remover()
-    opção = "s"
+    opção
 
     faça
         índice

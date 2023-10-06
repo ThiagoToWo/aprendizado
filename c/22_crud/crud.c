@@ -65,7 +65,7 @@ void listar() {
 }
 
 void editar() {
-    char opcao = 's';
+    char opcao;
 
     do {        
         int indice;
@@ -105,7 +105,7 @@ void editar() {
 }
 
 void remover() {
-    char opcao = 's';
+    char opcao;
 
     do {
         int indice;
