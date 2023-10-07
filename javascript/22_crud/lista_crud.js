@@ -58,7 +58,6 @@ Lista.prototype =  {
 		}
 
 		var i = 0;
-
 		for (; i < this.topo; i++) {
 			if (novo.nome < corrente.nome) {
 				break;
