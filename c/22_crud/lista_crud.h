@@ -10,7 +10,7 @@ struct produto {
     struct produto* proximo;
 };
 
-struct produto* cabeca;
+struct produto* cabeca = NULL;
 int topo = 0;
 
 struct produto* l_obter(int posicao) {

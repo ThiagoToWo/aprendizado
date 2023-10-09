@@ -1,5 +1,5 @@
 const lista = (function() {
-	var cabeca = {};
+	var cabeca = null;
 	var topo = 0;
 	
 	function empilhar(valor) {

@@ -7,7 +7,7 @@ struct no {
     struct no* proximo;
 };
 
-struct no* cabeca;
+struct no* cabeca = NULL;
 
 int topo = 0;
 

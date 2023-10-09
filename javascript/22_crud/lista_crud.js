@@ -1,5 +1,5 @@
 function Lista() { 
-	this.cabeca; // ponteiro undefined para o início da lista
+	this.cabeca = null; // ponteiro null para o início da lista
 	this.topo = 0;
 }
 
