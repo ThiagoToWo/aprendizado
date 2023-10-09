@@ -6,7 +6,7 @@ class no:
 
 class Lista:    
     def __init__(self):
-        self.cabeca = no
+        self.cabeca = None
         self.topo = 0
 
     def empilhar(self, valor):
