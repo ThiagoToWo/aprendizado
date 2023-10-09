@@ -945,8 +945,7 @@ módulo lista
         dado
         nó próximo    
 
-    nó cabeça
-
+    nó cabeça = nulo
     topo = 0
 
     função l_empilhar(valor)
@@ -1276,7 +1275,7 @@ módulo árvore
         nó direito
         nó esquerdo    
     
-    nó raiz
+    nó raiz = nulo
     
     função a_inserir(valor)
         raiz = inserirNó(raiz, valor)    
@@ -1604,7 +1603,7 @@ módulo lista
         preço
         produto próximo    
 
-    produto cabeça
+    produto cabeça = nulo
     topo = 0
 
     função l_obter(posição)
