@@ -3,32 +3,59 @@
 rem apague a marcação de comentário (rem) para compilar o código
 
 rem gcc 01_ola_mundo/ola_mundo1.c -o 01_ola_mundo/ola_mundo1
+rem pause
 rem gcc 01_ola_mundo/ola_mundo2.c -o 01_ola_mundo/ola_mundo2
+rem pause
 rem gcc 01_ola_mundo/ola_mundo3.c -o 01_ola_mundo/ola_mundo3
+rem pause
 rem gcc 01_ola_mundo/ola_mundo4.c -o 01_ola_mundo/ola_mundo4
+rem pause
 rem gcc 02_calculadora/calculadora.c -o 02_calculadora/calculadora
+rem pause
 rem gcc 03_bissexto/bissexto.c -o 03_bissexto/bissexto
+rem pause
 rem gcc 04_bahskara/bahskara.c -o 04_bahskara/bahskara
+rem pause
 rem gcc 05_media/media1.c -o 05_media/media1
+rem pause
 rem gcc 05_media/media2.c -o 05_media/media2
+rem pause
 rem gcc 06_adivinhe/adivinhe.c -o 06_adivinhe/adivinhe
+rem pause
 rem gcc 07_classificacao/classificacao.c -o 07_classificacao/classificacao
+rem pause
 rem gcc 08_maximo/maximo.c -o 08_maximo/maximo
+rem pause
 rem gcc 09_labirinto/labirinto.c -o 09_labirinto/labirinto
+rem pause
 rem gcc 10_eratostenes/eratostenes.c -o 10_eratostenes/eratostenes
-rem gcc 11_tebela/tebela.c -o 11_tebela/tebela
+rem pause
+rem gcc 11_tabela/tabela.c -o 11_tabela/tabela
+rem pause
 rem gcc 12_contagem/contagem.c -o 12_contagem/contagem
+rem pause
 rem gcc 13_subtexto/subtexto.c -o 13_subtexto/subtexto
+rem pause
 rem gcc 14_tokens/tokens.c -o 14_tokens/tokens
+rem pause
 rem gcc 15_ordenacao/ordenacao.h 15_ordenacao/teste_ordenacao.c -o 15_ordenacao/teste_ordenacao
+rem pause
 rem gcc 16_busca/busca.h 16_busca/teste_busca.c -o 16_busca/teste_busca
+rem pause
 rem gcc 17_estatistica/estatistica.h 17_estatistica/teste_estatistica1.c -o 17_estatistica/teste_estatistica1
+rem pause
 rem gcc 17_estatistica/estatistica.h 17_estatistica/teste_estatistica2.c -o 17_estatistica/teste_estatistica2
+rem pause
 rem gcc 18_lista/lista.h 18_lista/teste_lista.c -o 18_lista/teste_lista
+rem pause
 rem gcc 19_pilha/pilha.h 19_pilha/teste_pilha.c -o 19_pilha/teste_pilha
+rem pause
 rem gcc 20_fila/fila.h 20_fila/teste_fila.c -o 20_fila/teste_fila
+rem pause
 rem gcc 21_arvore/arvore.h 21_arvore/teste_arvore.c -o 21_arvore/teste_arvore
+rem pause
 rem gcc 22_crud/lista_crud.h 22_crud/crud.c -o 22_crud/crud
+rem pause
 
 rem apague a marcação de comentário (rem) e o trecho "../" após cd para executar o código
 
