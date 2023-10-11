@@ -23,5 +23,4 @@ void  main() {
 
         tentativas++;
     } while (palpite != -1);
-    
 }
