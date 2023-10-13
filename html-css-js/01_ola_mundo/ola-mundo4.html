@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olá Mundo 4</title>
+    <style>        
+        body {            
+            background: #ccc;
+        }
+        #todo {
+            width: 100vw;
+            height: 100vh;
+            max-width: 300px;
+            min-width: 200px;
+            max-height: 600px;
+            min-height: 400px;
+            margin: 0 auto;
+            padding: 0 0 0 10px;
+            border: solid 2px #000;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!--Todo conteúdo dentro de uma div, para que ele
+        possa ser manipulado todo de uma vez-->
+    <div id="todo">
+        <h1>Olá Mundo 4</h1>
+        <form>
+            <p>
+                Digite seu nome: <input type="text" id="nome" autofocus required>
+            </p>
+            <input type="submit" value="Cumprimentar">
+            <!--h3 para insersão do texto de saída-->
+            <h3></h3>
+        </form>
+        <script>
+            // captura os elementos HTML
+            const form = document.querySelector("form");
+            const saida = document.querySelector("h3")
+
+            // processamento do formulário
+            form.addEventListener("submit", (e) => {
+                // previne o recarregamento padrão da página após um submit
+                e.preventDefault();
+
+                // obtém o nome
+                const nome = form.nome.value;
+                // processa com a função cumprimentar
+                cumprimentar(nome, saida);
+            });
+
+            /*
+            função que tem como entrada um nome e um elemento HTML e
+            imprime s saudação a este nome no texto interno do elemento
+            */
+            function cumprimentar(pessoa, elementSaida) {
+                elementSaida.innerText = "Olá " + pessoa;
+            }
+        </script>
+    </div>
+</body>
+</html>
