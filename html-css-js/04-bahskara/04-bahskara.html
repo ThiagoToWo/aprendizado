@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bahskara</title>
+    <style>
+        body {
+            background: #ccc;
+        }
+
+        #todo {
+            width: 100vw;
+            height: 100vh;
+            max-width: 300px;
+            min-width: 200px;
+            max-height: 600px;
+            min-height: 400px;
+            margin: 0 auto;
+            padding: 0 0 0 10px;
+            border: solid 2px #000;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="todo">
+        <h1>Bahskara</h1>
+        <form>
+            <p>
+                Insira o valor de a <input type="number" id="a" autofocus required>
+            </p>
+            <p>
+                Insira o valor de b <input type="number" id="b" required>
+            </p>
+            <p>
+                Insira o valor de c <input type="number" id="c" required>
+            </p>
+            <input type="submit" value="Calcular">
+        </form>
+        <h3></h3>
+        <script>
+            const form = document.querySelector("form");
+            const saida = document.querySelector("h3");
+
+            form.onsubmit = function (e) {
+                e.preventDefault();
+
+                const a = Number(form.a.value);
+                const b = Number(form.b.value);
+                const c = Number(form.c.value);
+                let d;
+                let x1;
+                let x2;
+
+                if (a == 0) {
+                    saida.innerText = "Não é uma função quadrática";
+                } else {
+                    d = b * b - 4 * a * c;
+
+                    if (d == 0) {
+                        x1 = -b / (2 * a);
+                        saida.innerText = "x1 = x2 = " + x1;
+                    } else if (d > 0) {
+                        x1 = (-b + Math.sqrt(d)) / (2 * a);
+                        x2 = (-b - Math.sqrt(d)) / (2 * a);
+                        saida.innerText = "x1 = " + x1 + " e  x2 = " + x2;
+                    } else {
+                        saida.innerText = "Não possui raízes reais.";
+                    }
+                }
+            }            
+        </script>
+    </div>
+</body>
+</html>
