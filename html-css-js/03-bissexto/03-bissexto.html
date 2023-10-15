@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bissexto</title>
+	<style>
+		body {
+			background: #ccc;
+		}
+
+		#todo {
+			width: 100vw;
+			height: 100vh;
+			max-width: 300px;
+			min-width: 200px;
+			max-height: 600px;
+			min-height: 400px;
+			margin: 0 auto;
+			padding: 0 0 0 10px;
+			border: solid 2px #000;
+			background: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div id="todo">
+		<h1>Bissexto</h1>
+		<form>
+			<p>
+				Insira o ano: <input type="number" id="ano" autofocus required>
+			</p>
+			<input type="submit" value="Verificar">
+		</form>
+		<h3></h3>
+		<script>
+			const form = document.querySelector("form");
+			const saida = document.querySelector("h3");
+
+			form.onsubmit = function(e) {
+				e.preventDefault();
+
+				const ano = Number(form.ano.value);
+
+				if (ano % 4 == 0 && (ano % 100 != 0 || ano % 400 == 0)) {
+					saida.innerText = "O ano " + ano + " é bissexto.";
+				} else {
+					saida.innerText = "O ano " + ano + " não é bissexto.";
+				}
+			}			
+		</script>
+	</div>
+</body>
+</html>
