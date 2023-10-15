@@ -40,7 +40,8 @@
             const btIncluir = document.querySelector("button");
             const saida = document.querySelector("pre");
 
-            let soma = 0;
+            let n = 0;
+            let total = 0;
             let x;
 
             form.onsubmit = function(e) {
@@ -48,12 +49,13 @@
 
                 indice.innerText++;
                 x = Number(form.valor.value);
-                soma += x;
+                total += x;
+                n++;
                 form.reset();
             }
 
             btIncluir.onclick = function() {
-                saida.innerText = "media = " + soma / 10;
+                saida.innerText = "media = " + total / n;
             }
         </script>
     </div>
