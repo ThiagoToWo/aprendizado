@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivinhe</title>
+    <style>
+        body {
+            background: #ccc
+        }
+
+        #todo {
+            width: 100vw;
+            height: 100vh;
+            max-width: 300px;
+            min-width: 200px;
+            max-height: 600px;
+            min-height: 400px;
+            margin: 0 auto;
+            padding: 0 0 0 10px;
+            border: solid 2px #000;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="todo">
+        <h1>Adivinhe</h1>
+        <form>
+            <p>
+                Dê seu palpite: <input type="number" id="palpite" min="0" max="100" autofocus required>
+            </p>
+            <input type="submit" value="Verificar">
+        </form>
+        <h3></h3>
+        <script>
+            const form = document.querySelector("form");
+            const saida = document.querySelector("h3");
+
+            const rnd = Math.floor(1 + Math.random() * 100);
+            let palpite;
+            let tentativas = 1;
+
+            form.onsubmit = function(e) {
+                e.preventDefault();
+
+                palpite = Number(form.palpite.value);
+
+                if (palpite > rnd) {
+                    saida.innerText = "Tente um menor";
+                } else if (palpite < rnd) {
+                    saida.innerText = "Tente um maior";
+                } else {
+                    saida.innerText = "Voce acertou! com " + tentativas + " tentativas";
+                }
+        
+                tentativas++;
+            }
+        </script>
+    </div>
+</body>
+</html>
