@@ -1,0 +1,11 @@
+{
+	<< "Insira o ano ";
+	>> a;
+
+	?a % 4 == 0 & (a % 100 != 0 | a % 400 == 0)? -> 1;
+		<< "o ano "; << a; << " nao eh bissexto";
+		-> 2;
+	1;
+		<< "o ano "; << a; << " eh bissexto";
+	2;
+}

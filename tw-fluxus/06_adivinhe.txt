@@ -1,0 +1,30 @@
+#JOGO ADIVINHE O NUMERO EM 6 TENTATIVAS
+
+{
+	<< "semente =  ";
+	>> r[827868];
+	=> 827868;
+	r = r[827868] % 100;
+	t = 1;
+
+	2;
+		<< "De seu palpite (sair = -1): ";
+		>> p;
+	
+		?p > r == 0? -> 3;
+			<< "Tente um menor\n";
+			-> 5;
+		3; 
+		?p < r == 0? -> 4;
+			<< "Tente um maior\n";
+			-> 5;
+		4;
+			<< "Acertou.\nForam ", t, " tentativas";
+			-> 6;
+		5;
+		t = t + 1;
+	?p != -1?	-> 2;
+	6;
+}
+
+@funcoes.txt

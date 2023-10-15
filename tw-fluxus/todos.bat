@@ -1,0 +1,11 @@
+tw 01_ola_mundo.txt
+tw 02_calculadora.txt
+tw 03_bissexto.txt
+tw 04_bahskara.txt
+tw 05_media1.txt
+tw 05_media2.txt
+tw 06_adivinhe.txt
+tw 07_clasificacao.txt
+tw 08_maximo.txt
+tw 09_labirinto.txt
+tw 10_eratostenes.txt

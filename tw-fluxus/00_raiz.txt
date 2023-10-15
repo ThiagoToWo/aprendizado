@@ -1,0 +1,27 @@
+#METODO BABILONICO PARA RAIZ QUADRADA
+
+# Calcula a raiz quadrada do numero n usando o metodo babilonico.
+#
+# b(k+1) = n / a(k+1)
+# a(k+1) = [a(k) + b(k)] / 2
+#
+# A primeira leitura eh o numero positivo do qual se deseja calcular a raiz quadrada.
+# A segunda leitura eh a quantidade de iteracoes para se obter mais precisao.
+# Em cada passo do loop as aproximacoes vao sendo impressas
+
+
+
+>> n;				#le o numero do qual se deseja calcular a raiz quadrada
+?n < 0? -> 2;			#se o numero for negativo, termina o programa indo para (2)
+i = 0;				#contador de iteracoes para precisao
+>> m;				#le o maximo de iteracoes feitas para obter precisao
+
+a = n / 2;			#inicia o valor da raiz
+
+1;				#loop do metodo babilonico    
+    b = n / a;
+    a = (a + b) / 2;
+    i = i + 1;
+    << a;			#vai imprimindo os valores aproximados em cada iteracao
+?i < m? -> 1;			#repete enquanto nao alcancou o maximo de precisao
+2;
