@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média</title>
+    <style>
+        body {
+            background: #ccc;
+        }
+
+        #todo {
+            width: 100vw;
+            height: 100vh;
+            max-width: 300px;
+            min-width: 200px;
+            max-height: 600px;
+            min-height: 400px;
+            margin: 0 auto;
+            padding: 0 0 0 10px;
+            border: solid 2px #000;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="todo">
+        <h1>Média</h1>
+        <form>
+            <p>
+                Insira o valor <span>1</span>º valor: <input type="number" id="valor" autofocus required>
+                <input type="submit" value="Incluir">
+            </p>
+        </form>
+        <button>Calcular</button>            
+        <h3></h3>
+        <script>
+            const form = document.querySelector("form");
+            const indice = document.querySelector("span");
+            const btIncluir = document.querySelector("button");
+            const saida = document.querySelector("h3");
+
+            let soma = 0;
+            let x;
+
+            form.onsubmit = function(e) {
+                e.preventDefault();
+
+                indice.innerText++;
+                x = Number(form.valor.value);
+                soma += x;
+                form.reset();
+            }
+
+            btIncluir.onclick = function() {
+                saida.innerText = "media = " + soma / 10;
+            }
+        </script>
+    </div>
+</body>
+</html>
