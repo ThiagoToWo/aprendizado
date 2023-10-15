@@ -32,13 +32,13 @@
                 Digite seu nome: <input type="text" id="nome" autofocus required>
             </p>
             <input type="submit" value="Cumprimentar">
-            <!--h3 para insersão do texto de saída-->
-            <h3></h3>
+            <!--pre para insersão do texto de saída-->
+            <pre></pre>
         </form>
         <script>
             // captura os elementos HTML
             const form = document.querySelector("form");
-            const saida = document.querySelector("h3")
+            const saida = document.querySelector("pre")
 
             // processamento do formulário
             form.addEventListener("submit", (e) => {
