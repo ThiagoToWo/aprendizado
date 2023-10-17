@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificação</title>
+    <style>
+        body {
+            background: #ccc;
+        }
+
+        #todo {
+            width: 100vw;
+            height: 100vh;
+            max-width: 300px;
+            min-width: 200px;
+            max-height: 600px;
+            min-height: 400px;
+            margin: 0 auto;
+            padding: 0 0 0 10px;
+            border: solid 2px #000;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="todo">
+        <h1>Classificação</h1>
+        <form>
+            <p>
+                Insira a nota de 0 a 100: <input type="number" id="nota" min="0" max="100" autofocus required>
+                <input type="submit" value="Inserir">
+            </p>
+        </form>
+        <button>Classificar</button>
+        <pre></pre>
+        <script>
+            const form = document.querySelector("form");
+            const btClassificar = document.querySelector("button");
+            const saida = document.querySelector("pre");
+
+            let A = B = C = D = E = 0;
+            let nota;
+            let resposta = "";
+                        
+            form.onsubmit = function(e) {
+                e.preventDefault();
+
+                nota = Number(form.nota.value);
+                
+                switch (Math.floor(nota / 10)) {
+                    case 10:
+                        A++; 
+                        break;
+                    case 9:
+                    case 8:
+                    case 7:
+                        B++; 
+                        break;
+                    case 6:
+                    case 5:
+                    case 4:
+                        C++; 
+                        break;
+                    case 3:
+                    case 2:
+                    case 1:
+                        D++; 
+                        break;
+                    case 0:
+                        E++; 
+                        break;
+                    default:
+                        alert("Valor fora dos limites.");
+                }
+
+                form.reset();
+            }
+
+            btClassificar.onclick = function() {
+                resposta += "Perfeito (100):" + A + "\n";
+                resposta += "Bom (70 a 99): " + B + "\n";
+                resposta += "Médio (40 a 69): " + C + "\n";
+                resposta += "Ruim (10 a 39): " + D + "\n";
+                resposta += "Péssimo (0 a 9): " + E + "\n";
+                resposta += "Total: " + (A + B + C + D + E);
+
+                saida.innerText = resposta;
+            }           
+        </script>
+    </div>
+</body>
+</html>
