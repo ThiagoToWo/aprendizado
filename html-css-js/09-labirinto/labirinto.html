@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labirinto</title>
+    <style>
+        body {
+            background: #ccc;
+        }
+
+        #todo {
+            width: 100vw;
+            height: 100vh;
+            max-width: 300px;
+            min-width: 200px;
+            max-height: 600px;
+            min-height: 400px;
+            margin: 0 auto;
+            padding: 0 0 0 10px;
+            border: solid 2px #000;
+            background: #fff;
+        }
+
+        pre {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="todo">
+        <h1>Labirinto</h1>
+        <pre></pre>
+    </div>
+    <script>
+        const labirinto = document.querySelector("pre");
+
+        const mapa = [['#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#'],
+        ['#', '.', '.', '.', '#', '.', '.', '.', '.', '.', '.', '#'],
+        ['@', '.', '#', '.', '#', '.', '#', '#', '#', '#', '.', '#'],
+        ['#', '#', '#', '.', '#', '.', '.', '.', '.', '#', '.', '#'],
+        ['#', '.', '.', '.', '.', '#', '#', '#', '.', '#', '.', '.'],
+        ['#', '#', '#', '#', '.', '#', '.', '#', '.', '#', '.', '#'],
+        ['#', '.', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#'],
+        ['#', '#', '.', '#', '.', '#', '.', '#', '.', '#', '.', '#'],
+        ['#', '.', '.', '.', '.', '.', '.', '.', '.', '#', '.', '#'],
+        ['#', '#', '#', '#', '#', '#', '.', '#', '#', '#', '.', '#'],
+        ['#', '.', '.', '.', '.', '.', '.', '#', '.', '.', '.', '#'],
+        ['#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#', '#']];
+        let linha = 2;
+        let coluna = 0;
+        let direcao;
+        let mostra = "";
+
+        mostrarLabirinto();
+
+        window.onkeydown = function (e) {
+            direcao = e.key;
+
+            switch (direcao) {
+                case "4": // esquerda
+                    if ((coluna - 1) >= 0 && mapa[linha][coluna - 1] == '.') {
+                        mapa[linha][coluna] = '.';
+                        coluna -= 1;
+                        mapa[linha][coluna] = '@';
+                    }
+
+                    break;
+                case "8": // cima
+                    if ((linha - 1) >= 0 && mapa[linha - 1][coluna] == '.') {
+                        mapa[linha][coluna] = '.';
+                        linha -= 1;
+                        mapa[linha][coluna] = '@';
+                    }
+
+                    break;
+                case "6": // direita
+                    if ((coluna + 1) < mapa[linha].length && mapa[linha][coluna + 1] == '.') {
+                        mapa[linha][coluna] = '.';
+                        coluna += 1;
+                        mapa[linha][coluna] = '@';
+                    }
+
+                    break;
+                case "2": // baixo
+                    if ((linha + 1) < mapa.length && mapa[linha + 1][coluna] == '.') {
+                        mapa[linha][coluna] = '.';
+                        linha += 1;
+                        mapa[linha][coluna] = '@';
+                    }
+
+                    break;
+                default:
+                    if (direcao == "0") {
+                        alert("Reiniciando o jogo.");
+                        mapa[linha][coluna] = '.';
+                        linha = 2;
+                        coluna = 0;
+                        mapa[linha][coluna] = '@';
+                        break;
+                    }
+
+                    alert("Valor inválido.");
+            }
+
+            mostrarLabirinto();
+        }
+
+        function mostrarLabirinto() {
+            for (let i = 0; i < mapa.length; i++) {
+                for (let j = 0; j < mapa[i].length; j++) {
+                    mostra += mapa[i][j] + " ";
+                }
+
+                mostra += '\n';
+            }
+
+            mostra += "\nEscolha a direção:\n  esquerda = 4\n  cima = 8\n  direita = 6\n  baixo = 2\n  reiniciar = 0"
+            labirinto.innerText = mostra;
+            mostra = "";
+        }
+    </script>
+</body>
+
+</html>
