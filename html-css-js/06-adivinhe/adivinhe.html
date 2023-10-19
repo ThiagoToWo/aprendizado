@@ -37,9 +37,10 @@
             const form = document.querySelector("form");
             const saida = document.querySelector("pre");
 
-            const rnd = Math.floor(1 + Math.random() * 100);
+            let rnd = Math.floor(1 + Math.random() * 100);
             let palpite;
             let tentativas = 1;
+            let resposta = "";
 
             form.onsubmit = function(e) {
                 e.preventDefault();
@@ -47,14 +48,24 @@
                 palpite = Number(form.palpite.value);
 
                 if (palpite > rnd) {
-                    saida.innerText = "Tente um menor";
+                    resposta += palpite + "\nTente um menor\n";
+                    saida.innerText = resposta;
                 } else if (palpite < rnd) {
-                    saida.innerText = "Tente um maior";
+                    resposta += palpite + "\nTente um maior\n";
+                    saida.innerText = resposta;
                 } else {
-                    saida.innerText = "Voce acertou! com " + tentativas + " tentativas";
+                    resposta += "Voce acertou! com " + tentativas + " tentativas";
+                    resposta += "\nTente de novo";
+                    saida.innerText = resposta;
+
+                    tentativas = 0;
+                    resposta = "";
+                    rnd = Math.floor(1 + Math.random() * 100);
                 }
-        
+
                 tentativas++;
+                
+                form.reset();
             }
         </script>
     </div>

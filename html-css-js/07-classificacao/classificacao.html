@@ -21,6 +21,10 @@
             border: solid 2px #000;
             background: #fff;
         }
+
+        pre {
+            white-space: pre-wrap;
+        }
     </style>
 </head>
 <body>
@@ -47,6 +51,7 @@
                 e.preventDefault();
 
                 nota = Number(form.nota.value);
+                resposta += nota + " ";
                 
                 switch (Math.floor(nota / 10)) {
                     case 10:
@@ -74,18 +79,22 @@
                         alert("Valor fora dos limites.");
                 }
 
+                saida.innerText = resposta;
                 form.reset();
             }
 
             btClassificar.onclick = function() {
-                resposta += "Perfeito (100):" + A + "\n";
+                resposta += "\n\nPerfeito (100):" + A + "\n";
                 resposta += "Bom (70 a 99): " + B + "\n";
                 resposta += "Médio (40 a 69): " + C + "\n";
                 resposta += "Ruim (10 a 39): " + D + "\n";
                 resposta += "Péssimo (0 a 9): " + E + "\n";
                 resposta += "Total: " + (A + B + C + D + E);
-
                 saida.innerText = resposta;
+
+                A = B = C = D = E = 0;
+                resposta = "";
+                form.nota.focus();
             }           
         </script>
     </div>

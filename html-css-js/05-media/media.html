@@ -21,6 +21,10 @@
             border: solid 2px #000;
             background: #fff;
         }
+
+        pre {
+            white-space: pre-wrap;
+        }
     </style>
 </head>
 <body>
@@ -43,6 +47,7 @@
             let n = 0;
             let total = 0;
             let x;
+            let resposta = "";
 
             form.onsubmit = function(e) {
                 e.preventDefault();
@@ -50,12 +55,22 @@
                 indice.innerText++;
                 x = Number(form.valor.value);
                 total += x;
+                resposta += x + " ";
                 n++;
+                saida.innerText = resposta;
+
                 form.reset();
             }
 
-            btIncluir.onclick = function() {
-                saida.innerText = "media = " + total / n;
+            btCalcular.onclick = function() {
+                resposta += "\nmedia = " + total / n;
+                saida.innerText = resposta;
+                
+                indice.innerText = 1;
+                n = 0;
+                total = 0;
+                resposta = "";
+                form.valor.focus();
             }
         </script>
     </div>
