@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eratóstenes</title>
+    <style>
+        body {
+            background: #ccc;
+        }
+
+        #todo {
+            width: 100vw;
+            height: 100vh;
+            max-width: 300px;
+            min-width: 200px;
+            max-height: 600px;
+            min-height: 400px;
+            margin: 0 auto;
+            padding: 0 0 0 10px;
+            border: solid 2px #000;
+            background: #fff;
+            overflow: auto; /*barra de rolagem quando necessário*/
+        }
+    </style>
+</head>
+<body>
+    <div id="todo">
+        <h1>Eratóstenes</h1>
+        <form>
+            <p>
+                Insira o limite de teste: <input type="number" id="max" min="1" autofocus required>
+            </p>
+            <p>
+                Insira a amplitude de ditribuição: <input type="number" id="amplitude" required>
+            </p>
+            <input type="submit" value="Processar">
+        </form>
+        <pre></pre>
+        <script>
+            const form = document.querySelector("form");
+            const saida = document.querySelector("pre");
+
+            form.onsubmit = function (e) {
+                e.preventDefault();
+
+                const max = Number(form.max.value);
+                const amplitude = Number(form.amplitude.value);
+
+                const primos = [];
+                let resposta = "";
+
+                primos[0] = false;
+                primos[1] = false;
+
+                for (let i = 2; i <= max; i++) {
+                    primos[i] = true;
+                }
+
+                for (let i = 2; i * i <= max; i++) {
+                    for (let j = 2 * i; j <= max; j += i) {
+                        primos[j] = false;
+                    }
+                }
+
+                for (let i = 2; i <= max; i++) {
+                    if (primos[i]) {
+                        resposta += i + " ";
+                    }
+
+                    if (i % amplitude == 0) {
+                        resposta += "\n";
+                    }
+                }
+
+                saida.innerText = resposta;
+            }            
+        </script>
+    </div>
+</body>
+</html>
