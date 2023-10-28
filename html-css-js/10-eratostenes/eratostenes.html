@@ -37,45 +37,45 @@
             <input type="submit" value="Processar">
         </form>
         <pre></pre>
-        <script>
-            const form = document.querySelector("form");
-            const saida = document.querySelector("pre");
-
-            form.onsubmit = function (e) {
-                e.preventDefault();
-
-                const max = Number(form.max.value);
-                const amplitude = Number(form.amplitude.value);
-
-                const primos = [];
-                let resposta = "";
-
-                primos[0] = false;
-                primos[1] = false;
-
-                for (let i = 2; i <= max; i++) {
-                    primos[i] = true;
-                }
-
-                for (let i = 2; i * i <= max; i++) {
-                    for (let j = 2 * i; j <= max; j += i) {
-                        primos[j] = false;
-                    }
-                }
-
-                for (let i = 2; i <= max; i++) {
-                    if (primos[i]) {
-                        resposta += i + " ";
-                    }
-
-                    if (i % amplitude == 0) {
-                        resposta += "\n";
-                    }
-                }
-
-                saida.innerText = resposta;
-            }            
-        </script>
     </div>
+    <script>
+        const form = document.querySelector("form");
+        const saida = document.querySelector("pre");
+
+        form.onsubmit = function (e) {
+            e.preventDefault();
+
+            const max = Number(form.max.value);
+            const amplitude = Number(form.amplitude.value);
+
+            const primos = [];
+            let resposta = "";
+
+            primos[0] = false;
+            primos[1] = false;
+
+            for (let i = 2; i <= max; i++) {
+                primos[i] = true;
+            }
+
+            for (let i = 2; i * i <= max; i++) {
+                for (let j = 2 * i; j <= max; j += i) {
+                    primos[j] = false;
+                }
+            }
+
+            for (let i = 2; i <= max; i++) {
+                if (primos[i]) {
+                    resposta += i + " ";
+                }
+
+                if (i % amplitude == 0) {
+                    resposta += "\n";
+                }
+            }
+
+            saida.innerText = resposta;
+        }            
+    </script>
 </body>
 </html>

@@ -39,39 +39,39 @@
         <button>Máximo</button>
         <pre></pre>
     </div>
-</body>
-</html>
-<script>
-    const form = document.querySelector("form");
-    const btMaximo = document.querySelector("button");
-    const saida = document.querySelector("pre");
-
-    let numeros = [];
-    let resposta = "";
-
-    form.onsubmit = function(e) {
-        e.preventDefault();
-
-        numero = Number(form.numeros.value);
-        numeros.push(numero);
-        resposta += numero + " ";
-        saida.innerText = resposta;
-        
-        form.reset();
-    }
-
-    btMaximo.onclick = function() {
-        var max = numeros[0];
+    <script>
+        const form = document.querySelector("form");
+        const btMaximo = document.querySelector("button");
+        const saida = document.querySelector("pre");
     
-        for (let i = 0; i < numeros.length; i++) {
-            if (numeros[i] > max) max = numeros[i];
+        let numeros = [];
+        let resposta = "";
+    
+        form.onsubmit = function(e) {
+            e.preventDefault();
+    
+            numero = Number(form.numeros.value);
+            numeros.push(numero);
+            resposta += numero + " ";
+            saida.innerText = resposta;
+            
+            form.reset();
         }
     
-        resposta += "\nO valor máximo é " + max;
-        saida.innerText = resposta;
+        btMaximo.onclick = function() {
+            var max = numeros[0];
         
-        resposta = "";
-        numeros = [];
-        form.numeros.focus();
-    }    
-</script>
+            for (let i = 0; i < numeros.length; i++) {
+                if (numeros[i] > max) max = numeros[i];
+            }
+        
+            resposta += "\nO valor máximo é " + max;
+            saida.innerText = resposta;
+            
+            resposta = "";
+            numeros = [];
+            form.numeros.focus();
+        }    
+    </script>
+</body>
+</html>

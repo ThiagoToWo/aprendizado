@@ -38,41 +38,41 @@
         </form>
         <button>Calcular</button>            
         <pre></pre>
-        <script>
-            const form = document.querySelector("form");
-            const indice = document.querySelector("span");
-            const btCalcular = document.querySelector("button");
-            const saida = document.querySelector("pre");
-
-            let n = 0;
-            let total = 0;
-            let x;
-            let resposta = "";
-
-            form.onsubmit = function(e) {
-                e.preventDefault();
-
-                indice.innerText++;
-                x = Number(form.valor.value);
-                total += x;
-                resposta += x + " ";
-                n++;
-                saida.innerText = resposta;
-
-                form.reset();
-            }
-
-            btCalcular.onclick = function() {
-                resposta += "\nmedia = " + total / n;
-                saida.innerText = resposta;
-                
-                indice.innerText = 1;
-                n = 0;
-                total = 0;
-                resposta = "";
-                form.valor.focus();
-            }
-        </script>
     </div>
+    <script>
+        const form = document.querySelector("form");
+        const indice = document.querySelector("span");
+        const btCalcular = document.querySelector("button");
+        const saida = document.querySelector("pre");
+
+        let n = 0;
+        let total = 0;
+        let x;
+        let resposta = "";
+
+        form.onsubmit = function(e) {
+            e.preventDefault();
+
+            indice.innerText++;
+            x = Number(form.valor.value);
+            total += x;
+            resposta += x + " ";
+            n++;
+            saida.innerText = resposta;
+
+            form.reset();
+        }
+
+        btCalcular.onclick = function() {
+            resposta += "\nmedia = " + total / n;
+            saida.innerText = resposta;
+            
+            indice.innerText = 1;
+            n = 0;
+            total = 0;
+            resposta = "";
+            form.valor.focus();
+        }
+    </script>
 </body>
 </html>

@@ -38,65 +38,65 @@
         </form>
         <button>Classificar</button>
         <pre></pre>
-        <script>
-            const form = document.querySelector("form");
-            const btClassificar = document.querySelector("button");
-            const saida = document.querySelector("pre");
+    </div>
+    <script>
+        const form = document.querySelector("form");
+        const btClassificar = document.querySelector("button");
+        const saida = document.querySelector("pre");
 
-            let A = B = C = D = E = 0;
-            let nota;
-            let resposta = "";
-                        
-            form.onsubmit = function(e) {
-                e.preventDefault();
+        let A = B = C = D = E = 0;
+        let nota;
+        let resposta = "";
+                    
+        form.onsubmit = function(e) {
+            e.preventDefault();
 
-                nota = Number(form.nota.value);
-                resposta += nota + " ";
-                
-                switch (Math.floor(nota / 10)) {
-                    case 10:
-                        A++; 
-                        break;
-                    case 9:
-                    case 8:
-                    case 7:
-                        B++; 
-                        break;
-                    case 6:
-                    case 5:
-                    case 4:
-                        C++; 
-                        break;
-                    case 3:
-                    case 2:
-                    case 1:
-                        D++; 
-                        break;
-                    case 0:
-                        E++; 
-                        break;
-                    default:
-                        alert("Valor fora dos limites.");
-                }
-
-                saida.innerText = resposta;
-                form.reset();
+            nota = Number(form.nota.value);
+            resposta += nota + " ";
+            
+            switch (Math.floor(nota / 10)) {
+                case 10:
+                    A++; 
+                    break;
+                case 9:
+                case 8:
+                case 7:
+                    B++; 
+                    break;
+                case 6:
+                case 5:
+                case 4:
+                    C++; 
+                    break;
+                case 3:
+                case 2:
+                case 1:
+                    D++; 
+                    break;
+                case 0:
+                    E++; 
+                    break;
+                default:
+                    alert("Valor fora dos limites.");
             }
 
-            btClassificar.onclick = function() {
-                resposta += "\n\nPerfeito (100):" + A + "\n";
-                resposta += "Bom (70 a 99): " + B + "\n";
-                resposta += "Médio (40 a 69): " + C + "\n";
-                resposta += "Ruim (10 a 39): " + D + "\n";
-                resposta += "Péssimo (0 a 9): " + E + "\n";
-                resposta += "Total: " + (A + B + C + D + E);
-                saida.innerText = resposta;
+            saida.innerText = resposta;
+            form.reset();
+        }
 
-                A = B = C = D = E = 0;
-                resposta = "";
-                form.nota.focus();
-            }           
-        </script>
-    </div>
+        btClassificar.onclick = function() {
+            resposta += "\n\nPerfeito (100):" + A + "\n";
+            resposta += "Bom (70 a 99): " + B + "\n";
+            resposta += "Médio (40 a 69): " + C + "\n";
+            resposta += "Ruim (10 a 39): " + D + "\n";
+            resposta += "Péssimo (0 a 9): " + E + "\n";
+            resposta += "Total: " + (A + B + C + D + E);
+            saida.innerText = resposta;
+
+            A = B = C = D = E = 0;
+            resposta = "";
+            form.nota.focus();
+        }           
+    </script>
 </body>
 </html>

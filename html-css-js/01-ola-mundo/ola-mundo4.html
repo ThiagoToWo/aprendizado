@@ -34,32 +34,32 @@
             <input type="submit" value="Cumprimentar">
             <!--pre para insersão do texto de saída-->
             <pre></pre>
-        </form>
-        <script>
-            // captura os elementos HTML
-            const form = document.querySelector("form");
-            const saida = document.querySelector("pre")
-
-            // processamento do formulário
-            form.addEventListener("submit", (e) => {
-                // previne o recarregamento padrão da página após um submit
-                e.preventDefault();
-
-                // obtém o nome
-                const nome = form.nome.value;
-                // processa com a função cumprimentar
-                cumprimentar(nome, saida);
-            });
-
-            /*
-            função que tem como entrada um nome e um elemento HTML e
-            imprime s saudação a este nome no texto interno do elemento
-            */
-            function cumprimentar(pessoa, elementSaida) {
-                elementSaida.innerText = "Olá " + pessoa;
-                form.reset();
-            }
-        </script>
+        </form>        
     </div>
+    <script>
+        // captura os elementos HTML
+        const form = document.querySelector("form");
+        const saida = document.querySelector("pre")
+
+        // processamento do formulário
+        form.addEventListener("submit", (e) => {
+            // previne o recarregamento padrão da página após um submit
+            e.preventDefault();
+
+            // obtém o nome
+            const nome = form.nome.value;
+            // processa com a função cumprimentar
+            cumprimentar(nome, saida);
+        });
+
+        /*
+        função que tem como entrada um nome e um elemento HTML e
+        imprime s saudação a este nome no texto interno do elemento
+        */
+        function cumprimentar(pessoa, elementSaida) {
+            elementSaida.innerText = "Olá " + pessoa;
+            form.reset();
+        }
+    </script>
 </body>
 </html>

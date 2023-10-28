@@ -33,24 +33,24 @@
 			<input type="submit" value="Verificar">
 		</form>
 		<pre></pre>
-		<script>
-			const form = document.querySelector("form");
-			const saida = document.querySelector("pre");
-
-			form.onsubmit = function(e) {
-				e.preventDefault();
-
-				const ano = Number(form.ano.value);
-
-				if (ano % 4 == 0 && (ano % 100 != 0 || ano % 400 == 0)) {
-					saida.innerText = "O ano " + ano + " é bissexto.";
-				} else {
-					saida.innerText = "O ano " + ano + " não é bissexto.";
-				}
-
-				form.reset();
-			}			
-		</script>
 	</div>
+	<script>
+		const form = document.querySelector("form");
+		const saida = document.querySelector("pre");
+
+		form.onsubmit = function(e) {
+			e.preventDefault();
+
+			const ano = Number(form.ano.value);
+
+			if (ano % 4 == 0 && (ano % 100 != 0 || ano % 400 == 0)) {
+				saida.innerText = "O ano " + ano + " é bissexto.";
+			} else {
+				saida.innerText = "O ano " + ano + " não é bissexto.";
+			}
+
+			form.reset();
+		}			
+	</script>
 </body>
 </html>

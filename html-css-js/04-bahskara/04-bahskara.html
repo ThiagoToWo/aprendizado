@@ -43,38 +43,38 @@
             <input type="submit" value="Calcular">
         </form>
         <pre></pre>
-        <script>
-            const form = document.querySelector("form");
-            const saida = document.querySelector("pre");
-
-            form.onsubmit = function (e) {
-                e.preventDefault();
-
-                const a = Number(form.a.value);
-                const b = Number(form.b.value);
-                const c = Number(form.c.value);
-                let d;
-                let x1;
-                let x2;
-
-                if (a == 0) {
-                    saida.innerText = "Não é uma função quadrática";
-                } else {
-                    d = b * b - 4 * a * c;
-
-                    if (d == 0) {
-                        x1 = -b / (2 * a);
-                        saida.innerText = "x1 = x2 = " + x1;
-                    } else if (d > 0) {
-                        x1 = (-b + Math.sqrt(d)) / (2 * a);
-                        x2 = (-b - Math.sqrt(d)) / (2 * a);
-                        saida.innerText = "x1 = " + x1 + " e  x2 = " + x2;
-                    } else {
-                        saida.innerText = "Não possui raízes reais.";
-                    }
-                }
-            }            
-        </script>
     </div>
+    <script>
+        const form = document.querySelector("form");
+        const saida = document.querySelector("pre");
+
+        form.onsubmit = function (e) {
+            e.preventDefault();
+
+            const a = Number(form.a.value);
+            const b = Number(form.b.value);
+            const c = Number(form.c.value);
+            let d;
+            let x1;
+            let x2;
+
+            if (a == 0) {
+                saida.innerText = "Não é uma função quadrática";
+            } else {
+                d = b * b - 4 * a * c;
+
+                if (d == 0) {
+                    x1 = -b / (2 * a);
+                    saida.innerText = "x1 = x2 = " + x1;
+                } else if (d > 0) {
+                    x1 = (-b + Math.sqrt(d)) / (2 * a);
+                    x2 = (-b - Math.sqrt(d)) / (2 * a);
+                    saida.innerText = "x1 = " + x1 + " e  x2 = " + x2;
+                } else {
+                    saida.innerText = "Não possui raízes reais.";
+                }
+            }
+        }            
+    </script>
 </body>
 </html>

@@ -34,41 +34,41 @@
 			<input type="submit" value="Calcular">
 		</form>
 		<pre></pre>
-		<script>
-			const form = document.querySelector("form");
-			const saida = document.querySelector("pre")
-
-			form.onsubmit = function (e) {
-				e.preventDefault();
-
-				const a = Number(form.a.value);
-				const b = Number(form.b.value);
-				let resultado = "";
-
-				resultado += "A soma é " + (a + b) + "\n";
-				resultado += "A subtração é " + (a - b) + "\n";
-				resultado += "A multiplicação é " + (a * b) + "\n";
-				resultado += "A divisão é " + (a / b) + "\n";
-
-				if (a > b) {
-					resultado += a + " > " + b + "\n";
-				} else if (a == b) {
-					resultado += a + " = " + b + "\n";
-				} else {
-					resultado += a + " < " + b + "\n";
-				}
-
-				if (a > 0 && a < 10) {
-					resultado += "0 < " + a + " < 10";
-				} else if (a < 0 || a > 10) {
-					resultado += a + " < 0 ou " + a + " > 10";
-				} else {
-					resultado += a + "= 0 ou " + a + " = 10";
-				}
-
-				saida.innerText = resultado;
-			}			
-		</script>
 	</div>
+	<script>
+		const form = document.querySelector("form");
+		const saida = document.querySelector("pre")
+
+		form.onsubmit = function (e) {
+			e.preventDefault();
+
+			const a = Number(form.a.value);
+			const b = Number(form.b.value);
+			let resultado = "";
+
+			resultado += "A soma é " + (a + b) + "\n";
+			resultado += "A subtração é " + (a - b) + "\n";
+			resultado += "A multiplicação é " + (a * b) + "\n";
+			resultado += "A divisão é " + (a / b) + "\n";
+
+			if (a > b) {
+				resultado += a + " > " + b + "\n";
+			} else if (a == b) {
+				resultado += a + " = " + b + "\n";
+			} else {
+				resultado += a + " < " + b + "\n";
+			}
+
+			if (a > 0 && a < 10) {
+				resultado += "0 < " + a + " < 10";
+			} else if (a < 0 || a > 10) {
+				resultado += a + " < 0 ou " + a + " > 10";
+			} else {
+				resultado += a + "= 0 ou " + a + " = 10";
+			}
+
+			saida.innerText = resultado;
+		}			
+	</script>
 </body>
 </html>
