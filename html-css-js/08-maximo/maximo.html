@@ -18,7 +18,7 @@
             min-height: 400px;
             margin: 0 auto;
             padding: 0 0 0 10px;
-            border: solid 2px #000;
+            border: 2px solid #000;
             background: #fff;
         }
 
@@ -47,7 +47,10 @@
         let numeros = [];
         let resposta = "";
     
-        form.onsubmit = function(e) {
+        form.addEventListener("submit", inserir);
+        btMaximo.addEventListener("click", acharMaximo);
+        
+        function inserir(e) {
             e.preventDefault();
     
             numero = Number(form.numeros.value);
@@ -58,7 +61,7 @@
             form.reset();
         }
     
-        btMaximo.onclick = function() {
+        function acharMaximo() {
             var max = numeros[0];
         
             for (let i = 0; i < numeros.length; i++) {

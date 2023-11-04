@@ -18,7 +18,7 @@
             min-height: 400px;
             margin: 0 auto;
             padding: 0 0 0 10px;
-            border: solid 2px #000;
+            border: 2px solid #000;
             background: #fff;
         }
 
@@ -48,7 +48,9 @@
         const form = document.querySelector("form");
         const saida = document.querySelector("pre");
 
-        form.onsubmit = function (e) {
+        form.addEventListener("submit", calcular);
+        
+        function calcular(e) {
             e.preventDefault();
 
             const a = Number(form.a.value);

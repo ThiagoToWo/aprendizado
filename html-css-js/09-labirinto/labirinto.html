@@ -18,7 +18,7 @@
             min-height: 400px;
             margin: 0 auto;
             padding: 0 0 0 10px;
-            border: solid 2px #000;
+            border: 2px solid #000;
             background: #fff;
         }
 
@@ -54,7 +54,9 @@
 
         mostrarLabirinto();
 
-        window.onkeydown = function (e) {
+        window.addEventListener("keydown", mover); 
+        
+        function mover(e) {
             direcao = e.key;
 
             switch (direcao) {

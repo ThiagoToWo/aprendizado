@@ -18,7 +18,7 @@
             min-height: 400px;
             margin: 0 auto;
             padding: 0 0 0 10px;
-            border: solid 2px #000;
+            border: 2px solid #000;
             background: #fff;
         }
     </style>
@@ -43,7 +43,9 @@
         let tentativas = 1;
         let resposta = "";
 
-        form.onsubmit = function(e) {
+        form.addEventListener("submit", verificar);
+        
+        function verificar(e) {
             e.preventDefault();
 
             palpite = Number(form.palpite.value);

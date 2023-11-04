@@ -18,7 +18,7 @@
             min-height: 400px;
             margin: 0 auto;
             padding: 0 0 0 10px;
-            border: solid 2px #000;
+            border: 2px solid #000;
             background: #fff;
         }
 
@@ -32,7 +32,7 @@
         <h1>Média</h1>
         <form>
             <p>
-                Insira o valor <span>1</span>º valor: <input type="number" id="valor" autofocus required>
+                Insira o <span>1</span>º valor: <input type="number" id="valor" autofocus required>
                 <input type="submit" value="Inserir">
             </p>
         </form>
@@ -50,7 +50,9 @@
         let x;
         let resposta = "";
 
-        form.onsubmit = function(e) {
+        form.addEventListener("submit", inserir);
+        
+        function inserir(e) {
             e.preventDefault();
 
             indice.innerText++;

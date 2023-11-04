@@ -18,7 +18,7 @@
             min-height: 400px;
             margin: 0 auto;
             padding: 0 0 0 10px;
-            border: solid 2px #000;
+            border: 2px solid #000;
             background: #fff;
             overflow: auto; /*barra de rolagem quando necessário*/
         }
@@ -32,7 +32,7 @@
                 Insira o limite de teste: <input type="number" id="max" min="1" autofocus required>
             </p>
             <p>
-                Insira a amplitude de ditribuição: <input type="number" id="amplitude" required>
+                Insira a amplitude de ditribuição: <input type="number" id="amplitude" min="1" required>
             </p>
             <input type="submit" value="Processar">
         </form>
@@ -42,7 +42,9 @@
         const form = document.querySelector("form");
         const saida = document.querySelector("pre");
 
-        form.onsubmit = function (e) {
+        form.addEventListener("submit", processar);
+        
+        function processar(e) {
             e.preventDefault();
 
             const max = Number(form.max.value);

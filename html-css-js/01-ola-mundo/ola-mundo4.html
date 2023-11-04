@@ -17,7 +17,7 @@
             min-height: 400px;
             margin: 0 auto;
             padding: 0 0 0 10px;
-            border: solid 2px #000;
+            border: 2px solid #000;
             background: #fff;
         }
     </style>
@@ -42,16 +42,18 @@
         const saida = document.querySelector("pre")
 
         // processamento do formulário
-        form.addEventListener("submit", (e) => {
+        form.addEventListener("submit", processarDados);
+
+        function processarDados(evento) {
             // previne o recarregamento padrão da página após um submit
-            e.preventDefault();
+            evento.preventDefault();
 
             // obtém o nome
             const nome = form.nome.value;
             // processa com a função cumprimentar
             cumprimentar(nome, saida);
-        });
-
+        }
+        
         /*
         função que tem como entrada um nome e um elemento HTML e
         imprime s saudação a este nome no texto interno do elemento
