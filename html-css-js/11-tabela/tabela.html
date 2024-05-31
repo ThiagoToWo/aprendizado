@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,13 +9,13 @@
             background: #ccc;
         }
 
-        #todo {
+        #tudo {
             width: 100vw;
             height: 100vh;
-            max-width: 300px;
             min-width: 200px;
-            max-height: 600px;
+            max-width: 300px;
             min-height: 400px;
+            max-height: 600px;
             margin: 0 auto;
             padding: 0 0 0 10px;
             border: 2px solid #000;
@@ -30,9 +29,8 @@
         }
     </style>
 </head>
-
 <body>
-    <div id="todo">
+    <div id="tudo">
         <h1>Tabela</h1>
         <form id="configuracao">
             <p>
@@ -163,7 +161,7 @@
 
         function operarSobreItens(e) {
             e.preventDefault();
-            
+
             let total = 0;
 
             if (!formOperacoes.linha.disabled) {
@@ -194,5 +192,4 @@
         }
     </script>
 </body>
-
 </html>
