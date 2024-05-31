@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem</title>
+    <style>
+        body {
+            background: #ccc;
+        }
+
+        #tudo {
+            width: 100vw;
+            height: 100vh;
+            min-width: 200px;
+            max-width: 300px;
+            min-height: 400px;
+            max-height: 600px;
+            margin: 0 auto;
+            padding: 0 0 0 10px;
+            border: 2px solid #000;
+            background: #fff;
+        }
+
+        pre {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div id="tudo">
+        <h1>Contagem</h1>
+        <form>
+            <p>
+                <textarea id="texto" rows="25" cols="35" autofocus required></textarea>
+            </p>
+            <input type="submit" value="Contar">
+        </form>
+        <pre></pre>
+    </div>
+    <script>
+        const form = document.querySelector("form");
+        const saida = document.querySelector("pre");
+
+        form.addEventListener("submit", processarContagem);
+
+        function processarContagem(e) {
+            e.preventDefault();
+
+            let achou_letra;
+            let num_letras = 0;
+            let num_palavras = 0;
+            let tamanho = 0;
+            const simb = [' ', ',', '.', ';', ':', '!', '?', '(', ')'];
+            
+            const texto = form.texto.value;
+    
+            let i = 0;
+            while (texto[i] != null) {
+                achou_letra = true;
+    
+                if (texto[i] == ' ') {
+                    num_palavras++;
+                }
+    
+                for (let j = 0; j < simb.length; j++) {
+                    if (texto[i] == simb[j]) {
+                        achou_letra = false;
+                        break;
+                    }
+                }
+    
+                if (achou_letra) {
+                    num_letras++;
+                }
+    
+                i++;
+            }
+    
+            saida.innerText = `Esse texto tem ${num_palavras + 1} palavras, ${i} caracteres, sendo ${num_letras} deles letras.`;
+        }
+    </script>
+</body>
+</html>
