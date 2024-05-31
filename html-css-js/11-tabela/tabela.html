@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela</title>
+    <style>
+        body {
+            background: #ccc;
+        }
+
+        #todo {
+            width: 100vw;
+            height: 100vh;
+            max-width: 300px;
+            min-width: 200px;
+            max-height: 600px;
+            min-height: 400px;
+            margin: 0 auto;
+            padding: 0 0 0 10px;
+            border: 2px solid #000;
+            background: #fff;
+        }
+
+        pre {
+            width: 300px;
+            height: 135px;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="todo">
+        <h1>Tabela</h1>
+        <form id="configuracao">
+            <p>
+                Insira o número de linhas da tabela: <input type="number" id="linhas" min="1" autofocus required>
+            </p>
+            <p>
+                Insira o número de colunas da tabela: <input type="number" id="colunas" min="1" required>
+            </p>
+            <input type="submit" id="configurar" value="Configurar">
+        </form>
+        <form id="entradaTabela">
+            <p>
+                <span id="prompt">tabela[?][?] = </span> <input type="number" id="valor" disabled required>
+            </p>
+            <input type="submit" id="inserir" value="Inserir Valor" disabled>
+        </form>
+        <pre></pre>
+        <form id="operacoes">
+            <p>
+                Deseja operar sobre:
+                <input type="radio" name="operacao" id="rbLinha">linha
+                <input type="radio" name="operacao" id="rbColuna">coluna
+            </p>
+            <p>
+                Escolha a linha: <input type="number" id="linha" disabled>
+            </p>
+            <p>
+                Escolha a coluna: <input type="number" id="coluna" disabled>
+            </p>
+            <input type="submit" id="operar" value="Operar">
+        </form>
+    </div>
+    <script>
+        const formConfiguracao = document.querySelector("#configuracao");
+        const formEntrada = document.querySelector("#entradaTabela");
+        const spPrompt = document.querySelector("#prompt");
+        const saida = document.querySelector("pre");
+        const formOperacoes = document.querySelector("#operacoes");
+
+        let num_linha;
+        let num_coluna;
+        let mostra = "";
+        let total_elementos;
+        let posicao = 0;
+        let linha = 0;
+        let coluna = 0;
+        const tabela = [];
+
+        formConfiguracao.addEventListener("submit", configurarTabela);
+        formEntrada.addEventListener("submit", inserirValor);
+        formOperacoes.rbLinha.addEventListener("click", selecionarLinhas);
+        formOperacoes.rbColuna.addEventListener("click", selecionarColunas);
+        formOperacoes.addEventListener("submit", operarSobreItens);
+        //formOperacoes.style.display = "none";
+
+        function configurarTabela(e) {
+            e.preventDefault();
+
+            num_linha = Number(formConfiguracao.linhas.value);
+            num_coluna = Number(formConfiguracao.colunas.value);
+
+            total_elementos = num_linha * num_coluna;
+
+            spPrompt.innerText = `tabela[${linha}][${coluna}] = `;
+            mostra += `tabela com ${num_linha} linha(s) e ${num_coluna} coluna(s)\n\n`;
+            saida.innerText = mostra;
+
+            for (let i = 0; i < num_linha; i++) {
+                tabela[i] = [];
+            }
+
+            formConfiguracao.linhas.disabled = true;
+            formConfiguracao.colunas.disabled = true;
+            formConfiguracao.configurar.disabled = true;
+            formConfiguracao.reset();
+            formEntrada.valor.disabled = false;
+            formEntrada.inserir.disabled = false;
+            formEntrada.valor.focus();
+        }
+
+        function inserirValor(e) {
+            e.preventDefault();
+
+            tabela[linha][coluna] = Number(formEntrada.valor.value);
+
+            if (coluna == 0) {
+                mostra += "\n" + tabela[linha][coluna] + " ";
+            } else {
+                mostra += tabela[linha][coluna] + " ";
+            }
+
+            saida.innerText = mostra;
+
+            posicao++;
+            coluna = posicao % num_coluna;
+            linha = (posicao - coluna) / num_coluna;
+
+            spPrompt.innerText = `tabela[${linha}][${coluna}] = `;
+
+            formEntrada.reset();
+
+            if (posicao == total_elementos) {
+                spPrompt.innerText = `tabela[?][?] = `;                
+                mostra += "\n\n";
+                saida.innerText = mostra;
+
+                formEntrada.valor.disabled = true;
+                formEntrada.inserir.disabled = true;
+                formOperacoes.style.display = "block";
+                formOperacoes.linha.min = "0";
+                formOperacoes.linha.max = num_linha - 1;
+                formOperacoes.coluna.min = "0";
+                formOperacoes.coluna.max = num_coluna - 1;
+                formOperacoes.linha.placeholder = `0 a ${num_linha - 1}`;
+                formOperacoes.coluna.placeholder = `0 a ${num_coluna - 1}`;
+            }
+        }
+
+        function selecionarLinhas() {
+            formOperacoes.linha.disabled = false;
+            formOperacoes.coluna.disabled = true;
+        }
+
+        function selecionarColunas() {
+            formOperacoes.linha.disabled = true;
+            formOperacoes.coluna.disabled = false;
+        }
+
+        function operarSobreItens(e) {
+            e.preventDefault();
+            
+            let total = 0;
+
+            if (!formOperacoes.linha.disabled) {
+                const linha = Number(formOperacoes.linha.value);
+
+                if (linha >= 0 && linha < num_linha) {
+                    for (let i = 0; i < num_coluna; i++) {
+                        total += tabela[linha][i];
+                    }
+
+                    alert("O total da linha é " + total);
+                } else {
+                    alert("Valor fora dos limites");
+                }
+            } else {
+                const coluna = Number(formOperacoes.coluna.value);
+
+                if (coluna >= 0 && coluna < num_coluna) {
+                    for (var i = 0; i < num_linha; i++) {
+                        total += tabela[i][coluna];
+                    }
+
+                    alert("O total da coluna é " + total);
+                } else {
+                    alert("Valor fora dos limites");
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
