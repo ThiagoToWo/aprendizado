@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokens</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        pre {
+            height: 90px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="tudo">
+        <h1>Tokens</h1>
+        <form>
+            <p>
+                Insira um texto (máx. 128 palavras):
+                <textarea id="texto" rows="18" cols="35" autofocus></textarea>
+            </p>
+            <p>
+                Insira o(s) caractere(s) separadores:
+                <input type="text" id="separadores">
+            </p>
+            <input type="submit" value="Separar tokens">
+        </form>
+        <pre></pre>
+    </div>
+    <script src="../js/tokens.js"></script>
+    <script>
+        const form = document.querySelector("form");
+        const saida = document.querySelector("pre");
+
+        form.addEventListener("submit", separarTokens);
+
+        function separarTokens(e) {
+            e.preventDefault();
+
+            const texto = form.texto.value;
+            const separadores = form.separadores.value;
+    
+            const tokens = tokenizar(texto, separadores);
+    
+            saida.innerText = "";
+
+            let i = 0;
+    
+            while (tokens[i] != null) {
+                saida.innerText += i + ". " + tokens[i] + "\n";
+                i++;
+            }
+        }
+    </script>
+</body>
+</html>
